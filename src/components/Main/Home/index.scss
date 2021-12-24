@@ -1,0 +1,10 @@
+@use "./../../../sass" as *;
+.mainContainer {
+  position: relative;
+  min-height: calc(100vh - $height-nav);
+  margin-top: $height-nav;
+  .mySwiper {
+    width: 90%;
+    margin: 0 auto;
+  }
+}

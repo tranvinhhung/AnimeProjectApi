@@ -1,0 +1,28 @@
+@use "./../../sass" as *;
+nav.nav {
+  padding: 1rem 3rem;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 2rem;
+  background-color: #c2dde9;
+  position: fixed;
+  top: 0;
+  height: $height-nav;
+  z-index: 999;
+  box-shadow: 0 0 10px 0 #c2dde9;
+  figure {
+    display: flex;
+    align-items: center;
+    img {
+      width: 5rem;
+      border-radius: 50%;
+    }
+  }
+  ul {
+    width: 50%;
+    padding: 0 4rem;
+    @include flexCen(row, space-between);
+  }
+}

@@ -1,0 +1,12 @@
+@mixin flexCen($dire: column, $jut: center, $alin: center) {
+  display: flex;
+  flex-direction: $dire;
+  justify-content: $jut;
+  align-items: $alin;
+}
+@mixin centerItem {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
