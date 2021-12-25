@@ -3,6 +3,14 @@
   display: flex;
   .anime_descriptions {
     padding: 3rem 2rem;
+    .songAudio {
+      width: 50%;
+      background-color: red;
+      svg {
+        cursor: pointer;
+        font-size: 7rem;
+      }
+    }
   }
   .animeContainer {
     width: 40%;
