@@ -2,41 +2,100 @@ import React, { useEffect, useState } from "react";
 // import Swiper core and required modules
 // Import Swiper styles
 import { SwiperSlide } from "swiper/react";
-import AnimePlay from "../../AnimePlay/AnimePlay";
 import { handleAsync } from "../../Error/Error";
 import Loading from "../../Loading";
 import SwiperCom from "../../Swiper/Swiper";
-import { handerData } from "./../../../api/handleData";
-import { getAnimeRamdom } from "./../../../api/index";
-import Banner from "./../../Banner/Banner";
+import {
+  getAnimeRamdom,
+  getGender,
+  ramdomValueArrayGender,
+  listAnimeWithGender,
+} from "./../../../api/index";
+import { handerAnime } from "./../../../api/handleData";
+import Card from "../../Card/Card";
+import Section from "../../Section/Section";
 import "./index.scss";
 
 function Home() {
   const [loading, setLoading] = useState(true);
   const [coverList, setcoverList] = useState([]);
+  const [listGender, setListGender] = useState([]);
+  const data = {
+    slidesPerView: 3,
+    spaceBetween: 30,
+    centeredSlides: true,
+    autoplay: {
+      delay: 1500,
+      disableOnInteraction: true,
+    },
+    pagination: {
+      clickable: true,
+      dynamicBullets: true,
+    },
+    slidesPerGroup: 2,
+    loop: true,
+    loopFillGroupWithBlank: true,
+    navigation: true,
+    lazy: true,
+  };
   useEffect(() => {
     handleAsync(async () => {
       setLoading(true);
-      let reponse = await getAnimeRamdom(6);
+      // let reponse = await getAnimeRamdom(6);
+      // let animeGender = await handerAnime();
+      // console.log(animeGender);
+      let allArrHandle = await Promise.all([getAnimeRamdom(6), handerAnime()]);
+      let [arr, listGender] = allArrHandle;
+      let arrr = arr.data.data;
 
-      let arr = reponse.data.data;
+      console.log(allArrHandle);
 
-      console.log(arr);
+      console.log(listGender);
       setLoading(false);
-      setcoverList(arr);
+      setcoverList(arrr);
+      setListGender(listGender);
     })();
   }, []);
   return (
     <main className="mainContainer">
       {loading && <Loading />}
       {!loading && (
-        <SwiperCom>
-          {coverList.map((el, index) => (
-            <SwiperSlide key={index}>
-              <Banner key={index} data={el} handleClick={el} />
-            </SwiperSlide>
+        <>
+          <Section
+            list={coverList}
+            class="bannerContainer"
+            data={data}
+            lop="banner"
+          ></Section>
+          {listGender.map((el) => (
+            <Section
+              gender={el.gender}
+              list={el.documents}
+              class="genderContainer"
+              data={{ ...data, slidesPerView: 5 }}
+              lop="gender"
+            ></Section>
           ))}
-        </SwiperCom>
+
+          {/* {1 && (
+          //   <section className="genderContainer">
+          //     {2 && (
+          //       <SwiperCom data={{ ...data, slidesPerView: 5 }}>
+          //         {coverList.map((el, index) => (
+          //           <SwiperSlide key={index}>
+          //             <Card
+          //               lop="gender"
+          //               key={index}
+          //               data={el}
+          //               handleClick={el}
+          //             />
+          //           </SwiperSlide>
+          //         ))}
+          //       </SwiperCom>
+          //     )}
+          //   </section>
+          // )} */}
+        </>
       )}
     </main>
   );

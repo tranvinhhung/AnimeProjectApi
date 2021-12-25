@@ -3,6 +3,12 @@
   position: relative;
   min-height: calc(100vh - $height-nav);
   margin-top: $height-nav;
+  .bannerContainer {
+    height: 70vh;
+  }
+  .genderContainer {
+    margin-top: 10rem;
+  }
   .mySwiper {
     width: 90%;
     margin: 0 auto;
