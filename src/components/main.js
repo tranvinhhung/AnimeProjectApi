@@ -19,6 +19,7 @@ function Index() {
         </Route>
         <Route path="anime" element={<AnimePlay />}>
           <Route path=":id" element={<AnimePlay />} />
+          <Route path=":gender" element={<AnimePlay />} />
         </Route>
         <Route path="context" element={<AppContext />}></Route>
         <Route path="*" element={<NotFound />} />
