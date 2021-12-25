@@ -18,25 +18,37 @@ import { Swiper } from "swiper/react";
 SwiperCore.use([Lazy, Autoplay, Pagination, Navigation, EffectFade]);
 
 const SwiperCom = (props) => {
+  const {
+    slidesPerView,
+    spaceBetween,
+    centeredSlides,
+    autoplay: { delay, disableOnInteraction },
+    pagination: { clickable, dynamicBullets },
+    slidesPerGroup,
+    loop,
+    loopFillGroupWithBlank,
+    navigation,
+    lazy,
+  } = props.data;
   return (
     <Swiper
-      slidesPerView={3}
-      spaceBetween={30}
-      centeredSlides={true}
+      slidesPerView={slidesPerView}
+      spaceBetween={spaceBetween}
+      centeredSlides={centeredSlides}
       autoplay={{
-        delay: 1500,
-        disableOnInteraction: true,
+        delay: delay,
+        disableOnInteraction: disableOnInteraction,
       }}
       pagination={{
-        clickable: true,
-        dynamicBullets: true,
+        clickable: clickable,
+        dynamicBullets: dynamicBullets,
       }}
-      slidesPerGroup={2}
-      loop={true}
-      loopFillGroupWithBlank={true}
-      navigation={true}
+      slidesPerGroup={slidesPerGroup}
+      loop={loop}
+      loopFillGroupWithBlank={loopFillGroupWithBlank}
+      navigation={navigation}
       className="mySwiper"
-      lazy={true}
+      lazy={lazy}
     >
       {props.children}
     </Swiper>
