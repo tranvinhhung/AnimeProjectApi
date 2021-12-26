@@ -7,7 +7,7 @@ import {
   useParams,
   useRoutes,
 } from "react-router-dom";
-import AnimePlay from "../../AnimePlay/AnimePlay";
+import AnimePlay from "../../AnimeComponents/AnimePlay/AnimePlay";
 function About() {
   const params = useParams();
   const location = useLocation();

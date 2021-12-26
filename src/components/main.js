@@ -1,6 +1,7 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
-import AnimePlay from "./AnimePlay/AnimePlay";
+import AnimeGender from "./AnimeComponents/AnimeGenderList/AnimeGender";
+import AnimePlay from "./AnimeComponents/AnimePlay/AnimePlay";
 import AppContext from "./Context/AppContext";
 import Footer from "./Footer/Footer";
 import Header from "./Header/Header";
@@ -9,23 +10,23 @@ import Home from "./Main/Home/Home";
 import NotFound from "./Main/NotFound/NotFound";
 function Index() {
   return (
-    <>
+    <React.Fragment>
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="Home" element={<Home />} />
-        <Route path="About" element={<About />}>
-          <Route path=":id" element={<About />} />
-        </Route>
+        <Route path="home" element={<Home />} />
+        <Route path="about" element={<About />} />
+
         <Route path="anime" element={<AnimePlay />}>
           <Route path=":id" element={<AnimePlay />} />
-          <Route path=":gender" element={<AnimePlay />} />
+          {/* <Route path="gender" element={<AnimeGender />} /> */}
         </Route>
-        <Route path="context" element={<AppContext />}></Route>
-        <Route path="*" element={<NotFound />} />
+        <Route path="context" element={<AppContext />} />
+        <Route path="*" element={<NotFound />}></Route>
       </Routes>
+
       <Footer />
-    </>
+    </React.Fragment>
   );
 }
 

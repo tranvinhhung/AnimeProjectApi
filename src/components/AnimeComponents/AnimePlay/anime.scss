@@ -1,0 +1,100 @@
+@use "./../../../sass" as *;
+
+.mainContainerAnime,
+.anime {
+  display: flex;
+  position: relative;
+  min-height: calc(100vh - $height-nav);
+  margin-top: 7rem;
+  height: calc(100vh - $height-nav);
+  .anime_descContainer {
+    font-family: "Courier New", Courier, monospace;
+    padding: 3rem 2rem;
+    position: absolute;
+    width: 50%;
+    right: 10%;
+    top: 10%;
+    font-size: 1.7rem;
+    line-height: 1.2;
+    .anime_titles {
+      font-weight: 900;
+      font-size: 3rem;
+      padding-bottom: 1rem;
+    }
+    .anime_des {
+      display: -webkit-box;
+      -webkit-line-clamp: 4;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    .songAudio {
+      width: 50%;
+      background-color: red;
+      svg {
+        cursor: pointer;
+        font-size: 7rem;
+      }
+    }
+  }
+  .bye {
+    font-family: "Courier New", Courier, monospace;
+    font-size: 10rem;
+    opacity: 0;
+    text-align: center;
+    @include centerItem();
+  }
+  .animateButtom {
+    width: 7rem;
+    height: 7rem;
+    border-radius: 50%;
+    position: absolute;
+    color: white;
+    box-shadow: 0 0 10px black;
+    background-color: black;
+    z-index: 9;
+    display: block;
+    bottom: 10%;
+    right: 20%;
+    cursor: pointer;
+    &:hover {
+      box-shadow: 0 0 5px black;
+    }
+  }
+  .animeContainer {
+    width: 20%;
+    flex-shrink: 0;
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    left: 20%;
+    transform: translate(-30%, 20%);
+    box-shadow: 0 0 5px black;
+    img {
+      width: 100%;
+      object-fit: cover;
+      object-position: center;
+      transition: transform 0.3s;
+      &:hover {
+        filter: blur(0.5px);
+        cursor: pointer;
+        // transform: scale(1.1);
+      }
+    }
+
+    button:hover ~ img {
+      filter: blur(0.5px);
+      cursor: pointer;
+      // transform: scale(1.1);
+    }
+  }
+  .animerBanner {
+    border-radius: 100rem;
+    box-shadow: 0 0 2px rgb(146, 142, 142);
+    padding-top: 1rem;
+    margin: 2rem auto;
+    width: 90%;
+    height: 100%;
+    // transition: all 1s;
+    // grid-column: 1 / -1;
+  }
+}

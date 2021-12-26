@@ -4,10 +4,10 @@
   min-height: calc(100vh - $height-nav);
   margin-top: $height-nav;
   .bannerContainer {
-    height: 70vh;
+    min-height: 70vh;
   }
   .genderContainer {
-    margin-top: 10rem;
+    margin-top: 5rem;
   }
   .mySwiper {
     width: 90%;

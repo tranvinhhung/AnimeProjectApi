@@ -16,10 +16,10 @@ export const handerData = (data) => {
   });
   return array;
 };
-export const handerAnime = async () => {
+export const handerAnime = async (count) => {
   let arrayList = [];
   let reponseAnimeList = await getGender();
-  let ramdomGender = await ramdomValueArrayGender(reponseAnimeList, 3);
+  let ramdomGender = await ramdomValueArrayGender(reponseAnimeList, count);
   for (let i = 0; i < ramdomGender.length; i++) {
     let ray = await listAnimeWithGender(ramdomGender[i]);
     arrayList.push({ ...ray, gender: ramdomGender[i] });

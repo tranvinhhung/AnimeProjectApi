@@ -14,7 +14,8 @@ function Card(props) {
   const {
     id,
     cover_image: img,
-    // banner_image: img,
+
+    banner_image: img2,
     titles: { jp: alt = "No alt", en },
     episodes_count,
     episode_duration,
@@ -27,7 +28,7 @@ function Card(props) {
   return (
     <figure className={lop} onClick={handleChangeUrl}>
       <PlayCircleOutlineIcon></PlayCircleOutlineIcon>
-      <img data-src={img} alt={alt} className="swiper-lazy" />
+      <img data-src={img2 ? img2 : img} alt={alt} className="swiper-lazy" />
       <span>{en}</span>
       <span className="tap">{`Đã có   ${episodes_count}/${
         episode_duration || `???`

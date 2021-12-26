@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
-const acSyn = createAsyncThunk(async (data, thunkAPI) => {
+export const acSynHanleAni = createAsyncThunk(async (data, thunkAPI) => {
   return data;
 });
 const initialState = { list: [], loading: false };
@@ -10,11 +10,11 @@ const animeGenderSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: {
-    [acSyn.fulfilled]: (state, action) => {
+    [acSynHanleAni.fulfilled]: (state, action) => {
       state.list = action.payload;
     },
-    [acSyn.pending]: (state, action) => {},
-    [acSyn.rejected]: (state, action) => {},
+    [acSynHanleAni.pending]: (state, action) => {},
+    [acSynHanleAni.rejected]: (state, action) => {},
   },
 });
 

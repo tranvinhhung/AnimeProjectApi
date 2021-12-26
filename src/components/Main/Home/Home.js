@@ -21,11 +21,11 @@ function Home() {
   const [coverList, setcoverList] = useState([]);
   const [listGender, setListGender] = useState([]);
   const data = {
-    slidesPerView: 3,
-    spaceBetween: 30,
+    slidesPerView: 4,
+    spaceBetween: 20,
     centeredSlides: true,
     autoplay: {
-      delay: 1500,
+      delay: 3000,
       disableOnInteraction: true,
     },
     pagination: {
@@ -44,7 +44,7 @@ function Home() {
       // let reponse = await getAnimeRamdom(6);
       // let animeGender = await handerAnime();
       // console.log(animeGender);
-      let allArrHandle = await Promise.all([getAnimeRamdom(6), handerAnime()]);
+      let allArrHandle = await Promise.all([getAnimeRamdom(6), handerAnime(3)]);
       let [arr, listGender] = allArrHandle;
       let arrr = arr.data.data;
 
@@ -67,8 +67,9 @@ function Home() {
             data={data}
             lop="banner"
           ></Section>
-          {listGender.map((el) => (
+          {listGender.map((el, index) => (
             <Section
+              key={index}
               gender={el.gender}
               list={el.documents}
               class="genderContainer"
