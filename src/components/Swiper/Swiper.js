@@ -19,17 +19,17 @@ SwiperCore.use([Lazy, Autoplay, Pagination, Navigation, EffectFade]);
 
 const SwiperCom = (props) => {
   const {
-    slidesPerView,
-    spaceBetween,
-    centeredSlides,
-    autoplay: { delay, disableOnInteraction },
-    pagination: { clickable, dynamicBullets },
-    slidesPerGroup,
-    loop,
-    loopFillGroupWithBlank,
-    navigation,
-    lazy,
-  } = props.data;
+    slidesPerView = 4,
+    spaceBetween = 20,
+    centeredSlides = true,
+    autoplay: { delay = 4000, disableOnInteraction = false },
+    pagination: { clickable = true, dynamicBullets = true },
+    slidesPerGroup = 2,
+    loop = true,
+    loopFillGroupWithBlank = true,
+    navigation = true,
+    lazy = true,
+  } = props.data2;
   return (
     <Swiper
       slidesPerView={slidesPerView}

@@ -7,86 +7,6 @@
   min-height: calc(100vh - $height-nav);
   margin-top: 7rem;
   height: calc(100vh - $height-nav);
-  .anime_descContainer {
-    font-family: "Courier New", Courier, monospace;
-    padding: 3rem 2rem;
-    position: absolute;
-    width: 50%;
-    right: 10%;
-    top: 10%;
-    font-size: 1.7rem;
-    line-height: 1.2;
-    .anime_titles {
-      font-weight: 900;
-      font-size: 3rem;
-      padding-bottom: 1rem;
-    }
-    .anime_des {
-      display: -webkit-box;
-      -webkit-line-clamp: 4;
-      -webkit-box-orient: vertical;
-      overflow: hidden;
-    }
-    .songAudio {
-      width: 50%;
-      background-color: red;
-      svg {
-        cursor: pointer;
-        font-size: 7rem;
-      }
-    }
-  }
-  .bye {
-    font-family: "Courier New", Courier, monospace;
-    font-size: 10rem;
-    opacity: 0;
-    text-align: center;
-    @include centerItem();
-  }
-  .animateButtom {
-    width: 7rem;
-    height: 7rem;
-    border-radius: 50%;
-    position: absolute;
-    color: white;
-    box-shadow: 0 0 10px black;
-    background-color: black;
-    z-index: 9;
-    display: block;
-    bottom: 10%;
-    right: 20%;
-    cursor: pointer;
-    &:hover {
-      box-shadow: 0 0 5px black;
-    }
-  }
-  .animeContainer {
-    width: 20%;
-    flex-shrink: 0;
-    overflow: hidden;
-    position: absolute;
-    top: 0;
-    left: 20%;
-    transform: translate(-30%, 20%);
-    box-shadow: 0 0 5px black;
-    img {
-      width: 100%;
-      object-fit: cover;
-      object-position: center;
-      transition: transform 0.3s;
-      &:hover {
-        filter: blur(0.5px);
-        cursor: pointer;
-        // transform: scale(1.1);
-      }
-    }
-
-    button:hover ~ img {
-      filter: blur(0.5px);
-      cursor: pointer;
-      // transform: scale(1.1);
-    }
-  }
   .animerBanner {
     border-radius: 100rem;
     box-shadow: 0 0 2px rgb(146, 142, 142);
@@ -94,7 +14,120 @@
     margin: 2rem auto;
     width: 90%;
     height: 100%;
-    // transition: all 1s;
-    // grid-column: 1 / -1;
+  }
+  div.animeLi {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    grid-template-rows: repeat(6, 1fr);
+    .animeContainer {
+      overflow: hidden;
+      // box-shadow: 0 0 5px rgba(0, 0, 0, 0.267);
+      grid-column: 2 / 4;
+      grid-row: 2 / 6;
+      position: relative;
+      button {
+        @include centerItem();
+      }
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+        transition: transform 0.3s;
+        &:hover {
+          filter: blur(0.5px);
+          cursor: pointer;
+        }
+      }
+
+      button:hover ~ img {
+        filter: blur(0.5px);
+        cursor: pointer;
+        // transform: scale(1.1);
+      }
+    }
+
+    .animateButtom {
+      width: 8rem;
+      height: 8rem;
+      border-radius: 100rem;
+      position: absolute;
+      color: white;
+      box-shadow: 0 0 10px black;
+      background-color: black;
+      z-index: 9;
+      display: block;
+      // bottom: 10%;
+      top: 50%;
+      right: 0%;
+      transform: translate(-50%, -50%);
+      cursor: pointer;
+      &:hover {
+        box-shadow: 0 0 5px black;
+      }
+    }
+    .anime_descContainer {
+      font-family: "Courier New", Courier, monospace;
+      padding: 0 3rem;
+      grid-column: 4 / 10;
+      grid-row: 2 / 4;
+
+      font-size: 1.7rem;
+      line-height: 1.2;
+      .anime_titles {
+        font-weight: 900;
+        font-size: 3rem;
+        padding-bottom: 1rem;
+      }
+      .anime_des {
+        display: -webkit-box;
+        -webkit-line-clamp: 4;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+      }
+    }
+    .animeAudioContai {
+      grid-column: 4 / 10;
+      grid-row: 4 / 6;
+      // background-color: red;
+      margin: 0 2rem;
+      font-size: 1.4rem;
+      position: relative;
+      .songdes {
+        position: absolute;
+        width: 25%;
+        height: 130%;
+        margin-left: auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: flex-start;
+        background-color: black;
+        color: white;
+        padding: 1rem;
+        right: 0;
+        top: 50%;
+        transform: translate(0, -50%);
+        box-shadow: 0 0 3px white;
+        border-radius: 3rem;
+      }
+
+      svg {
+        cursor: pointer;
+        font-size: 7rem;
+        align-self: center;
+      }
+    }
+  }
+
+  .bye {
+    font-family: "Courier New", Courier, monospace;
+    font-size: 10rem;
+    opacity: 0;
+    text-align: center;
+    @include centerItem();
   }
 }

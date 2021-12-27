@@ -19,11 +19,12 @@ function Section(props) {
       })}`
     );
   };
+  const { classs, gender, data, list, lop } = props;
 
   return (
     <>
-      <section className={props.class}>
-        {props?.class === "genderContainer" && (
+      <section className={props.classs}>
+        {props?.classs === "genderContainer" && (
           <button
             className="titleGender mySwiper"
             onClick={() => {
@@ -33,11 +34,11 @@ function Section(props) {
             {props.gender}
           </button>
         )}
-        {props?.class === "bannerContainer" && (
+        {props?.classs === "bannerContainer" && (
           <div className="mySwiper titleGender">Hôm nay xem gì </div>
         )}
-        <SwiperCom data={props.data}>
-          {props?.list.map((el, index) => (
+        <SwiperCom data2={props.data}>
+          {props.list.map((el, index) => (
             <SwiperSlide key={index}>
               <Card key={index} lop={props.lop} data={el} />
             </SwiperSlide>

@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import SwiperCore, { Lazy, Navigation, Pagination } from "swiper";
 import "swiper/css";
 import "swiper/css/lazy";
-import "./index.scss";
+import "./card.scss";
 
 SwiperCore.use([Lazy, Pagination, Navigation]);
 function Card(props) {

@@ -1,0 +1,22 @@
+@use "./../../sass" as *;
+footer.footer {
+  margin-top: 9rem;
+  padding: 2rem;
+  background-color: $main_color;
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+  align-items: flex-start;
+  background-image: linear-gradient(to top right, $main_color, white);
+  ul {
+    list-style: none;
+    li:not(:first-child) {
+      font-size: 1.5rem;
+      padding-top: 0.3rem;
+    }
+    li:first-child {
+      font-size: 2.5rem;
+      padding-bottom: 1rem;
+    }
+  }
+}

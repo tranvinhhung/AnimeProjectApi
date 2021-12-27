@@ -23,17 +23,6 @@ function AnimeGender() {
       return `${el[0].toUpperCase() + el.slice(1)}`;
     })
     .join(" ");
-  //   console.log(search);
-  //   useEffect(() => {
-  //     (async () => {
-  //       setLoaing(true);
-  //       let list = await listAnimeWithGender(search, 20, page);
-
-  //       //   console.log(list.document);
-  //       setList(list.documents);
-  //       setLoaing(false);
-  //     })();
-  //   }, []);
 
   useEffect(() => {
     handleAsync(async () => {
@@ -42,16 +31,7 @@ function AnimeGender() {
       //   console.log(a);
     })();
   }, []);
-  return (
-    <div className="mainContainer">
-      {loading && <Loading />}
-      {!loading && (
-        <>
-          {/* {list && list.map((el, index) => <Card key={index} data={el}></Card>)} */}
-        </>
-      )}
-    </div>
-  );
+  return <div className="mainContainer"></div>;
 }
 
 export default AnimeGender;

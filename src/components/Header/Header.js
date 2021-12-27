@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "./index.scss";
+import "./header.scss";
 function Header() {
   return (
     <nav className="nav">
@@ -12,12 +12,31 @@ function Header() {
           MyAnime
         </Link>
       </figure>
-      <ul>
+      <ul className="navright">
         <li>
           <Link className="notext" to="/home">
             Home
           </Link>
         </li>
+        <nav className="navloai">
+          <li>
+            <Link to="/" className="notext">
+              Thể loại
+            </Link>
+          </li>
+          <ul className="loais">
+            <li>demo</li>
+            <li>demo</li>
+            <li>demo</li>
+            <li>demo</li>
+          </ul>
+        </nav>
+        <li>
+          <Link className="notext" to="/">
+            animes saw
+          </Link>
+        </li>
+
         <li>
           <Link className="notext" to="/about">
             About
@@ -28,16 +47,12 @@ function Header() {
             Login
           </Link>
         </li>
-        <li>
-          <Link className="notext" to="">
-            Các anime đã xem
-          </Link>
-        </li>
-        <li>
+
+        {/* <li>
           <Link className="notext" to="/context">
             hello Context
           </Link>
-        </li>
+        </li> */}
       </ul>
     </nav>
   );
