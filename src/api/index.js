@@ -40,6 +40,13 @@ export const listAnimeWithGender = async (gender, per_page = 8, page = 1) => {
   return data;
 };
 
+export const listAnimeEpisole = async (idani) => {
+  let arr = await axios.get(
+    `https://api.aniapi.com/v1/episode?anime_id=${idani}&source=dreamsub&locale=it`
+  );
+  let data = arr.data.data;
+  return data;
+};
 // setInterval(function () {
 //   (async () => {
 //     let b = await ramdomValueArray([1, 2, 3, 4, 5, 6, 7, 8], 3);
