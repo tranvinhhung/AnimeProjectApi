@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
-const acSyn = createAsyncThunk(async (userId, thunkAPI) => {
+const songacSyn = createAsyncThunk(async (userId, thunkAPI) => {
   return {};
 });
 const initialState = {
@@ -10,11 +10,12 @@ const initialState = {
     preview_url: "",
     title: "",
     year: 0,
+    type: 0,
   },
 };
 
 const songSlice = createSlice({
-  name: "counter",
+  name: "songSlice",
   initialState,
   reducers: {
     getSong(state, action) {
@@ -22,18 +23,14 @@ const songSlice = createSlice({
     },
     delSong(state, action) {
       state.song = {
-        album: "",
-        artist: "",
-        preview_url: "",
-        title: "",
-        year: 0,
+        ...initialState.song,
       };
     },
   },
   extraReducers: {
-    [acSyn.fulfilled]: (state, action) => {},
-    [acSyn.pending]: (state, action) => {},
-    [acSyn.rejected]: (state, action) => {},
+    [songacSyn.fulfilled]: (state, action) => {},
+    [songacSyn.pending]: (state, action) => {},
+    [songacSyn.rejected]: (state, action) => {},
   },
 });
 

@@ -6,18 +6,9 @@ const acSyn = createAsyncThunk(async (userId, thunkAPI) => {
 const initialState = { value: 0, active: false };
 
 const counterSlice = createSlice({
-  name: "counter",
+  name: "popupSlice",
   initialState,
   reducers: {
-    increment(state) {
-      state.value++;
-    },
-    decrement(state) {
-      state.value--;
-    },
-    incrementByAmount(state, action) {
-      state.value += action.payload;
-    },
     handleActiveOpen(state, action) {
       state.active = true;
     },
@@ -32,11 +23,5 @@ const counterSlice = createSlice({
   },
 });
 
-export const {
-  increment,
-  decrement,
-  incrementByAmount,
-  handleActiveOpen,
-  handleActiveClose,
-} = counterSlice.actions;
+export const { handleActiveOpen, handleActiveClose } = counterSlice.actions;
 export default counterSlice;
