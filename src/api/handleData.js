@@ -26,3 +26,4 @@ export const handerAnime = async (count) => {
   }
   return arrayList;
 };
+export const handerCollection = async (sesionid) => {};

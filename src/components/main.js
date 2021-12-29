@@ -8,6 +8,7 @@ import Header from "./Header/Header";
 import About from "./Main/About/About";
 import Home from "./Main/Home/Home";
 import NotFound from "./Main/NotFound/NotFound";
+import AnimeLink from "./AnimeComponents/AnimeSoureLink/AnimeLink";
 function Index() {
   return (
     <React.Fragment>
@@ -22,6 +23,8 @@ function Index() {
           {/* <Route path="gender" element={<AnimeGender />} /> */}
         </Route>
         <Route path="context" element={<AppContext />} />
+        <Route path="video" element={<AnimeLink />} />
+        <Route path="gender" element={<AnimeGender />} />
         <Route path="*" element={<NotFound />}></Route>
       </Routes>
 

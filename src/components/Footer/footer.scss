@@ -4,7 +4,7 @@ footer.footer {
   padding: 2rem;
   background-color: $main_color;
   display: flex;
-  width: 100%;
+  min-width: 100vw;
   justify-content: space-around;
   align-items: flex-start;
   background-image: linear-gradient(to top right, $main_color, white);

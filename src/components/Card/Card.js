@@ -25,15 +25,24 @@ function Card(props) {
   const handleChangeUrl = () => {
     navigate(`/anime/${id}`);
   };
+
   return (
-    <figure className={lop} onClick={handleChangeUrl}>
+    <figure className={lop || "cardConatiner"} onClick={handleChangeUrl}>
       <PlayCircleOutlineIcon></PlayCircleOutlineIcon>
-      <img data-src={img2 ? img2 : img} alt={alt} className="swiper-lazy" />
+      {lop && (
+        <img
+          data-src={img2 ? img2 : img}
+          alt={alt}
+          className={lop ? "swiper-lazy cardImg" : "cardImg"}
+        />
+      )}
+      {!lop && <img src={img2 ? img2 : img} alt={alt} className="cardImg" />}
       <span>{en}</span>
-      <span className="tap">{`Đã có   ${episodes_count}/${
-        episode_duration || `???`
-      }`}</span>
-      <div className="swiper-lazy-preloader swiper-lazy-preloader-black"></div>
+      <span className="tap">{`Đã có   ${episodes_count}`}</span>
+
+      {lop && (
+        <div className="swiper-lazy-preloader swiper-lazy-preloader-black"></div>
+      )}
     </figure>
   );
 }

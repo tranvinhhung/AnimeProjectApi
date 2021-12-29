@@ -4,19 +4,21 @@ import Card from "../Card/Card";
 import { SwiperSlide } from "swiper/react";
 import { useNavigate } from "react-router-dom";
 import slugify from "slugify";
+import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import "./section.scss";
 function Section(props) {
   const navigate = useNavigate();
   const handleNavigate = (gender) => {
     navigate(
-      `/anime?gender=${slugify(gender, {
+      `/gender?name=${slugify(gender, {
         replacement: "-",
         remove: undefined,
         lower: true,
         strict: false,
         locale: "vi",
         trim: true,
-      })}`
+      })}`,
+      { state: { gender: gender } }
     );
   };
   const { classs, gender, data, list, lop } = props;
@@ -32,10 +34,13 @@ function Section(props) {
             }}
           >
             {props.gender}
+            <ArrowForwardIosIcon />
           </button>
         )}
         {props?.classs === "bannerContainer" && (
-          <div className="mySwiper titleGender">Hôm nay xem gì </div>
+          <div className="mySwiper titleGender">
+            Hôm nay xem gì <ArrowForwardIosIcon />
+          </div>
         )}
         <SwiperCom data2={props.data}>
           {props.list.map((el, index) => (

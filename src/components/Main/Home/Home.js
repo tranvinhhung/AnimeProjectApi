@@ -15,25 +15,8 @@ import { handerAnime } from "./../../../api/handleData";
 import Card from "../../Card/Card";
 import Section from "../../Section/Section";
 import "./home.scss";
+import Collection from "../../Collections/CollectionContai/CollectionConta";
 
-const data = {
-  slidesPerView: 4,
-  spaceBetween: 20,
-  centeredSlides: true,
-  autoplay: {
-    delay: 4000,
-    disableOnInteraction: false,
-  },
-  pagination: {
-    clickable: true,
-    dynamicBullets: true,
-  },
-  slidesPerGroup: 2,
-  loop: true,
-  loopFillGroupWithBlank: true,
-  navigation: true,
-  lazy: true,
-};
 function Home() {
   const [loading, setLoading] = useState(true);
   const [coverList, setcoverList] = useState([]);
@@ -45,7 +28,7 @@ function Home() {
       // let reponse = await getAnimeRamdom(6);
       // let animeGender = await handerAnime();
       // console.log(animeGender);
-      let allArrHandle = await Promise.all([getAnimeRamdom(6), handerAnime(3)]);
+      let allArrHandle = await Promise.all([getAnimeRamdom(6), handerAnime(4)]);
       let [arr, listGender] = allArrHandle;
       let arrr = await arr.data.data;
       setLoading(false);
@@ -60,8 +43,8 @@ function Home() {
         <>
           <Section
             list={coverList}
-            class="bannerContainer"
-            data={data}
+            classs="bannerContainer"
+            data={{}}
             lop="banner"
           ></Section>
           {listGender?.map((el, index) => (
@@ -70,10 +53,11 @@ function Home() {
               gender={el.gender}
               list={el.documents}
               classs="genderContainer"
-              data={{ ...data, slidesPerView: 5 }}
+              data={{ slidesPerView: 5 }}
               lop="gender"
             ></Section>
           ))}
+          <Collection list={[0, 1, 2, 3, 4]} />
         </>
       )}
     </main>

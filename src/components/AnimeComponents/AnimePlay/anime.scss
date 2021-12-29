@@ -28,6 +28,11 @@
       grid-column: 2 / 4;
       grid-row: 2 / 6;
       position: relative;
+      overflow: hidden;
+
+      &:hover img {
+        transform: scale(1.05);
+      }
       button {
         @include centerItem();
       }
@@ -38,15 +43,13 @@
         object-position: center;
         transition: transform 0.3s;
         &:hover {
-          filter: blur(0.5px);
           cursor: pointer;
         }
       }
 
       button:hover ~ img {
-        filter: blur(0.5px);
         cursor: pointer;
-        // transform: scale(1.1);
+        transform: scale(1.05);
       }
     }
 

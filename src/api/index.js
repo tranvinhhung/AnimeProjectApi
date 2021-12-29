@@ -32,7 +32,7 @@ export const ramdomValueArrayGender = async (myArr, soLantaoRamdom) => {
     ramdomValueArrayGender(myArr, soLantaoRamdom);
   }
 };
-export const listAnimeWithGender = async (gender, per_page = 8, page = 1) => {
+export const listAnimeWithGender = async (gender, per_page = 20, page = 1) => {
   let arr = await axios.get(
     `https://api.aniapi.com/v1/anime?genres=${gender}&nsfw=false&per_page=${per_page}&page=${page}`
   );
@@ -53,3 +53,10 @@ export const listAnimeEpisole = async (idani) => {
 //     if (b) console.log(b);
 //   })();
 // }, 1500);
+export const handleListEpisodeWitdID = async (id) => {
+  let list = await axios.get(
+    `https://api.aniapi.com/v1/episode?anime_id=${id}&source=dreamsub&locale=it`
+  );
+  let myData = await list.data.data;
+  return myData;
+};
