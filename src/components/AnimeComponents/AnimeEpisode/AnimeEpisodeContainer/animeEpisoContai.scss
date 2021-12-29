@@ -1,0 +1,30 @@
+.animeEpisodeContainer {
+  min-height: 6rem;
+  width: 90%;
+  margin: 6rem auto 0;
+  font-size: 3rem;
+  .animeEpisodeListTitle {
+    padding: 3rem;
+  }
+  .ListAnimeEpiso {
+    padding: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  .animeEpisodeMess {
+    border: 2px solid red;
+    padding: 3rem;
+    border-radius: 100rem;
+    font-size: 2.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    svg {
+      width: 4rem;
+      height: 4rem;
+
+      fill: red;
+    }
+  }
+}

@@ -1,0 +1,23 @@
+@use "./.../../../../../../sass" as *;
+.itemEpisodeCard {
+  width: calc(25% - 1rem);
+  background-color: $main_color;
+  border-radius: 100rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  &:hover {
+    box-shadow: 0 0 3px red;
+  }
+  &:hover svg {
+    opacity: 1;
+  }
+  svg {
+    transition: all 0.5s;
+    opacity: 0;
+  }
+}
