@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import PopoverEle from "../Popover/PopoverContainer/PopoverContainer";
 import "./header.scss";
 function Header() {
   return (
@@ -18,19 +19,11 @@ function Header() {
             Home
           </Link>
         </li>
-        <nav className="navloai">
-          <li>
-            <Link to="/" className="notext">
-              Thể loại
-            </Link>
-          </li>
-          <ul className="loais">
-            <li>demo</li>
-            <li>demo</li>
-            <li>demo</li>
-            <li>demo</li>
-          </ul>
-        </nav>
+
+        <li>
+          <PopoverEle className="popover" />{" "}
+        </li>
+
         <li>
           <Link className="notext" to="/">
             animes saw

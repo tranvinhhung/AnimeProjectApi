@@ -6,6 +6,7 @@ export const handleAsync = (fn) => {
       console.log(error.response.status);
       console.log(error.response.headers);
       console.log(error.request);
+      throw new Error(error);
     });
   };
 };

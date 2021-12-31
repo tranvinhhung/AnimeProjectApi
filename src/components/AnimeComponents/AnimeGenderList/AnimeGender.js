@@ -32,54 +32,64 @@ function AnimeGender() {
   let [searchParams, setSearchParams] = useSearchParams();
   console.log(gender);
   console.log(location);
-  const data = useSelector((state) => state.myAnime.data);
-  let countPage = data.last_page;
+  let myData = useSelector((state) => state.myAnime.data);
+  let countPage;
   const dispatch = useDispatch();
   const navigate = useNavigate();
   let tl = gsap.timeline();
-  useLayoutEffect(() => {
-    let arr = document.querySelectorAll(".cardConatiner");
-
-    function hide(elem) {
-      gsap.set(elem, { autoAlpha: 0 });
-    }
-
-    arr.forEach(async (el, index) => {
-      hide(el);
-      tl.to(
-        el,
-        0.1,
-        {
-          trigger: el,
-          start: "50% center",
-          scrub: 1,
-          autoAlpha: 1,
-          x: 0,
-          delay: 0.05,
-          ease: "Power3.easeIn",
-        },
-        "+=0.05"
-      );
-    });
-
-    return () => {
-      (async () => {
-        arr.forEach(async (el, index) => {
-          await hide(el);
-        });
-      })();
-    };
-  }, [data]);
+  let trang;
   useEffect(() => {
     window.scrollTo(0, 0);
+    trang = Number(searchParams.get("trang"));
+    // console.log(Number(trang));
     handleAsync(async () => {
-      let arr = await listAnimeWithGender(gender, 21);
-      await dispatch(getListGender(arr));
+      try {
+        let arr = await listAnimeWithGender(gender, 21, trang);
+        if (arr["status_code"] === 200) {
+          await dispatch(getListGender(arr));
+        } else if (arr["status_code"] === 404) {
+          navigate("/not-found");
+        }
+        countPage = myData.data.last_page;
 
-      console.log(arr);
-      console.log(data.documents);
+        // console.log(arr);
+        // console.log(dataa);
+        // console.log(dataa.data.documents);
+      } catch (err) {
+        console.log(err);
+        // navigate("/not-found");
+      }
     })();
-  }, []);
+    return () => {
+      (async () => {
+        await dispatch(resetListGender());
+      })();
+    };
+  }, [gender]);
+  useEffect(() => {
+    let card = document.querySelectorAll(".cardConatiner");
+
+    function hide(elem) {
+      gsap.set(elem, { autoAlpha: 0, scale: 0.3 });
+    }
+
+    card.forEach((el, index) => {
+      hide(el);
+    });
+    tl.to(".cardConatiner", 0.6, {
+      autoAlpha: 1,
+      // x: 0,
+      scale: 1,
+
+      stagger: {
+        from: "random",
+        // ease: "Power3.easeOut",
+
+        amount: 1.2,
+      },
+    });
+  }, [myData]);
+
   const handleChange = async (event) => {
     window.scroll({
       top: 0,
@@ -87,7 +97,7 @@ function AnimeGender() {
     });
     let arr = await listAnimeWithGender(gender, 21, event.target.value);
     await dispatch(getListGender(arr));
-    localStorage.setItem("genderPage", JSON.stringify(event.target.value));
+
     navigate(
       `${pathname}?name=${searchParams.get("name")}&trang=${
         event.target.value
@@ -106,33 +116,38 @@ function AnimeGender() {
 
   return (
     <div className="mainContainer genDerList">
-      <p>{gender + ` List`}</p>
-      <div className="containerListGenderImg">
-        {data.documents.map((data, index) => (
-          <Card key={index} data={data} />
-        ))}
-      </div>
-      <div className="boxChangePage">
-        <ArrowBackIosNewOutlinedIcon />
-        <Box sx={{ minWidth: 100 }}>
-          <FormControl fullWidth>
-            <InputLabel id="select-label">Trang</InputLabel>
-            <Select
-              labelId="select-label"
-              id="simple-select"
-              label="Trang"
-              onChange={handleChange}
-            >
-              {handleCountPage(countPage).map((el) => (
-                <MenuItem value={el}>
-                  {el ? el : localStorage.getItem("genderPage")}
-                </MenuItem>
-              ))}
-            </Select>
-          </FormControl>
-        </Box>
-        <ArrowForwardIosOutlinedIcon />
-      </div>
+      {myData["status_code"] === 200 && (
+        <>
+          <p>{gender + ` List`}</p>
+          <div className="containerListGenderImg">
+            {myData?.data.documents.map((data, index) => (
+              <Card key={index} data={data} />
+            ))}
+          </div>
+          <div className="boxChangePage">
+            <ArrowBackIosNewOutlinedIcon />
+            <Box sx={{ minWidth: 100 }}>
+              <FormControl fullWidth>
+                <InputLabel id="select-label">Trang</InputLabel>
+                <Select
+                  labelId="select-label"
+                  id="simple-select"
+                  label="Trang"
+                  onChange={handleChange}
+                >
+                  {myData.data?.last_page &&
+                    handleCountPage(myData.data?.last_page).map((el, index) => (
+                      <MenuItem key={index} value={el}>
+                        {trang || el}
+                      </MenuItem>
+                    ))}
+                </Select>
+              </FormControl>
+            </Box>
+            <ArrowForwardIosOutlinedIcon />
+          </div>
+        </>
+      )}
     </div>
   );
 }

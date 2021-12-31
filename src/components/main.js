@@ -17,7 +17,6 @@ function Index() {
         <Route path="/" element={<Home />} />
         <Route path="home" element={<Home />} />
         <Route path="about" element={<About />} />
-
         <Route path="anime" element={<AnimePlay />}>
           <Route path=":id" element={<AnimePlay />} />
           {/* <Route path="gender" element={<AnimeGender />} /> */}
@@ -26,6 +25,7 @@ function Index() {
         <Route path="video" element={<AnimeLink />} />
         <Route path="gender" element={<AnimeGender />} />
         <Route path="*" element={<NotFound />}></Route>
+        <Route path="/not-found" element={<NotFound />}></Route>
       </Routes>
 
       <Footer />

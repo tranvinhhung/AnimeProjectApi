@@ -3,7 +3,15 @@
   width: 90%;
   margin: 6rem auto 0;
   font-size: 3rem;
+  .boxChangePage {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 10rem;
+    margin: 0 auto;
+  }
   .animeEpisodeListTitle {
+    scroll-margin: 5rem;
     padding: 3rem;
   }
   .ListAnimeEpiso {

@@ -18,7 +18,7 @@ import { Swiper } from "swiper/react";
 SwiperCore.use([Lazy, Autoplay, Pagination, Navigation, EffectFade]);
 
 const SwiperCom = (props) => {
-  console.log(props.data2);
+  // console.log(props.data2);
   const data = {
     slidesPerView: 4,
     spaceBetween: 20,

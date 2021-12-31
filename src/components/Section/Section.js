@@ -17,11 +17,10 @@ function Section(props) {
         strict: false,
         locale: "vi",
         trim: true,
-      })}`,
+      })}&trang=1`,
       { state: { gender: gender } }
     );
   };
-  const { classs, gender, data, list, lop } = props;
 
   return (
     <>

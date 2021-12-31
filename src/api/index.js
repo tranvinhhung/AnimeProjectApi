@@ -14,7 +14,7 @@ export const songWidthId = (id) => {
 
 export const getGender = async () => {
   let reponse = await axios.get(`https://api.aniapi.com/v1/resources/1.0/0`);
-  let data = reponse.data.data.genres;
+  let data = reponse?.data?.data?.genres;
   return data;
 };
 (async () => {
@@ -36,7 +36,8 @@ export const listAnimeWithGender = async (gender, per_page = 20, page = 1) => {
   let arr = await axios.get(
     `https://api.aniapi.com/v1/anime?genres=${gender}&nsfw=false&per_page=${per_page}&page=${page}`
   );
-  let data = arr.data.data;
+  let data = arr?.data;
+  // console.log(data);
   return data;
 };
 
@@ -44,7 +45,7 @@ export const listAnimeEpisole = async (idani) => {
   let arr = await axios.get(
     `https://api.aniapi.com/v1/episode?anime_id=${idani}&source=dreamsub&locale=it`
   );
-  let data = arr.data.data;
+  let data = arr?.data?.data;
   return data;
 };
 // setInterval(function () {
@@ -53,10 +54,14 @@ export const listAnimeEpisole = async (idani) => {
 //     if (b) console.log(b);
 //   })();
 // }, 1500);
-export const handleListEpisodeWitdID = async (id) => {
+export const handleListEpisodeWitdID = async ({
+  id,
+  page = 1,
+  perPage = 32,
+}) => {
   let list = await axios.get(
-    `https://api.aniapi.com/v1/episode?anime_id=${id}&source=dreamsub&locale=it`
+    `https://api.aniapi.com/v1/episode?anime_id=${id}&source=dreamsub&locale=it&page=${page}&per_page=${perPage}`
   );
-  let myData = await list.data.data;
+  let myData = await list?.data?.data;
   return myData;
 };

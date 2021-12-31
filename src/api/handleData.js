@@ -22,8 +22,11 @@ export const handerAnime = async (count) => {
   let ramdomGender = await ramdomValueArrayGender(reponseAnimeList, count);
   for (let i = 0; i < ramdomGender.length; i++) {
     let ray = await listAnimeWithGender(ramdomGender[i]);
-    arrayList.push({ ...ray, gender: ramdomGender[i] });
+    if (ray["status_code"] === 200) {
+      arrayList.push({ ...ray, gender: ramdomGender[i] });
+    }
   }
+  console.log(arrayList);
   return arrayList;
 };
 export const handerCollection = async (sesionid) => {};

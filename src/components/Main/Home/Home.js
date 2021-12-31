@@ -22,18 +22,27 @@ function Home() {
   const [coverList, setcoverList] = useState([]);
   const [listGender, setListGender] = useState([]);
   useEffect(() => {
-    handleAsync(async () => {
+    (async () => {
       window.scrollTo(0, 0);
       setLoading(true);
       // let reponse = await getAnimeRamdom(6);
       // let animeGender = await handerAnime();
       // console.log(animeGender);
-      let allArrHandle = await Promise.all([getAnimeRamdom(6), handerAnime(4)]);
+      let allArrHandle = await Promise.all([
+        getAnimeRamdom(10),
+        handerAnime(4),
+      ]);
+      console.log(allArrHandle);
       let [arr, listGender] = allArrHandle;
       let arrr = await arr.data.data;
-      setLoading(false);
+
+      console.log(arrr);
+
+      let listGenderr = listGender.filter((el) => el["status_code"] === 200);
+
       setcoverList(arrr);
-      setListGender(listGender);
+      setListGender(listGenderr);
+      setLoading(false);
     })();
   }, []);
   return (
@@ -51,12 +60,25 @@ function Home() {
             <Section
               key={index}
               gender={el.gender}
-              list={el.documents}
+              list={el.data.documents}
               classs="genderContainer"
               data={{ slidesPerView: 5 }}
               lop="gender"
             ></Section>
           ))}
+          {/* {listGender.map((el, index) => {
+            
+            return (
+              <Section
+                key={index}
+                gender={el.gender}
+                list={el.documents}
+                classs="genderContainer"
+                data={{ slidesPerView: 5 }}
+                lop="gender"
+              />
+            );
+          })} */}
           <Collection list={[0, 1, 2, 3, 4]} />
         </>
       )}
