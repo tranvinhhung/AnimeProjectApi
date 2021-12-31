@@ -1,5 +1,5 @@
 import React from "react";
-import SwiperCom from "../Swiper/Swiper";
+import SwiperCom from "../SwiperCom/SwiperCom";
 import Card from "../Card/Card";
 import { SwiperSlide } from "swiper/react";
 import { useNavigate } from "react-router-dom";

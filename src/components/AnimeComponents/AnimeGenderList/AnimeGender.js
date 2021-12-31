@@ -22,7 +22,10 @@ import { gsap } from "gsap";
 
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import "./AnimeGender.scss";
-gsap.registerPlugin(ScrollTrigger);
+
+import { CSSRulePlugin } from "gsap/CSSRulePlugin";
+gsap.registerPlugin(ScrollTrigger, CSSRulePlugin);
+
 function AnimeGender() {
   const {
     pathname,
@@ -50,7 +53,7 @@ function AnimeGender() {
         } else if (arr["status_code"] === 404) {
           navigate("/not-found");
         }
-        countPage = myData.data.last_page;
+        countPage = myData?.data.last_page;
 
         // console.log(arr);
         // console.log(dataa);
@@ -67,27 +70,32 @@ function AnimeGender() {
     };
   }, [gender]);
   useEffect(() => {
-    let card = document.querySelectorAll(".cardConatiner");
+    let card;
+    if (myData) {
+      card = document.querySelectorAll(".cardConatiner");
+    }
 
     function hide(elem) {
       gsap.set(elem, { autoAlpha: 0, scale: 0.3 });
     }
 
-    card.forEach((el, index) => {
-      hide(el);
-    });
-    tl.to(".cardConatiner", 0.6, {
-      autoAlpha: 1,
-      // x: 0,
-      scale: 1,
+    myData &&
+      (function () {
+        card.forEach((el, index) => {
+          hide(el);
+        });
+        tl.to(".cardConatiner", 0.6, {
+          autoAlpha: 1,
+          scale: 1,
 
-      stagger: {
-        from: "random",
-        // ease: "Power3.easeOut",
+          stagger: {
+            from: "random",
 
-        amount: 1.2,
-      },
-    });
+            amount: 1.2,
+          },
+          ease: "Power3.easeOut",
+        });
+      })();
   }, [myData]);
 
   const handleChange = async (event) => {

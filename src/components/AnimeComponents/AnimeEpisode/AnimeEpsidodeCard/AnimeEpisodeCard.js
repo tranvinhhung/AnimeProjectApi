@@ -4,6 +4,15 @@ import slugify from "slugify";
 import "./animeEpisodeCard.scss";
 import { useSelector } from "react-redux";
 import ArrowForwardOutlinedIcon from "@mui/icons-material/ArrowForwardOutlined";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { CSSRulePlugin } from "gsap/CSSRulePlugin";
+
+import { CSSPlugin } from "gsap/CSSPlugin";
+
+// Force CSSPlugin to not get dropped during build
+
+gsap.registerPlugin(ScrollTrigger, CSSRulePlugin, CSSPlugin);
 function AnimeEpisodeCard(props) {
   const navigate = useNavigate();
   // const getColor = useSelector(state =>state.)
@@ -24,7 +33,7 @@ function AnimeEpisodeCard(props) {
   };
   return (
     <li
-      className="itemEpisodeCard"
+      className={props.itemEpisode}
       onClick={() => {
         handleUrlAnimeVideo(handleSlug(props.title), props.data.number);
       }}

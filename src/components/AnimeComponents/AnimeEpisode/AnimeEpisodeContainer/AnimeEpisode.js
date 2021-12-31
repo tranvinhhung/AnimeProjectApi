@@ -19,9 +19,13 @@ import Select from "@mui/material/Select";
 
 //gsap
 import { gsap } from "gsap";
+import { CSSPlugin } from "gsap/CSSPlugin";
+
+// Force CSSPlugin to not get dropped during build
 
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-gsap.registerPlugin(ScrollTrigger);
+import { CSSRulePlugin } from "gsap/CSSRulePlugin";
+gsap.registerPlugin(ScrollTrigger, CSSRulePlugin, CSSPlugin);
 function AnimeEpisode(props) {
   let originalPromiseResult;
   let tl = gsap.timeline();
@@ -51,31 +55,32 @@ function AnimeEpisode(props) {
       console.log(myListEpisode);
       console.log(myListEpisode?.current_page);
 
-      // return () => {
-      //   (async () => {
-      //     await dispatch(resetListEpisode());
-      //   })();
-      // };
+      return () => {
+        (async () => {
+          await dispatch(resetListEpisode());
+        })();
+      };
     })();
   }, [props.idAnime]);
   useEffect(() => {
-    let arr = document.querySelectorAll(".itemEpisodeCard");
+    let arr;
+    if (myListEpisode) {
+      arr = document.querySelectorAll(".itemEpisodeCard");
+    }
 
     function hide(elem) {
       gsap.set(elem, { autoAlpha: 0, x: "-100" });
     }
-    // myListEpisode &&
-    //   (function () {
-    arr.forEach((el, index) => {
-      hide(el);
-      tl.to(el, 0.1, {
-        trigger: el,
-        start: "50% center",
-        scrub: 1,
-        autoAlpha: 1,
-        x: 0,
+    myListEpisode &&
+      arr.forEach((el, index) => {
+        hide(el);
+        tl.to(el, {
+          trigger: el,
+          duration: 0.1,
+          autoAlpha: 1,
+          x: 0,
+        });
       });
-    });
     // })();
   }, [myListEpisode]);
   const handleCountPage = (page) => {
@@ -97,13 +102,18 @@ function AnimeEpisode(props) {
       <div className="animeEpisodeListTitle" ref={elementScroll}>
         List Episode
       </div>
-      {myListEpisode?.documents.length > 0 && (
+      <ul className="ListAnimeEpiso">
+        {myListEpisode?.documents.map((el, index) => (
+          <AnimeEpisodeCard
+            itemEpisode="itemEpisodeCard"
+            key={index}
+            data={el}
+            title={props.title}
+          />
+        ))}
+      </ul>
+      {myListEpisode.documents.length > 0 && (
         <>
-          <ul className="ListAnimeEpiso">
-            {myListEpisode?.documents.map((el, index) => (
-              <AnimeEpisodeCard key={index} data={el} title={props.title} />
-            ))}
-          </ul>
           <div className="boxChangePage">
             <ArrowBackIosNewOutlinedIcon />
             <Box sx={{ minWidth: 100 }}>

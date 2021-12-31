@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 import { SwiperSlide } from "swiper/react";
 import { handleAsync } from "../../Error/Error";
 import Loading from "../../Loading";
-import SwiperCom from "../../Swiper/Swiper";
+import SwiperCom from "../../SwiperCom/SwiperCom";
 import {
   getAnimeRamdom,
   getGender,

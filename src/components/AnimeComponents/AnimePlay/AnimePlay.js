@@ -21,11 +21,12 @@ import {
 import { handleAsync } from "../../Error/Error";
 import "aos/dist/aos.css";
 import { gsap } from "gsap";
+import { CSSRulePlugin } from "gsap/CSSRulePlugin";
 // Import Swiper styles
 import { getAnimeWidthId, songWidthId } from "../../../api/index";
 import "./anime.scss";
 import AnimeEpisode from "../AnimeEpisode/AnimeEpisodeContainer/AnimeEpisode";
-
+gsap.registerPlugin(CSSRulePlugin);
 function AnimePlay(props) {
   const [anime, setAnime] = useState(null);
 
@@ -162,7 +163,7 @@ function AnimePlay(props) {
       .to(reduxSongRef.current, 0.5, { y: "100", autoAlpha: 0 })
       .to(byeRef.current, 0.5, { autoAlpha: 1 });
 
-    // .to()
+    // .to()cssRule:
     await dispatch(delSong());
     await navigate("/");
   };

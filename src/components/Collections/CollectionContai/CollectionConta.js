@@ -1,5 +1,5 @@
 import React from "react";
-import SwiperCom from "../../Swiper/Swiper";
+import SwiperCom from "../../SwiperCom/SwiperCom";
 import { SwiperSlide } from "swiper/react";
 import ColectionCard from "../CollectionCard/ColectionCard";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
@@ -15,7 +15,7 @@ function Collection(props) {
       >
         {props.list.map((el, index) => (
           <SwiperSlide key={index}>
-            <ColectionCard seasonId={el} />
+            <ColectionCard key={index} seasonId={el} />
           </SwiperSlide>
         ))}
       </SwiperCom>
