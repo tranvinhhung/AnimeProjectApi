@@ -38,7 +38,7 @@ function AnimeEpisodeCard(props) {
         handleUrlAnimeVideo(handleSlug(props.title), props.data.number);
       }}
     >
-      {props.data.number} {props.data.title}
+      {props.data.number} {props.data.title || `. Chapter ${props.data.number}`}
       <ArrowForwardOutlinedIcon />
     </li>
   );

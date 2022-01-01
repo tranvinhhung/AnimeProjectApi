@@ -21,6 +21,9 @@ function Section(props) {
       { state: { gender: gender } }
     );
   };
+  const handleToDayWatch = () => {
+    navigate("/anime-today-can-watch");
+  };
 
   return (
     <>
@@ -37,7 +40,7 @@ function Section(props) {
           </button>
         )}
         {props?.classs === "bannerContainer" && (
-          <div className="mySwiper titleGender">
+          <div onClick={handleToDayWatch} className="mySwiper titleGender">
             Hôm nay xem gì <ArrowForwardIosIcon />
           </div>
         )}

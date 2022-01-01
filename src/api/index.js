@@ -1,4 +1,3 @@
-import { RepeatOneSharp } from "@material-ui/icons";
 import axios from "axios";
 import base from "./base";
 export const getAnimeRamdom = (countRamdom) => {
@@ -17,9 +16,7 @@ export const getGender = async () => {
   let data = reponse?.data?.data?.genres;
   return data;
 };
-(async () => {
-  let arrayGender = await getGender();
-})();
+
 export const ramdomValueArrayGender = async (myArr, soLantaoRamdom) => {
   let vitualarr = [];
   for (let i = 0; i < soLantaoRamdom; i++) {
@@ -48,12 +45,14 @@ export const listAnimeEpisole = async (idani) => {
   let data = arr?.data?.data;
   return data;
 };
-// setInterval(function () {
-//   (async () => {
-//     let b = await ramdomValueArray([1, 2, 3, 4, 5, 6, 7, 8], 3);
-//     if (b) console.log(b);
-//   })();
-// }, 1500);
+export const listAnimeEpisoleToday = async ({ perPage = 21, page = 1 }) => {
+  let arr = await axios.get(
+    `https://api.aniapi.com/v1/episode?number=1&per_page=${perPage}&page=${page}&source=dreamsub&locale=it`
+  );
+  let data = arr?.data?.data;
+  return data;
+};
+
 export const handleListEpisodeWitdID = async ({
   id,
   page = 1,
@@ -65,3 +64,20 @@ export const handleListEpisodeWitdID = async ({
   let myData = await list?.data?.data;
   return myData;
 };
+export const handlePromis = (fc, arr) => {
+  return arr.map((el) => {
+    return fc(el);
+  });
+};
+
+// export const handleListEpisodeWitdID = async ({
+//   id,
+//   page = 1,
+//   perPage = 32,
+// }) => {
+//   let list = await axios.get(
+//     `https://api.aniapi.com/v1/episode?anime_id=${id}&source=gogoanime_dub&locale=en&page=${page}&per_page=${perPage}`
+//   );
+//   let myData = await list?.data?.data;
+//   return myData;
+// };

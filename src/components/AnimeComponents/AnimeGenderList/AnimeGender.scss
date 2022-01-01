@@ -1,7 +1,7 @@
 @use "./../../../sass" as *;
 .genDerList {
   margin: 7rem 2rem 0 2rem;
-  min-height: 70vh !important;
+  min-height: 80vh !important;
   .containerListGenderImg {
     display: grid;
     grid-template-columns: repeat(7, 1fr);

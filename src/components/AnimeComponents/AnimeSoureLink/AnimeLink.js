@@ -7,6 +7,7 @@ import {
   useLocation,
 } from "react-router-dom";
 import slugify from "slugify";
+// import "https://cdnjs.cloudflare.com/ajax/libs/videojs-contrib-hls/3.0.2/videojs-contrib-hls.js";
 import "./videojs.scss";
 import VideoJS from "./VideoJS";
 function AnimeLink(props) {
@@ -24,12 +25,18 @@ function AnimeLink(props) {
     controls: true,
     responsive: true,
     fluid: true,
+    preload: "metadata",
+    liveui: true,
 
     sources: [
       {
         src: `${state.dataEpisodeLink.video}`,
         type: "video/mp4",
       },
+      // {
+      //   src: `${state.dataEpisodeLink.video}`,
+      //   type: "application/x-mpegURL",
+      // },
     ],
   };
   const el = useRef(null);
