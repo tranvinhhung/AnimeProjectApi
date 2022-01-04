@@ -9,7 +9,7 @@ nav.nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  font-size: 2.5rem;
+  font-size: 2rem;
   background-color: $main_color;
   position: fixed;
   top: 0;
@@ -19,6 +19,7 @@ nav.nav {
   figure {
     display: flex;
     align-items: center;
+    width: 40%;
     img {
       width: 5rem;
       border-radius: 50%;
@@ -27,6 +28,32 @@ nav.nav {
   .navright {
     width: 50%;
     padding: 0 4rem;
-    @include flexCen(row, space-between);
+    @include flexCen(row, space-evenly);
+    gap: 2rem;
+    flex: 1;
+    flex-shrink: 0;
+    position: relative;
+  }
+}
+.user {
+  overflow: hidden;
+  position: absolute;
+  flex-shrink: 0;
+  width: 20%;
+
+  right: 0;
+  border-radius: 100rem;
+  background-color: black;
+  white-space: nowrap;
+  padding: 0.5rem;
+  transform: translate(20%, -50%);
+  color: white;
+  span {
+    padding: 1px;
+    box-shadow: 0 0 1px black;
+    border-radius: 100rem;
+    background-color: white;
+    color: black;
+    font-size: 1.8rem;
   }
 }

@@ -26,7 +26,7 @@ export const handerAnime = async (count) => {
       arrayList.push({ ...ray, gender: ramdomGender[i] });
     }
   }
-  console.log(arrayList);
+  // console.log(arrayList);
   return arrayList;
 };
 export const handerCollection = async (sesionid) => {};

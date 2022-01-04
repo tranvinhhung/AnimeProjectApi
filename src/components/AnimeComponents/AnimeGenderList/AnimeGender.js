@@ -21,10 +21,11 @@ import Select from "@mui/material/Select";
 import { gsap } from "gsap";
 
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { CSSPlugin } from "gsap/CSSPlugin";
 import "./AnimeGender.scss";
 
 import { CSSRulePlugin } from "gsap/CSSRulePlugin";
-gsap.registerPlugin(ScrollTrigger, CSSRulePlugin);
+gsap.registerPlugin(ScrollTrigger, CSSRulePlugin, CSSPlugin);
 
 function AnimeGender() {
   const {
@@ -142,6 +143,7 @@ function AnimeGender() {
                   id="simple-select"
                   label="Trang"
                   onChange={handleChange}
+                  defaultValue=""
                 >
                   {myData.data?.last_page &&
                     handleCountPage(myData.data?.last_page).map((el, index) => (

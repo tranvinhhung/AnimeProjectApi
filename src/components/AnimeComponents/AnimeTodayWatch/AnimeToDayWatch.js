@@ -22,9 +22,9 @@ import Loading from "./../../../components/Loading/index";
 import { gsap } from "gsap";
 
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-
+import { CSSPlugin } from "gsap/CSSPlugin";
 import { CSSRulePlugin } from "gsap/CSSRulePlugin";
-gsap.registerPlugin(ScrollTrigger, CSSRulePlugin);
+gsap.registerPlugin(ScrollTrigger, CSSRulePlugin, CSSPlugin);
 
 function AnimeToDayWatch() {
   const location = useLocation();
@@ -139,6 +139,7 @@ function AnimeToDayWatch() {
                   id="simple-select"
                   label="Trang"
                   onChange={handleListId}
+                  defaultValue=""
                 >
                   {handleCountPage(countPage).map((el, index) => (
                     <MenuItem key={index} value={el}>

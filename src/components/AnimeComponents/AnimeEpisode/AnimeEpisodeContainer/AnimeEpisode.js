@@ -118,12 +118,13 @@ function AnimeEpisode(props) {
             <ArrowBackIosNewOutlinedIcon />
             <Box sx={{ minWidth: 100 }}>
               <FormControl fullWidth>
-                <InputLabel id="select-label">Trang</InputLabel>
+                <InputLabel id="select-label">Tập</InputLabel>
                 <Select
                   labelId="select-label"
                   id="simple-select"
-                  label="Trang"
+                  label="Tập"
                   onChange={handleChange}
+                  defaultValue=""
                 >
                   {myListEpisode?.last_page &&
                     handleCountPage(myListEpisode?.last_page).map(

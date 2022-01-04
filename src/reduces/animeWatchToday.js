@@ -1,18 +1,17 @@
-import { getDefaultMiddleware } from "@reduxjs/toolkit";
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { getAnimeWidthId, handlePromis } from "./../api/index";
 export const handleAnimeWatchToday = createAsyncThunk(
   "animeTodayWatch/list",
   async (data, thunkAPI) => {
+    let predat = thunkAPI;
+    console.log(predat);
     const allAnime = await Promise.all([
       ...(await handlePromis(getAnimeWidthId, data)),
     ]);
     return allAnime;
   }
 );
-const customizedMiddleware = getDefaultMiddleware({
-  serializableCheck: false,
-});
+
 const initialState = {
   data: [],
 

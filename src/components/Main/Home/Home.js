@@ -32,11 +32,11 @@ function Home() {
         getAnimeRamdom(10),
         handerAnime(4),
       ]);
-      console.log(allArrHandle);
+      // console.log(allArrHandle);
       let [arr, listGender] = allArrHandle;
       let arrr = await arr.data.data;
 
-      console.log(arrr);
+      // console.log(arrr);
 
       let listGenderr = listGender.filter((el) => el["status_code"] === 200);
 
