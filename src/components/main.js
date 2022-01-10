@@ -1,5 +1,5 @@
 import React from "react";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, Navigate } from "react-router-dom";
 import AnimeGender from "./AnimeComponents/AnimeGenderList/AnimeGender";
 import AnimePlay from "./AnimeComponents/AnimePlay/AnimePlay";
 import AppContext from "./Context/AppContext";
@@ -12,31 +12,32 @@ import AnimeLink from "./AnimeComponents/AnimeSoureLink/AnimeLink";
 import AnimeToDayWatch from "./AnimeComponents/AnimeTodayWatch/AnimeToDayWatch";
 import Signup from "./../components/User/Signup/Signup";
 import Login from "./../components/User/Login/Login";
+import Container from "./Container/Container";
 function Index() {
   return (
     <React.Fragment>
-      <Header />
+      {/* <Header /> */}
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="home" element={<Home />} />
-        <Route path="about" element={<About />} />
-        <Route path="anime" element={<AnimePlay />}>
-          <Route path=":id" element={<AnimePlay />} />
-          {/* <Route path="gender" element={<AnimeGender />} /> */}
+        <Route path="/" element={<Container />}>
+          <Route path="home" index element={<Home />} />
+          <Route path="about" element={<About />} />
+          <Route path="anime" element={<AnimePlay />}>
+            <Route path=":id" element={<AnimePlay />} />
+          </Route>
+          <Route path="context" element={<AppContext />} />
+          <Route path="video" element={<AnimeLink />} />
+          <Route path="gender" element={<AnimeGender />} />
+          <Route path="anime-today-can-watch" element={<AnimeToDayWatch />}>
+            <Route path=":trang" element={<AnimeToDayWatch />} />
+          </Route>
+          <Route path="signup" element={<Home />} />
+          <Route path="login" element={<Home />} />
         </Route>
-        <Route path="context" element={<AppContext />} />
-        <Route path="video" element={<AnimeLink />} />
-        <Route path="gender" element={<AnimeGender />} />
-        <Route path="anime-today-can-watch" element={<AnimeToDayWatch />}>
-          <Route path=":trang" element={<AnimeToDayWatch />} />
-        </Route>
-        <Route path="signup" element={<Home />} />
-        <Route path="login" element={<Home />} />
-        <Route path="*" element={<NotFound />}></Route>
-        <Route path="/not-found" element={<NotFound />}></Route>
+        <Route path="*" element={<NotFound />} />
+        <Route path="/not-found" element={<NotFound />} />
       </Routes>
 
-      <Footer />
+      {/* <Footer /> */}
     </React.Fragment>
   );
 }

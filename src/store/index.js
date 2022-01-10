@@ -1,5 +1,15 @@
-import { configureStore } from "@reduxjs/toolkit";
-import { getDefaultMiddleware } from "@reduxjs/toolkit";
+import { configureStore, combineReducers } from "@reduxjs/toolkit";
+import {
+  persistStore,
+  persistReducer,
+  FLUSH,
+  REHYDRATE,
+  PAUSE,
+  PERSIST,
+  PURGE,
+  REGISTER,
+} from "redux-persist";
+import storage from "redux-persist/lib/storage";
 import animeGenderSlice from "./../reduces/animeGenderList";
 import counterSlice from "./../reduces/index";
 import songSlice from "../reduces/songSlice";
@@ -8,19 +18,30 @@ import animeWatchTodaySlice from "../reduces/animeWatchToday";
 import formDataUserSlice from "../reduces/formDataUser";
 import formSignUp from "./../reduces/animeSignUp";
 import animeLogin from "./../reduces/animeLogin";
-const store = configureStore({
-  reducer: {
-    mycounter: counterSlice.reducer,
-    myAnime: animeGenderSlice.reducer,
-    mySong: songSlice.reducer,
-    myEpisode: animeEpisodeSlice.reducer,
-    myTodayWatchList: animeWatchTodaySlice.reducer,
-    myForm: formDataUserSlice.reducer,
-    mySignUp: formSignUp.reducer,
-    myLogin: animeLogin.reducer,
-  },
-  middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware({ serializableCheck: false }),
+const persistConfig = {
+  key: "root",
+  version: 1,
+  storage,
+};
+const rootReducer = combineReducers({
+  mycounter: counterSlice.reducer,
+  myAnime: animeGenderSlice.reducer,
+  mySong: songSlice.reducer,
+  myEpisode: animeEpisodeSlice.reducer,
+  myTodayWatchList: animeWatchTodaySlice.reducer,
+  myForm: formDataUserSlice.reducer,
+  mySignUp: formSignUp.reducer,
+  myLogin: animeLogin.reducer,
 });
-
+const persistedReducer = persistReducer(persistConfig, rootReducer);
+const store = configureStore({
+  reducer: persistedReducer,
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
+      serializableCheck: {
+        ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+      },
+    }),
+});
+export let persistor = persistStore(store);
 export default store;

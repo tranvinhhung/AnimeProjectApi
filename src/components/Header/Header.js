@@ -14,7 +14,7 @@ function Header() {
   };
   const activeLogin = useSelector((state) => state.myForm.activeLogin);
   const dataUser = useSelector((state) => state.myLogin.data);
-  console.log(Object.keys(dataUser).length);
+  // console.log(Object.keys(dataUser).length);
   const handleLogout = () => {
     dispatch(logout());
   };
@@ -25,7 +25,7 @@ function Header() {
           <img
             src={`https://png.pngtree.com/png-clipart/20200727/original/pngtree-svg-phrase-always-stay-young-black-english-flat-illustration-png-image_5433656.jpg`}
           />
-          <Link to="/" style={{ marginLeft: 2 + "rem" }} className="notext">
+          <Link to="/home" style={{ marginLeft: 2 + "rem" }} className="notext">
             MyAnime
           </Link>
         </figure>

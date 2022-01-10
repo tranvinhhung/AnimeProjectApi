@@ -82,7 +82,7 @@ export default function App() {
 
   const handleClose = () => {
     dispatch(closeForm());
-    navigate("/");
+    navigate("/home");
   };
   const changeLogin = () => {
     navigate("/login");
@@ -106,7 +106,7 @@ export default function App() {
           </div>
           <div className={!handleSignup ? `signup` : `signup overlay`}>
             <h1>Đăng kí</h1>
-            <AccountCircleIcon sx={{ height: 100, width: 100 }} />
+            <AccountCircleIcon sx={{ height: 80, width: 80 }} />
             <form onSubmit={handleSubmit(onSubmit)} className="form">
               <InputField
                 name="name"

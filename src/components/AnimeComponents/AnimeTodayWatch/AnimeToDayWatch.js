@@ -70,6 +70,7 @@ function AnimeToDayWatch() {
         // ]);
         let lay1 = await dispatch(handleAnimeWatchToday(arrID));
         let layyy = unwrapResult(lay1);
+        // window.scrollTo(0, 0);
         console.log(layyy);
         // console.log(allAnime);
         // setmyData(allAnime);

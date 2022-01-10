@@ -103,7 +103,7 @@ function AnimeEpisode(props) {
         List Episode
       </div>
       <ul className="ListAnimeEpiso">
-        {myListEpisode?.documents.map((el, index) => (
+        {myListEpisode?.documents?.map((el, index) => (
           <AnimeEpisodeCard
             itemEpisode="itemEpisodeCard"
             key={index}
@@ -112,7 +112,7 @@ function AnimeEpisode(props) {
           />
         ))}
       </ul>
-      {myListEpisode.documents.length > 0 && (
+      {myListEpisode?.documents?.length > 0 && (
         <>
           <div className="boxChangePage">
             <ArrowBackIosNewOutlinedIcon />
@@ -146,7 +146,7 @@ function AnimeEpisode(props) {
         </>
       )}
 
-      {myListEpisode.documents.length === 0 && (
+      {myListEpisode?.documents?.length === 0 && (
         <div className="animeEpisodeMess">
           Không lấy được nguồn phim xin lỗi bạn rất nhiều hãy chọn anime khác
           nhé!

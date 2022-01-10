@@ -16,7 +16,9 @@ import Card from "../../Card/Card";
 import Section from "../../Section/Section";
 import "./home.scss";
 import Collection from "../../Collections/CollectionContai/CollectionConta";
-
+import { use } from "react-router-dom";
+import Header from "./../../Header/Header";
+import Footer from "./../../Footer/Footer";
 function Home() {
   const [loading, setLoading] = useState(true);
   const [coverList, setcoverList] = useState([]);
@@ -46,27 +48,29 @@ function Home() {
     })();
   }, []);
   return (
-    <main className="mainContainer">
-      {loading && <Loading />}
-      {!loading && (
-        <>
-          <Section
-            list={coverList}
-            classs="bannerContainer"
-            data={{}}
-            lop="banner"
-          ></Section>
-          {listGender?.map((el, index) => (
+    <>
+      {/* <Header /> */}
+      <main className="mainContainer">
+        {loading && <Loading />}
+        {!loading && (
+          <>
             <Section
-              key={index}
-              gender={el.gender}
-              list={el.data.documents}
-              classs="genderContainer"
-              data={{ slidesPerView: 5 }}
-              lop="gender"
+              list={coverList}
+              classs="bannerContainer"
+              data={{}}
+              lop="banner"
             ></Section>
-          ))}
-          {/* {listGender.map((el, index) => {
+            {listGender?.map((el, index) => (
+              <Section
+                key={index}
+                gender={el.gender}
+                list={el.data.documents}
+                classs="genderContainer"
+                data={{ slidesPerView: 5 }}
+                lop="gender"
+              ></Section>
+            ))}
+            {/* {listGender.map((el, index) => {
             
             return (
               <Section
@@ -79,10 +83,12 @@ function Home() {
               />
             );
           })} */}
-          <Collection list={[0, 1, 2, 3, 4]} />
-        </>
-      )}
-    </main>
+            <Collection list={[0, 1, 2, 3, 4]} />
+          </>
+        )}
+      </main>
+      {/* <Footer /> */}
+    </>
   );
 }
 

@@ -47,7 +47,7 @@ function Section(props) {
         <SwiperCom data2={props.data}>
           {props.list.map((el, index) => (
             <SwiperSlide key={index}>
-              <Card key={index} lop={props.lop} data={el} />
+              <Card lop={props.lop} data={el} />
             </SwiperSlide>
           ))}
         </SwiperCom>

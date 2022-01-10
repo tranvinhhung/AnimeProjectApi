@@ -165,7 +165,7 @@ function AnimePlay(props) {
 
     // .to()cssRule:
     await dispatch(delSong());
-    await navigate("/");
+    await navigate("/home");
   };
 
   return (

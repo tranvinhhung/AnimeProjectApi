@@ -65,7 +65,7 @@ export default function Login() {
 
   const handleClose = () => {
     dispatch(closeForm());
-    navigate("/");
+    navigate("/home");
   };
   const changeSignUp = () => {
     navigate("/signup");

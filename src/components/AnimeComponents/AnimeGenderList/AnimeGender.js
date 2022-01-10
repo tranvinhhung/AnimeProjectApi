@@ -69,7 +69,7 @@ function AnimeGender() {
         await dispatch(resetListGender());
       })();
     };
-  }, [gender]);
+  }, [gender, pathname]);
   useEffect(() => {
     let card;
     if (myData) {
