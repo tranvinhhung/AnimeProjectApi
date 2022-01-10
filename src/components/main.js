@@ -25,7 +25,6 @@ function Index() {
             <Route path=":id" element={<AnimePlay />} />
           </Route>
           <Route path="context" element={<AppContext />} />
-          <Route path="video" element={<AnimeLink />} />
           <Route path="gender" element={<AnimeGender />} />
           <Route path="anime-today-can-watch" element={<AnimeToDayWatch />}>
             <Route path=":trang" element={<AnimeToDayWatch />} />
@@ -33,6 +32,7 @@ function Index() {
           <Route path="signup" element={<Home />} />
           <Route path="login" element={<Home />} />
         </Route>
+        <Route path="video" element={<AnimeLink />} />
         <Route path="*" element={<NotFound />} />
         <Route path="/not-found" element={<NotFound />} />
       </Routes>

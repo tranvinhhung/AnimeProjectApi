@@ -23,8 +23,8 @@ import { gsap } from "gsap";
 
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { CSSPlugin } from "gsap/CSSPlugin";
-import { CSSRulePlugin } from "gsap/CSSRulePlugin";
-gsap.registerPlugin(ScrollTrigger, CSSRulePlugin, CSSPlugin);
+
+gsap.registerPlugin(ScrollTrigger, CSSPlugin);
 
 function AnimeToDayWatch() {
   const location = useLocation();
@@ -91,7 +91,9 @@ function AnimeToDayWatch() {
     window.scroll(0, 0);
     let card;
     if (myData) {
-      card = document.querySelectorAll(".cardConatiner");
+      card = document.querySelectorAll(".cardConatiner")
+        ? document.querySelectorAll(".cardConatiner")
+        : null;
     }
 
     function hide(elem) {
@@ -120,7 +122,7 @@ function AnimeToDayWatch() {
   return (
     <div className="mainContainer genDerList">
       {isFindData && <Loading />}
-      {!isFindData && (
+      {!isFindData && myData && (
         <>
           <div style={myData ? { padding: 20, fontSize: 20, opacity: 1 } : {}}>
             Hôm nay xem gì!!

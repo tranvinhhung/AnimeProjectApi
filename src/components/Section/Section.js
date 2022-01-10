@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import SwiperCom from "../SwiperCom/SwiperCom";
 import Card from "../Card/Card";
 import { SwiperSlide } from "swiper/react";
 import { useNavigate } from "react-router-dom";
 import slugify from "slugify";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
+import Brightness4Icon from "@mui/icons-material/Brightness4";
+import DarkModeIcon from "@mui/icons-material/DarkMode";
 import "./section.scss";
 function Section(props) {
   const navigate = useNavigate();
@@ -24,6 +26,14 @@ function Section(props) {
   const handleToDayWatch = () => {
     navigate("/anime-today-can-watch");
   };
+  const [darkMode, setDarkMode] = useState(false);
+  useEffect(() => {
+    if (darkMode) {
+      document.querySelector(".App").classList.add("darkMode");
+    } else {
+      document.querySelector(".App").classList.remove("darkMode");
+    }
+  }, [darkMode]);
 
   return (
     <>
@@ -40,8 +50,27 @@ function Section(props) {
           </button>
         )}
         {props?.classs === "bannerContainer" && (
-          <div onClick={handleToDayWatch} className="mySwiper titleGender">
-            Hôm nay xem gì <ArrowForwardIosIcon />
+          <div className="mySwiper titleGender">
+            <span onClick={handleToDayWatch}>
+              Hôm nay xem gì <ArrowForwardIosIcon />
+            </span>
+            <div
+              style={{
+                width: 50,
+
+                marginLeft: "auto",
+                textAlign: "end",
+                position: "relative",
+                zIndex: "2",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+              }}
+              onClick={() => setDarkMode(!darkMode)}
+            >
+              {!darkMode && <Brightness4Icon />}
+              {darkMode && <DarkModeIcon />}
+            </div>
           </div>
         )}
         <SwiperCom data2={props.data}>

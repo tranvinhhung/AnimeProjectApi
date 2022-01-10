@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import { useDispatch } from "react-redux";
 import {
   NavLink,
   useNavigate,
@@ -7,15 +8,17 @@ import {
   useLocation,
 } from "react-router-dom";
 import slugify from "slugify";
-// import "https://cdnjs.cloudflare.com/ajax/libs/videojs-contrib-hls/3.0.2/videojs-contrib-hls.js";
+import { resetListEpisode } from "./../../../reduces/animeListEpisode";
 import "./videojs.scss";
 import VideoJS from "./VideoJS";
 function AnimeLink(props) {
   const { state } = useLocation();
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   console.log(state);
   const playerRef = React.useRef(null);
   const handleBack = () => {
+    // dispatch(resetListEpisode());
     navigate(-1);
   };
 

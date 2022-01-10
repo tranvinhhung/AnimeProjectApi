@@ -13,9 +13,9 @@ function Collection(props) {
       <SwiperCom
         data2={{ centeredSlides: false, slidesPerView: 4, slidesPerGroup: 1 }}
       >
-        {props.list.map((el, index) => (
+        {props.list?.map((el, index) => (
           <SwiperSlide key={index}>
-            <ColectionCard key={index} seasonId={el} />
+            <ColectionCard seasonId={el} />
           </SwiperSlide>
         ))}
       </SwiperCom>

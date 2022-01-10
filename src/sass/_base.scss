@@ -8,9 +8,16 @@
   // align-items: center;
   position: relative;
   min-height: 100vh;
+  transition: all 0.5s;
   //color: red;
   button {
     width: 20%;
+    color: inherit;
+    background-color: inherit;
+  }
+  &.darkMode {
+    background-color: black !important;
+    color: white !important;
   }
 }
 /*Base Class*/

@@ -16,9 +16,7 @@ import Card from "../../Card/Card";
 import Section from "../../Section/Section";
 import "./home.scss";
 import Collection from "../../Collections/CollectionContai/CollectionConta";
-import { use } from "react-router-dom";
-import Header from "./../../Header/Header";
-import Footer from "./../../Footer/Footer";
+
 function Home() {
   const [loading, setLoading] = useState(true);
   const [coverList, setcoverList] = useState([]);
@@ -70,19 +68,7 @@ function Home() {
                 lop="gender"
               ></Section>
             ))}
-            {/* {listGender.map((el, index) => {
-            
-            return (
-              <Section
-                key={index}
-                gender={el.gender}
-                list={el.documents}
-                classs="genderContainer"
-                data={{ slidesPerView: 5 }}
-                lop="gender"
-              />
-            );
-          })} */}
+
             <Collection list={[0, 1, 2, 3, 4]} />
           </>
         )}

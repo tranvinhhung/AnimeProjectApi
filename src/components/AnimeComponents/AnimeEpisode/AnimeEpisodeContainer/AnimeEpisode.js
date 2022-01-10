@@ -32,10 +32,9 @@ function AnimeEpisode(props) {
   let elementScroll = useRef();
   const dispatch = useDispatch();
   const myListEpisode = useSelector((state) => state.myEpisode.data);
-  console.log(myListEpisode);
+  // console.log(myListEpisode);
 
   useEffect(() => {
-    // window.scroll(0, 0);
     handleAsync(async () => {
       //cach 1 thong thuong
       //   let listEpisode = await handleListEpisodeWitdID(props.idAnime);
@@ -52,8 +51,8 @@ function AnimeEpisode(props) {
       if (!originalPromiseResult) await dispatch(resetListEpisode());
       console.log(originalPromiseResult);
 
-      console.log(myListEpisode);
-      console.log(myListEpisode?.current_page);
+      // console.log(myListEpisode);
+      // console.log(myListEpisode?.current_page);
 
       return () => {
         (async () => {

@@ -4,9 +4,18 @@
 
   height: 7rem;
   padding: 1rem;
-  background-color: transparent;
+  // background-color: blue;
   display: flex;
   align-items: center;
+
   font-size: 3rem;
   cursor: pointer;
+  span {
+    display: flex;
+    align-items: center;
+  }
+  svg {
+    width: 3rem;
+    height: 3rem;
+  }
 }

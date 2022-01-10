@@ -155,6 +155,7 @@ function AnimePlay(props) {
     })();
   }, []);
   const handleAnimation = async () => {
+    document.body.style.overflow = "hidden";
     let tl = gsap.timeline();
     await tl
       .to(boxRef.current, 0.5, { opacity: 0 })
@@ -166,6 +167,7 @@ function AnimePlay(props) {
     // .to()cssRule:
     await dispatch(delSong());
     await navigate("/home");
+    document.body.style.overflow = "visible";
   };
 
   return (

@@ -8,6 +8,7 @@ footer.footer {
   justify-content: space-around;
   align-items: flex-start;
   background-image: linear-gradient(to top right, $main_color, white);
+  color: black !important;
   ul {
     list-style: none;
     li:not(:first-child) {
