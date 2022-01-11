@@ -1,9 +1,20 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { handleLoginApi } from "./../api/userApi";
+import { addUser } from "./myUsersSlice";
 export const handleLoginRedux = createAsyncThunk(
   "handleLogin/data",
   async (data, thunkAPI) => {
     let myData = await handleLoginApi(data);
+    let listUserData = await thunkAPI.getState();
+    console.log(listUserData);
+    console.log(myData);
+    // if (myData) {
+    //   let checkUser = listUserData?.myUsers?.users?.filter(
+    //     (el) => el?.data?.user?.email === myData?.data?.user?.email
+    //   );
+    //   if (checkUser.length === 0) thunkAPI.dispatch(addUser(myData.data));
+    //   if (checkUser.length > 0) console.log("user tồn tại");
+    // }
     // console.log(myData);
     return myData;
   }
@@ -11,7 +22,7 @@ export const handleLoginRedux = createAsyncThunk(
 
 const initialState = {
   data: {},
-
+  listLoveAnimeId: [{ id: "", checkFavorite: false }],
   handleData: false,
   checkLogin: false,
 };
@@ -32,9 +43,18 @@ const formLoginSlice = createSlice({
     handleSignUp(state) {
       state.activeLogin = false;
     },
-    logout() {
+    logout(state) {
       localStorage.removeItem("token");
-      return initialState;
+      return { ...initialState, listLoveAnimeId: state.listLoveAnimeId };
+    },
+    handleAddFavorite(state, action) {
+      state.listLoveAnimeId.push(action.payload);
+    },
+    handleRemoveFavorite(state, action) {
+      let newarray = state.listLoveAnimeId.filter(
+        (el) => el.id !== action.payload.id
+      );
+      state.listLoveAnimeId = [...newarray];
     },
   },
   extraReducers: {
@@ -53,5 +73,6 @@ const formLoginSlice = createSlice({
   },
 });
 
-export const { handleLogin, logout } = formLoginSlice.actions;
+export const { handleLogin, logout, handleAddFavorite, handleRemoveFavorite } =
+  formLoginSlice.actions;
 export default formLoginSlice;

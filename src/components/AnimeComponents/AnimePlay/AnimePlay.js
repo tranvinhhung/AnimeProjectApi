@@ -26,6 +26,7 @@ import { CSSRulePlugin } from "gsap/CSSRulePlugin";
 import { getAnimeWidthId, songWidthId } from "../../../api/index";
 import "./anime.scss";
 import AnimeEpisode from "../AnimeEpisode/AnimeEpisodeContainer/AnimeEpisode";
+import AnimeFavorite from "../AnimeFavorite/AnimeFavorite";
 gsap.registerPlugin(CSSRulePlugin);
 function AnimePlay(props) {
   const [anime, setAnime] = useState(null);
@@ -120,12 +121,12 @@ function AnimePlay(props) {
         songWidthId(id),
       ]);
 
-      console.log(handleAll);
+      // console.log(handleAll);
       const [animethis, songthis] = handleAll;
 
       const animedata = animethis.data.data;
       const songdata = songthis.data.data;
-      console.log(animedata);
+      // console.log(animedata);
       if (songdata) {
         await dispatch(getSong(songdata));
       }
@@ -133,7 +134,7 @@ function AnimePlay(props) {
       setAnime(animedata);
     })();
   }, []);
-  console.log(songRedux);
+  // console.log(songRedux);
   useLayoutEffect(() => {
     window.scrollTo(0, 0);
     (async () => {
@@ -225,6 +226,7 @@ function AnimePlay(props) {
                 anime?.descriptions.it ||
                 "Không có thông tin mô tả!!!"}
             </div>
+            <AnimeFavorite idAnime={anime} />
           </div>
           {songRedux?.["preview_url"] && (
             <audio
@@ -328,7 +330,7 @@ function AnimePlay(props) {
 
         {/* AnimeEpisode List */}
       </section>
-      <AnimeEpisode title={anime?.titles.en || anime?.titles.it} idAnime={id} />
+      {/* <AnimeEpisode title={anime?.titles.en || anime?.titles.it} idAnime={id} /> */}
     </>
   );
 }

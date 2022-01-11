@@ -1,5 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { handleLoginApi } from "./../api/userApi";
+import { getAnimeWidthId, handlePromis } from "./../api/index";
 export const handleFormDataLogin = createAsyncThunk(
   "handleFormDataLogin/data",
   async (data, thunkAPI) => {
@@ -10,7 +11,17 @@ export const handleFormDataLogin = createAsyncThunk(
     // return myData;
   }
 );
-
+export const handleAnimeListFavoriteCurrentUser = createAsyncThunk(
+  "handleAnimeListFavoriteCurrentUser/list",
+  async (data, thunkAPI) => {
+    let predat = thunkAPI;
+    console.log(predat);
+    const allAnime = await Promise.all([
+      ...(await handlePromis(getAnimeWidthId, data)),
+    ]);
+    return allAnime;
+  }
+);
 const initialState = {
   data: {},
 
@@ -50,6 +61,10 @@ const formDataUserSlice = createSlice({
     [handleFormDataLogin.rejected]: (state, action) => {
       state.isCheckLogin = false;
     },
+
+    [handleAnimeListFavoriteCurrentUser.fulfilled]: (state, action) => {},
+    [handleAnimeListFavoriteCurrentUser.pending]: (state, action) => {},
+    [handleAnimeListFavoriteCurrentUser.rejected]: (state, action) => {},
   },
 });
 
