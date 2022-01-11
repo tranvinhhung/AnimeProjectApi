@@ -29,7 +29,9 @@
       grid-row: 2 / 6;
       position: relative;
       overflow: hidden;
-
+      &:hover button {
+        opacity: 1;
+      }
       &:hover img {
         transform: scale(1.05);
       }

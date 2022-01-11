@@ -6,6 +6,10 @@ import { useDispatch, useSelector } from "react-redux";
 import Signup from "./../User/Signup/Signup";
 import Login from "./../User/Login/Login";
 import { logout } from "./../../reduces/animeLogin";
+import SearchIcon from "@mui/icons-material/Search";
+import Popover from "@mui/material/Popover";
+import Typography from "@mui/material/Typography";
+import Button from "@mui/material/Button";
 import "./header.scss";
 function Header() {
   const dispatch = useDispatch();
@@ -18,6 +22,23 @@ function Header() {
   const handleLogout = () => {
     dispatch(logout());
   };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    let formS = document.getElementById("formSearch");
+    console.log(formS.searchAnime.value);
+  };
+  const [anchorEl, setAnchorEl] = React.useState(null);
+
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
+  const open = Boolean(anchorEl);
+  const id = open ? "simple-popover" : undefined;
   return (
     <>
       <nav className="nav">
@@ -28,6 +49,16 @@ function Header() {
           <Link to="/home" style={{ marginLeft: 2 + "rem" }} className="notext">
             MyAnime
           </Link>
+          <form id="formSearch" onSubmit={handleSubmit}>
+            <input
+              type="search"
+              name="searchAnime"
+              id="searchID"
+              placeholder="tìm anime nào!!"
+            />
+            <SearchIcon />
+            <button type="submit">button</button>
+          </form>
         </figure>
         <ul className="navright">
           <li>
@@ -58,10 +89,30 @@ function Header() {
               </Link>
             )}
             {Object.keys(dataUser).length > 0 && (
-              <div className="user" onClick={handleLogout}>
-                <span>Xin chào</span>
-                {`${dataUser?.data?.user?.name}`}
-              </div>
+              <>
+                <div onClick={handleClick} className="user">
+                  <span>Xin chào</span>
+                  {`${dataUser?.data?.user?.name}`}
+                </div>
+                <Popover
+                  id={id}
+                  open={open}
+                  anchorEl={anchorEl}
+                  onClose={handleClose}
+                  anchorOrigin={{
+                    vertical: "bottom",
+                    horizontal: "center",
+                  }}
+                  transformOrigin={{
+                    vertical: "top",
+                    horizontal: "center",
+                  }}
+                >
+                  <Typography onClick={handleLogout} sx={{ p: 2 }}>
+                    Logout
+                  </Typography>
+                </Popover>
+              </>
             )}
           </li>
 

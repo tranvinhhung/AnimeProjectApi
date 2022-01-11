@@ -16,6 +16,7 @@ nav.nav {
   height: $height-nav;
   z-index: 9;
   box-shadow: 0 0 10px 0 $main_color;
+  color: black !important;
   figure {
     display: flex;
     align-items: center;
@@ -23,6 +24,40 @@ nav.nav {
     img {
       width: 5rem;
       border-radius: 50%;
+    }
+    form {
+      display: flex;
+      margin-left: auto;
+      position: relative;
+      align-items: center;
+      input {
+        outline: none;
+        padding: 1rem;
+        // border-radius: 100rem;
+        border-bottom-left-radius: 100rem;
+        border-top-left-radius: 100rem;
+        border: none;
+        width: 70%;
+        display: block;
+        margin-left: auto;
+        transition: all 0.3s;
+        &:focus {
+          box-shadow: 0 0 2px black;
+          width: 100%;
+        }
+        &::-webkit-input-placeholder {
+          font-family: "Courier New", Courier, monospace;
+        }
+      }
+      button {
+        opacity: 0;
+        visibility: hidden;
+        position: absolute;
+      }
+      svg {
+        position: absolute;
+        right: 0;
+      }
     }
   }
   .navright {
