@@ -1,7 +1,7 @@
 import axios from "axios";
 export const handleSignUpApi = async (data) => {
   let myFormData = await axios.post(
-    "http://localhost:3000/api/v1/users/signup",
+    "http://localhost:3001/api/v1/users/signup",
     data
   );
   // if(myFormData){
@@ -21,7 +21,7 @@ export const handleSignUpApi = async (data) => {
 };
 export const handleLoginApi = async (data) => {
   let myFormData = await axios.post(
-    "http://localhost:3000/api/v1/users/login",
+    "http://localhost:3001/api/v1/users/login",
     data
   );
 

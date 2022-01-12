@@ -24,7 +24,7 @@ const myListUsersSlice = createSlice({
       let datafiter = state.users.filter(
         (el) => el?.user?.email !== action.payload.user.email
       );
-      state.users = [...datafiter, action.payload];
+      state.users = [...datafiter, { ...action.payload }];
     },
     getDataFavoriteUser(state, action) {
       return state.user.filter(

@@ -22,7 +22,7 @@ export const handleLoginRedux = createAsyncThunk(
 
 const initialState = {
   data: {},
-  listLoveAnimeId: [{ id: "", checkFavorite: false }],
+  listLoveAnimeId: [{ id: null, checkFavorite: false }],
   handleData: false,
   checkLogin: false,
 };
@@ -45,10 +45,12 @@ const formLoginSlice = createSlice({
     },
     logout(state) {
       localStorage.removeItem("token");
-      return { ...initialState, listLoveAnimeId: state.listLoveAnimeId };
+
+      state.data = {};
+      state.listLoveAnimeId = [...state.listLoveAnimeId];
     },
     handleAddFavorite(state, action) {
-      state.listLoveAnimeId.push(action.payload);
+      state.listLoveAnimeId.push({ ...action.payload });
     },
     handleRemoveFavorite(state, action) {
       let newarray = state.listLoveAnimeId.filter(

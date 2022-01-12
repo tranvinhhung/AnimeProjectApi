@@ -30,7 +30,7 @@ function AnimeToDayWatch() {
   const location = useLocation();
   let [searchParams, setSearchParams] = useSearchParams();
   //   const [myData, setmyData] = useState([]);
-  console.log(location);
+  // console.log(location);
   let myData = useSelector((state) => state.myTodayWatchList.data);
   let isFindData = useSelector((state) => state.myTodayWatchList.isFindData);
   const [countPage, setCountPage] = useState(1);
@@ -59,23 +59,23 @@ function AnimeToDayWatch() {
     handleAsync(async () => {
       try {
         let arrVideo = await listAnimeEpisoleToday({});
-        console.log(arrVideo);
+        // console.log(arrVideo);
         setCountPage(arrVideo["last_page"]);
         let arrID = arrVideo.documents.map((element) => {
           return element["anime_id"];
         });
-        console.log(arrID);
+        // console.log(arrID);
         // let allAnime = await Promise.all([
         //   ...(await handlePromis(getAnimeWidthId, arrID)),
         // ]);
         let lay1 = await dispatch(handleAnimeWatchToday(arrID));
         let layyy = unwrapResult(lay1);
         // window.scrollTo(0, 0);
-        console.log(layyy);
+        // console.log(layyy);
         // console.log(allAnime);
         // setmyData(allAnime);
         // console.log(arrVideo);
-        console.log(myData);
+        // console.log(myData);
       } catch (err) {
         console.log(err);
         // navigate("/not-found");
