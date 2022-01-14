@@ -6,8 +6,8 @@ import { SnackbarProvider, useSnackbar } from "notistack";
 import {
   handleAddFavorite,
   handleRemoveFavorite,
-} from "./../../../reduces/animeLogin";
-import { handleFavoriteDataOneUserWithEmail } from "./../../../reduces/myUsersSlice";
+} from "../../../reduces/animeLogin";
+import { handleFavoriteDataOneUserWithEmail } from "../../../reduces/myUsersSlice";
 const AnimeFavorite = (props) => {
   const { enqueueSnackbar } = useSnackbar();
 
@@ -44,7 +44,7 @@ const AnimeFavorite = (props) => {
       await dispatch(handleRemoveFavorite({ id: value, checkFavorite: false }));
 
       enqueueSnackbar("Đã xóa anime khỏi list thành công !!!", {
-        variant: "success",
+        variant: "info",
       });
     }
   };

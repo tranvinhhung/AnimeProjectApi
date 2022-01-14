@@ -1,13 +1,21 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { getAnimeWidthId, handlePromis } from "./../api/index";
+import {
+  getAnimeWidthId,
+  handlePromis,
+  hanleListAnimeWithArrayId,
+} from "./../api/index";
 export const handleAnimeWatchToday = createAsyncThunk(
   "animeTodayWatch/list",
   async (data, thunkAPI) => {
     let predat = thunkAPI;
     console.log(predat);
-    const allAnime = await Promise.all([
-      ...(await handlePromis(getAnimeWidthId, data)),
-    ]);
+    //cach 1
+    // const allAnime = await Promise.all([
+    //   ...(await handlePromis(getAnimeWidthId, data)),
+    // ]);
+    // return allAnime;
+    // cach2
+    let allAnime = await hanleListAnimeWithArrayId(data);
     return allAnime;
   }
 );

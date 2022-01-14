@@ -13,6 +13,7 @@ import AnimeToDayWatch from "./AnimeComponents/AnimeTodayWatch/AnimeToDayWatch";
 import Signup from "./../components/User/Signup/Signup";
 import Login from "./../components/User/Login/Login";
 import Container from "./Container/Container";
+import ListLoveAnimes from "./../components/AnimeComponents/AnimeListLove/AnimeListLove";
 function Index() {
   return (
     <React.Fragment>
@@ -31,6 +32,7 @@ function Index() {
           </Route>
           <Route path="signup" element={<Home />} />
           <Route path="login" element={<Home />} />
+          <Route path="my-list-love-animes" element={<ListLoveAnimes />} />
         </Route>
         <Route path="video" element={<AnimeLink />} />
         <Route path="*" element={<NotFound />} />

@@ -81,3 +81,9 @@ export const handlePromis = (fc, arr) => {
 //   let myData = await list?.data?.data;
 //   return myData;
 // };
+export const hanleListAnimeWithArrayId = async (arrId) => {
+  const allAnime = await Promise.all([
+    ...(await handlePromis(getAnimeWidthId, arrId)),
+  ]);
+  return allAnime;
+};

@@ -72,8 +72,8 @@ function Header() {
           </li>
 
           <li>
-            <Link className="notext" to="/">
-              animes saw
+            <Link className="notext" to="/my-list-love-animes">
+              List L.animes
             </Link>
           </li>
 

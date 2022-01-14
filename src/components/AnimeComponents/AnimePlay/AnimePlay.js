@@ -26,7 +26,7 @@ import { CSSRulePlugin } from "gsap/CSSRulePlugin";
 import { getAnimeWidthId, songWidthId } from "../../../api/index";
 import "./anime.scss";
 import AnimeEpisode from "../AnimeEpisode/AnimeEpisodeContainer/AnimeEpisode";
-import AnimeFavorite from "../AnimeFavorite/AnimeFavorite";
+import AnimeFavoriteButton from "../AnimeFavoriteButton/AnimeFavoriteButton";
 gsap.registerPlugin(CSSRulePlugin);
 function AnimePlay(props) {
   const [anime, setAnime] = useState(null);
@@ -226,7 +226,7 @@ function AnimePlay(props) {
                 anime?.descriptions.it ||
                 "Không có thông tin mô tả!!!"}
             </div>
-            <AnimeFavorite idAnime={anime} />
+            <AnimeFavoriteButton idAnime={anime} />
           </div>
           {songRedux?.["preview_url"] && (
             <audio
