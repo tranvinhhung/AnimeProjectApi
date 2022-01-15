@@ -8,14 +8,15 @@ export const handleLoginRedux = createAsyncThunk(
     let listUserData = await thunkAPI.getState();
     console.log(listUserData);
     console.log(myData);
-    // if (myData) {
-    //   let checkUser = listUserData?.myUsers?.users?.filter(
-    //     (el) => el?.data?.user?.email === myData?.data?.user?.email
-    //   );
-    //   if (checkUser.length === 0) thunkAPI.dispatch(addUser(myData.data));
-    //   if (checkUser.length > 0) console.log("user tồn tại");
-    // }
-    // console.log(myData);
+    if (myData) {
+      let checkUser = listUserData?.myUsers?.users?.filter(
+        (el) => el?.user?.email === myData?.data?.user?.email
+      );
+      if (checkUser.length === 0)
+        thunkAPI.dispatch(addUser({ user: myData.data.user }));
+      if (checkUser.length > 0) console.log("user tồn tại");
+    }
+
     return myData;
   }
 );
@@ -47,7 +48,7 @@ const formLoginSlice = createSlice({
       localStorage.removeItem("token");
 
       state.data = {};
-      state.listLoveAnimeId = [...state.listLoveAnimeId];
+      state.listLoveAnimeId = [];
     },
     handleAddFavorite(state, action) {
       state.listLoveAnimeId.push({ ...action.payload });

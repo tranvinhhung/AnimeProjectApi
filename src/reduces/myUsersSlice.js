@@ -13,7 +13,7 @@ export const handleAnimeListFavoriteUser = createAsyncThunk(
 );
 
 const initialState = {
-  users: [],
+  users: [{ user: {}, listLove: [] }],
 };
 
 const myListUsersSlice = createSlice({
@@ -21,19 +21,43 @@ const myListUsersSlice = createSlice({
   initialState,
   reducers: {
     handleFavoriteDataOneUserWithEmail(state, action) {
-      let datafiter = state.users.filter(
-        (el) => el?.user?.email !== action.payload.user.email
+      console.log(action.payload);
+
+      let oThersmyUser = state.users.filter(
+        (el) => el.user._id !== action.payload.user._id
       );
-      state.users = [...datafiter, { ...action.payload }];
+      let thisUser = state.users.filter(
+        (el) => el.user._id === action.payload.user._id
+      );
+      const [userCurrent] = thisUser;
+      const { user, listLove } = userCurrent;
+      listLove.push({ id: action.payload.id });
+      let newUser = { ...userCurrent, listLove };
+      state.users = [...oThersmyUser, newUser];
     },
     getDataFavoriteUser(state, action) {
       return state.user.filter(
         (el) => el?.user?.email === action.payload.email
       );
     },
-    // addFavoriteAnime(state,action){
-    //   state.users.
-    // }
+    handleRemoveFavoriteAnimeListIdAll(state, action) {
+      console.log(action.payload);
+      let oThersmyUser = state.users.filter(
+        (el) => el.user._id !== action.payload.user._id
+      );
+      let thisUser = state.users.filter(
+        (el) => el.user._id === action.payload.user._id
+      );
+      const [userCurrent] = thisUser;
+      const { user, listLove } = userCurrent;
+      let newListLove = listLove.filter((el) => el.id !== action.payload.id);
+      let newUser = { ...userCurrent, listLove: newListLove };
+      state.users = [...oThersmyUser, newUser];
+    },
+    addUser(state, action) {
+      console.log(action.payload);
+      state.users.push({ user: action.payload.user, listLove: [] });
+    },
   },
   extraReducers: {
     [handleAnimeListFavoriteUser.fulfilled]: (state, action) => {},
@@ -42,6 +66,9 @@ const myListUsersSlice = createSlice({
   },
 });
 
-export const { addUser, handleFavoriteDataOneUserWithEmail } =
-  myListUsersSlice.actions;
+export const {
+  addUser,
+  handleFavoriteDataOneUserWithEmail,
+  handleRemoveFavoriteAnimeListIdAll,
+} = myListUsersSlice.actions;
 export default myListUsersSlice;

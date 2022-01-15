@@ -1,15 +1,15 @@
 import { configureStore, combineReducers } from "@reduxjs/toolkit";
-import {
-  persistStore,
-  persistReducer,
-  FLUSH,
-  REHYDRATE,
-  PAUSE,
-  PERSIST,
-  PURGE,
-  REGISTER,
-} from "redux-persist";
-import storage from "redux-persist/lib/storage";
+// import {
+//   persistStore,
+//   persistReducer,
+//   FLUSH,
+//   REHYDRATE,
+//   PAUSE,
+//   PERSIST,
+//   PURGE,
+//   REGISTER,
+// } from "redux-persist";
+// import storage from "redux-persist/lib/storage";
 import animeGenderSlice from "./../reduces/animeGenderList";
 import counterSlice from "./../reduces/index";
 import songSlice from "../reduces/songSlice";
@@ -19,11 +19,11 @@ import formDataUserSlice from "../reduces/formDataUser";
 import formSignUp from "./../reduces/animeSignUp";
 import animeLogin from "./../reduces/animeLogin";
 import myListUsersSlice from "../reduces/myUsersSlice";
-const persistConfig = {
-  key: "root",
-  version: 1,
-  storage,
-};
+// const persistConfig = {
+//   key: "root",
+//   version: 1,
+//   storage,
+// };
 const rootReducer = combineReducers({
   mycounter: counterSlice.reducer,
   myAnime: animeGenderSlice.reducer,
@@ -35,9 +35,10 @@ const rootReducer = combineReducers({
   myLogin: animeLogin.reducer,
   myUsers: myListUsersSlice.reducer,
 });
-const persistedReducer = persistReducer(persistConfig, rootReducer);
+// const persistedReducer = persistReducer(persistConfig, rootReducer);
 const store = configureStore({
-  reducer: persistedReducer,
+  // reducer: persistedReducer,
+  reducer: rootReducer,
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
       // serializableCheck: {
@@ -46,5 +47,5 @@ const store = configureStore({
       serializableCheck: false,
     }),
 });
-export let persistor = persistStore(store);
+// export let persistor = persistStore(store);
 export default store;
