@@ -27,6 +27,7 @@ import { getAnimeWidthId, songWidthId } from "../../../api/index";
 import "./anime.scss";
 import AnimeEpisode from "../AnimeEpisode/AnimeEpisodeContainer/AnimeEpisode";
 import AnimeFavoriteButton from "../AnimeFavoriteButton/AnimeFavoriteButton";
+import AnimeComments from "../AnimeComments/AnimeCommentContainer/AnimeCommentContainer";
 gsap.registerPlugin(CSSRulePlugin);
 function AnimePlay(props) {
   const [anime, setAnime] = useState(null);
@@ -327,10 +328,11 @@ function AnimePlay(props) {
             </div>
           )}
         </Dialog>
-
-        {/* AnimeEpisode List */}
       </section>
-      {/* <AnimeEpisode title={anime?.titles.en || anime?.titles.it} idAnime={id} /> */}
+      {/* AnimeEpisode List */}
+      <AnimeEpisode title={anime?.titles.en || anime?.titles.it} idAnime={id} />
+      {/*anime Comments*/}
+      <AnimeComments />
     </>
   );
 }
