@@ -6,12 +6,13 @@ import Card from "./../../Card/Card";
 import neZuko from "./../../../utils/img/nezuko.png";
 const AnimeListLove = () => {
   const listLoveAnimeId = useSelector((state) => state.myUsers.users);
+  let currentUser = useSelector((state) => state.myLogin.data);
   const [animeLoveList, setanimeLoveList] = useState([]);
   useEffect(() => {
     (async () => {
       try {
         const token = localStorage.getItem("token");
-        if (!token) return;
+        if (!token) setanimeLoveList([]);
         if (token) {
           let decode = jwt_decode(token);
           let idUser = decode.id;
@@ -32,11 +33,11 @@ const AnimeListLove = () => {
         console.log(err);
       }
     })();
-  }, [listLoveAnimeId]);
+  }, [listLoveAnimeId, currentUser]);
   return (
     <div className="mainContainer genDerList">
       <div style={{ padding: "1rem", fontSize: 30 }}>List animes my Love</div>
-      {animeLoveList.length === 0 && (
+      {!localStorage.getItem("token") && (
         <div
           style={{
             fontSize: 25,
@@ -53,7 +54,24 @@ const AnimeListLove = () => {
           />
         </div>
       )}
-      {animeLoveList && (
+      {localStorage.getItem("token") && animeLoveList.length === 0 && (
+        <div
+          style={{
+            fontSize: 25,
+            display: "flex",
+            flexDirection: "column",
+            gap: "3rem",
+          }}
+        >
+          List Của Bạn đang rỗng hãy add List đi nhé!!!
+          <img
+            style={{ width: "30%", alignSelf: "center" }}
+            src={neZuko}
+            alt="nezukoimg"
+          />
+        </div>
+      )}
+      {localStorage.getItem("token") && animeLoveList.length > 0 && (
         <div className="containerListGenderImg">
           {animeLoveList.map((el, index) => (
             <Card key={index} data={el.data.data} />
