@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import jwt_decode from "jwt-decode";
 import { hanleListAnimeWithArrayId } from "./../../../api/index";
 import Card from "./../../Card/Card";
+import neZuko from "./../../../utils/img/nezuko.png";
 const AnimeListLove = () => {
   const listLoveAnimeId = useSelector((state) => state.myUsers.users);
   const [animeLoveList, setanimeLoveList] = useState([]);
@@ -35,11 +36,30 @@ const AnimeListLove = () => {
   return (
     <div className="mainContainer genDerList">
       <div style={{ padding: "1rem", fontSize: 30 }}>List animes my Love</div>
-      <div className="containerListGenderImg">
-        {animeLoveList.map((el, index) => (
-          <Card key={index} data={el.data.data} />
-        ))}
-      </div>
+      {animeLoveList.length === 0 && (
+        <div
+          style={{
+            fontSize: 25,
+            display: "flex",
+            flexDirection: "column",
+            gap: "3rem",
+          }}
+        >
+          Bạn chưa đăng nhập hãy đăng nhập để add list nhé!!!
+          <img
+            style={{ width: "30%", alignSelf: "center" }}
+            src={neZuko}
+            alt="nezukoimg"
+          />
+        </div>
+      )}
+      {animeLoveList && (
+        <div className="containerListGenderImg">
+          {animeLoveList.map((el, index) => (
+            <Card key={index} data={el.data.data} />
+          ))}
+        </div>
+      )}
     </div>
   );
 };
