@@ -19,6 +19,7 @@ import formDataUserSlice from "../reduces/formDataUser";
 import formSignUp from "./../reduces/animeSignUp";
 import animeLogin from "./../reduces/animeLogin";
 import myListUsersSlice from "../reduces/myUsersSlice";
+import animeCommentSlice from "../reduces/animeComment";
 // const persistConfig = {
 //   key: "root",
 //   version: 1,
@@ -34,6 +35,7 @@ const rootReducer = combineReducers({
   mySignUp: formSignUp.reducer,
   myLogin: animeLogin.reducer,
   myUsers: myListUsersSlice.reducer,
+  myComments: animeCommentSlice.reducer,
 });
 // const persistedReducer = persistReducer(persistConfig, rootReducer);
 const store = configureStore({

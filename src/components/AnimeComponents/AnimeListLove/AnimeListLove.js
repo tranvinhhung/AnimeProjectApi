@@ -11,6 +11,7 @@ const AnimeListLove = () => {
   useEffect(() => {
     (async () => {
       try {
+        window.scroll(0, 0);
         const token = localStorage.getItem("token");
         if (!token) setanimeLoveList([]);
         if (token) {
@@ -37,21 +38,11 @@ const AnimeListLove = () => {
   return (
     <div className="mainContainer genDerList">
       <div style={{ padding: "1rem", fontSize: 30 }}>List animes my Love</div>
-      {!localStorage.getItem("token") && (
-        <div
-          style={{
-            fontSize: 25,
-            display: "flex",
-            flexDirection: "column",
-            gap: "3rem",
-          }}
-        >
-          Bạn chưa đăng nhập hãy đăng nhập để add list nhé!!!
-          <img
-            style={{ width: "30%", alignSelf: "center" }}
-            src={neZuko}
-            alt="nezukoimg"
-          />
+      {localStorage.getItem("token") && animeLoveList.length > 0 && (
+        <div className="containerListGenderImg">
+          {animeLoveList.map((el, index) => (
+            <Card key={index} data={el.data.data} />
+          ))}
         </div>
       )}
       {localStorage.getItem("token") && animeLoveList.length === 0 && (
@@ -71,11 +62,21 @@ const AnimeListLove = () => {
           />
         </div>
       )}
-      {localStorage.getItem("token") && animeLoveList.length > 0 && (
-        <div className="containerListGenderImg">
-          {animeLoveList.map((el, index) => (
-            <Card key={index} data={el.data.data} />
-          ))}
+      {!localStorage.getItem("token") && (
+        <div
+          style={{
+            fontSize: 25,
+            display: "flex",
+            flexDirection: "column",
+            gap: "3rem",
+          }}
+        >
+          Bạn chưa đăng nhập hãy đăng nhập để add list nhé!!!
+          <img
+            style={{ width: "30%", alignSelf: "center" }}
+            src={neZuko}
+            alt="nezukoimg"
+          />
         </div>
       )}
     </div>

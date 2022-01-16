@@ -70,6 +70,7 @@ const AnimeFavorite = (props) => {
             display: "inline-block",
             cursor: "pointer",
             border: "1px solid black",
+            marginTop: "1.2rem",
           }}
           onClick={() => handleAddFavoriteView(idAnime, currentUser)}
         >
@@ -86,6 +87,7 @@ const AnimeFavorite = (props) => {
             display: "inline-block",
             cursor: "pointer",
             border: "1px solid black",
+            marginTop: "1.2rem",
           }}
           onClick={() => handleRemoveFavoriteView(idAnime, currentUser)}
         >
@@ -105,6 +107,7 @@ const AnimeFavorite = (props) => {
             display: "inline-block",
             cursor: "pointer",
             border: "1px solid black",
+            marginTop: "1.2rem",
           }}
           onClick={() => handleAddFavoriteView(props?.idAnime?.id)}
         >

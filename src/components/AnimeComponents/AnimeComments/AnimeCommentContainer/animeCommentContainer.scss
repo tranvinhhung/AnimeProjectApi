@@ -12,15 +12,26 @@
     display: flex;
     flex-direction: column;
     .aniCommentRow {
-      span {
-        font-size: 2rem;
-        font-weight: bolder;
-      }
       font-size: 1.5rem;
       background-color: #ededed;
       margin-top: 1.5rem;
       padding: 2rem;
       border-radius: 100rem;
+      display: flex;
+      flex-direction: column;
+      .animeCommentContent {
+        padding: 0.5rem;
+      }
+      span {
+        font-size: 2rem;
+        font-weight: bolder;
+      }
+      p + p {
+        width: 50%;
+        align-self: flex-end;
+        font-size: 1.2rem;
+        font-style: italic;
+      }
     }
     .commentInput {
       margin: auto auto 0;
@@ -30,11 +41,23 @@
       width: 60%;
       padding: 2rem;
       //   box-shadow: 0 0px 5px 1px #0080a4;
+
       transition: all 0.5s;
-      input {
-        outline: none;
-        border: none;
-        padding: 1.5rem;
+      form {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 1rem;
+        input {
+          outline: none;
+          border: none;
+          padding: 1.5rem;
+        }
+        button {
+          opacity: 0;
+          visibility: hidden;
+          position: absolute;
+        }
       }
       &.active {
         box-shadow: 0 4px 8px 3px #0080a4;

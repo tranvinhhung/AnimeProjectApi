@@ -1,36 +1,79 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import AnimeCommentRow from "../AnimeCommentRow/AnimeCommentRow";
+import {
+  addComment,
+  removeComment,
+  addAnimeCommentID,
+  handleCloseComment,
+  handleOpenComment,
+} from "./../../../../reduces/animeComment";
 import "./animeCommentContainer.scss";
-const AnimeCommentContainer = () => {
+const AnimeCommentContainer = (props) => {
   const [activeComent, setactiveComent] = useState(false);
+  const dispatch = useDispatch();
+  const inputComment = useRef();
+  let listComment = useSelector((state) => state.myComments.dataBaseComments);
+  let currentUser = useSelector((state) => state.myLogin?.data?.data?.user);
+  let activeComment = useSelector((state) => state.myComments.activeComent);
   const handleOpenComments = () => {
-    setactiveComent(!activeComent);
+    dispatch(handleOpenComment());
+  };
+  const handleCloseComments = () => {
+    dispatch(handleCloseComment());
   };
   useEffect(() => {
-    activeComent &&
+    activeComment &&
       localStorage.getItem("token") &&
       document
         .querySelector(".inputComment")
         .addEventListener("focus", function (e) {
           document.querySelector(".commentInput").classList.add("active");
         });
-    activeComent &&
+    activeComment &&
       localStorage.getItem("token") &&
       document
         .querySelector(".inputComment")
         .addEventListener("blur", function (e) {
           document.querySelector(".commentInput").classList.remove("active");
         });
-  }, [activeComent]);
+  }, [activeComment]);
+  useEffect(() => {
+    try {
+      dispatch(handleCloseComment());
+      props.idAnime &&
+        (async () => {
+          try {
+            let arrayId = listComment.filter(
+              (el) => el.idAnimeComment === props.idAnime
+            );
+            if (arrayId.length === 0) {
+              dispatch(addAnimeCommentID({ idAnime: props.idAnime }));
+            }
+            if (arrayId.length > 0) {
+            }
+          } catch (err) {
+            throw new Error(err);
+          }
+        })();
+    } catch (err) {
+      console.log(err);
+    }
+  }, [props.idAnime]);
+  const handleComment = (e) => {
+    e.preventDefault();
+    console.log(inputComment.current.value);
+    console.log(currentUser, props.idAnime);
+    inputComment.current.value = "";
+  };
   return (
     <div className="wrapper animeCommentContainer">
-      {!activeComent && (
+      {!activeComment && (
         <div onClick={handleOpenComments}>Bấm Để hiện comments...</div>
       )}
-      {activeComent && (
+      {activeComment && (
         <div className="animeCommentActive">
-          <span onClick={handleOpenComments}>Comment here</span>
+          <span onClick={handleCloseComments}>Comment here</span>
           <div>
             <AnimeCommentRow />
           </div>
@@ -39,12 +82,19 @@ const AnimeCommentContainer = () => {
           <div className="commentInput">
             {localStorage.getItem("token") && (
               <>
-                Name User
-                <input
-                  type="text"
-                  className="inputComment"
-                  placeholder="nhập comment ở đây...."
-                />
+                <form id="formComment" onSubmit={handleComment}>
+                  <label htmlFor="commentID">{currentUser.name}</label>
+                  <input
+                    type="text"
+                    name="commentInput"
+                    id="commentID"
+                    className="inputComment"
+                    placeholder="nhập comment ở đây...."
+                    ref={inputComment}
+                  />
+
+                  <button type="submit">button</button>
+                </form>
               </>
             )}
             {!localStorage.getItem("token") && (

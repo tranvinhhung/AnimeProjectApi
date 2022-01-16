@@ -25,7 +25,13 @@ function Header() {
   const handleSubmit = (e) => {
     e.preventDefault();
     let formS = document.getElementById("formSearch");
-    console.log(formS.searchAnime.value);
+    let date = Date.now();
+    let dateIo = new Date(date);
+    console.log(formS.searchAnime.value, new Date(Date.now()));
+    console.log(formS.searchAnime.value, date);
+    console.log(formS.searchAnime.value, dateIo);
+
+    console.log(formS.searchAnime.value, new Date(date).getTime());
   };
   const [anchorEl, setAnchorEl] = React.useState(null);
 

@@ -332,7 +332,7 @@ function AnimePlay(props) {
       {/* AnimeEpisode List */}
       <AnimeEpisode title={anime?.titles.en || anime?.titles.it} idAnime={id} />
       {/*anime Comments*/}
-      <AnimeComments />
+      <AnimeComments idAnime={id} />
     </>
   );
 }
