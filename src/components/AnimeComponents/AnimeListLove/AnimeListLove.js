@@ -13,7 +13,6 @@ const AnimeListLove = () => {
   useEffect(() => {
     (async () => {
       try {
-        window.scroll(0, 0);
         const token = localStorage.getItem("token");
         if (!token) {
           setanimeLoveList([]);

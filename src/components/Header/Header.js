@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { activeForm } from "../../reduces/formDataUser";
 import PopoverEle from "./../Popover/PopoverContainer/PopoverContainer";
@@ -12,6 +12,7 @@ import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import "./header.scss";
 function Header() {
+  const logoutButton = useRef();
   const dispatch = useDispatch();
   const handleOpen = () => {
     dispatch(activeForm());
@@ -33,21 +34,25 @@ function Header() {
 
     console.log(formS.searchAnime.value, new Date(date).getTime());
   };
-  const [anchorEl, setAnchorEl] = React.useState(null);
+
   const divRef = React.useRef();
-  const handleClick = (event) => {
-    setAnchorEl(divRef.current);
-  };
 
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
-
-  const open = Boolean(anchorEl);
-  const id = open ? "simple-popover" : undefined;
   useEffect(() => {
-    setAnchorEl(divRef.current);
-  }, [divRef]);
+    if (logoutButton && logoutButton.current) {
+      divRef.current.addEventListener("mouseover", function () {
+        logoutButton.current.classList.add("mouseover");
+      });
+      logoutButton.current.addEventListener("mouseover", function () {
+        logoutButton.current.classList.add("mouseover");
+      });
+      logoutButton.current.addEventListener("mouseout", function () {
+        logoutButton.current.classList.remove("mouseover");
+      });
+      divRef.current.addEventListener("mouseout", function () {
+        logoutButton.current.classList.remove("mouseover");
+      });
+    }
+  }, [dataUser]);
   return (
     <>
       <nav className="nav">
@@ -99,11 +104,15 @@ function Header() {
             )}
             {Object.keys(dataUser).length > 0 && (
               <>
-                <div onClick={handleClick} className="user" ref={divRef}>
+                <div className="user" ref={divRef}>
                   <span>Xin chào</span>
                   {`${dataUser?.data?.user?.name}`}
                 </div>
-                <div className="logoutButton" onClick={handleLogout}>
+                <div
+                  className="logoutButton"
+                  onClick={handleLogout}
+                  ref={logoutButton}
+                >
                   Logout
                 </div>
                 {/* <Popover
