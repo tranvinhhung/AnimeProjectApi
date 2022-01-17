@@ -6,14 +6,18 @@ import Card from "./../../Card/Card";
 import neZuko from "./../../../utils/img/nezuko.png";
 const AnimeListLove = () => {
   const listLoveAnimeId = useSelector((state) => state.myUsers.users);
-  let currentUser = useSelector((state) => state.myLogin.data);
+  let currentUser = useSelector((state) => state.myLogin?.data?.data?.user);
+  console.log(currentUser);
   const [animeLoveList, setanimeLoveList] = useState([]);
+
   useEffect(() => {
     (async () => {
       try {
         window.scroll(0, 0);
         const token = localStorage.getItem("token");
-        if (!token) setanimeLoveList([]);
+        if (!token) {
+          setanimeLoveList([]);
+        }
         if (token) {
           let decode = jwt_decode(token);
           let idUser = decode.id;
@@ -34,18 +38,18 @@ const AnimeListLove = () => {
         console.log(err);
       }
     })();
-  }, [listLoveAnimeId, currentUser]);
+  }, [animeLoveList]);
   return (
     <div className="mainContainer genDerList">
       <div style={{ padding: "1rem", fontSize: 30 }}>List animes my Love</div>
-      {localStorage.getItem("token") && animeLoveList.length > 0 && (
+      {currentUser && animeLoveList.length > 0 && (
         <div className="containerListGenderImg">
           {animeLoveList.map((el, index) => (
             <Card key={index} data={el.data.data} />
           ))}
         </div>
       )}
-      {localStorage.getItem("token") && animeLoveList.length === 0 && (
+      {currentUser && animeLoveList.length === 0 && (
         <div
           style={{
             fontSize: 25,
@@ -62,7 +66,7 @@ const AnimeListLove = () => {
           />
         </div>
       )}
-      {!localStorage.getItem("token") && (
+      {!currentUser && (
         <div
           style={{
             fontSize: 25,

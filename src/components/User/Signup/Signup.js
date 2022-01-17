@@ -59,7 +59,7 @@ export default function App() {
           throw new Error(handleData);
         }
         if (handleData.status === "success") {
-          await navigate("/login");
+          // await navigate("/login");
           await dispatch(handleLogin());
           enqueueSnackbar(
             "Bạn đã tạo tài khoản thành công ,Hãy đăng nhập nhé!!!",
@@ -82,10 +82,10 @@ export default function App() {
 
   const handleClose = () => {
     dispatch(closeForm());
-    navigate("/home");
+    // navigate("/home");
   };
   const changeLogin = () => {
-    navigate("/login");
+    // navigate("/login");
     dispatch(handleLogin());
   };
   const handleErorMessenger = (error) => {

@@ -97,10 +97,10 @@ const AnimeFavorite = (props) => {
       );
     }
   };
-  useEffect(() => {}, []);
+
   return (
     <>
-      {!localStorage.getItem("token") && (
+      {!currentUser && (
         <div
           style={{
             padding: "1rem",
@@ -115,7 +115,8 @@ const AnimeFavorite = (props) => {
           Add Favorite
         </div>
       )}
-      {localStorage.getItem("token") &&
+      {currentUser &&
+        Object.keys(currentUser).length > 0 &&
         findUserFilterIdLove(fullDataUsers, currentUser, props?.idAnime?.id)}
       {/* {haveUser &&
         dataCurrentUser[0]?.listLove?.filter(

@@ -45,7 +45,7 @@ export default function Login() {
       if (data2.status === "success") {
         localStorage.setItem("token", data2.token);
         dispatch(closeForm());
-        navigate("/home");
+        // navigate("/home");
         enqueueSnackbar("Đăng nhập thành công!!!", {
           variant: "success",
         });
@@ -65,10 +65,10 @@ export default function Login() {
 
   const handleClose = () => {
     dispatch(closeForm());
-    navigate("/home");
+    // navigate("/home");
   };
   const changeSignUp = () => {
-    navigate("/signup");
+    // navigate("/signup");
     dispatch(handleSignUp());
   };
   return (

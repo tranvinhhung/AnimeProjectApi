@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { activeForm } from "../../reduces/formDataUser";
 import PopoverEle from "./../Popover/PopoverContainer/PopoverContainer";
@@ -34,9 +34,9 @@ function Header() {
     console.log(formS.searchAnime.value, new Date(date).getTime());
   };
   const [anchorEl, setAnchorEl] = React.useState(null);
-
+  const divRef = React.useRef();
   const handleClick = (event) => {
-    setAnchorEl(event.currentTarget);
+    setAnchorEl(divRef.current);
   };
 
   const handleClose = () => {
@@ -45,6 +45,9 @@ function Header() {
 
   const open = Boolean(anchorEl);
   const id = open ? "simple-popover" : undefined;
+  useEffect(() => {
+    setAnchorEl(divRef.current);
+  }, [divRef]);
   return (
     <>
       <nav className="nav">
@@ -90,17 +93,20 @@ function Header() {
           </li>
           <li>
             {Object.keys(dataUser).length === 0 && (
-              <Link className="notext" to="/signup" onClick={handleOpen}>
+              <div className="notext" onClick={handleOpen}>
                 Sign Up/Login
-              </Link>
+              </div>
             )}
             {Object.keys(dataUser).length > 0 && (
               <>
-                <div onClick={handleClick} className="user">
+                <div onClick={handleClick} className="user" ref={divRef}>
                   <span>Xin chào</span>
                   {`${dataUser?.data?.user?.name}`}
                 </div>
-                <Popover
+                <div className="logoutButton" onClick={handleLogout}>
+                  Logout
+                </div>
+                {/* <Popover
                   id={id}
                   open={open}
                   anchorEl={anchorEl}
@@ -117,7 +123,7 @@ function Header() {
                   <Typography onClick={handleLogout} sx={{ p: 2 }}>
                     Logout
                   </Typography>
-                </Popover>
+                </Popover> */}
               </>
             )}
           </li>

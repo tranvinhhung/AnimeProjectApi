@@ -91,4 +91,11 @@ nav.nav {
     color: black;
     font-size: 1.8rem;
   }
+  & + .logoutButton {
+    position: absolute;
+    top: 100%;
+    padding: 1rem;
+    // height: 3rem;
+    background-color: red;
+  }
 }
