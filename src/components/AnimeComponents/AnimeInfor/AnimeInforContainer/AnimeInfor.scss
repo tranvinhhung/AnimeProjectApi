@@ -1,0 +1,13 @@
+.animeInforList {
+  ul {
+    display: flex;
+    flex-direction: row !important;
+    li {
+      padding: 0.3rem !important;
+      cursor: pointer;
+      white-space: nowrap;
+      font-size: 1.4rem;
+      word-spacing: 1px;
+    }
+  }
+}

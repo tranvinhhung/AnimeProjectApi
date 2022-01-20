@@ -51,7 +51,7 @@ function AnimeEpisode(props) {
       if (!originalPromiseResult) await dispatch(resetListEpisode());
       console.log(originalPromiseResult);
 
-      // console.log(myListEpisode);
+      console.log(myListEpisode);
       // console.log(myListEpisode?.current_page);
 
       return () => {
@@ -104,6 +104,7 @@ function AnimeEpisode(props) {
       <ul className="ListAnimeEpiso">
         {myListEpisode?.documents?.map((el, index) => (
           <AnimeEpisodeCard
+            isStyle={props.isStyle}
             itemEpisode="itemEpisodeCard"
             key={index}
             data={el}
@@ -145,7 +146,7 @@ function AnimeEpisode(props) {
         </>
       )}
 
-      {myListEpisode?.documents?.length === 0 && (
+      {myListEpisode?.length === 0 && (
         <div className="animeEpisodeMess">
           Không lấy được nguồn phim xin lỗi bạn rất nhiều hãy chọn anime khác
           nhé!

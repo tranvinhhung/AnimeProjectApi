@@ -37,6 +37,7 @@ function AnimeEpisodeCard(props) {
       onClick={() => {
         handleUrlAnimeVideo(handleSlug(props.title), props.data.number);
       }}
+      style={props.isStyle ? { backgroundColor: props.isStyle } : {}}
     >
       {props.data.number} {props.data.title || `. Chapter ${props.data.number}`}
       <ArrowForwardOutlinedIcon />

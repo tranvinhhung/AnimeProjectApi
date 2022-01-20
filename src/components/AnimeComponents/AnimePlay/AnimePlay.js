@@ -9,6 +9,7 @@ import { handleActiveClose, handleActiveOpen } from "../../../reduces/index";
 import { getSong, delSong } from "../../../reduces/songSlice";
 import PlayCircleRoundedIcon from "@mui/icons-material/PlayCircleRounded";
 import PauseCircleRoundedIcon from "@mui/icons-material/PauseCircleRounded";
+import AnimeInforContainer from "../AnimeInfor/AnimeInforContainer/AnimeInforContainer";
 import Aos from "aos";
 import {
   useNavigate,
@@ -27,7 +28,10 @@ import { getAnimeWidthId, songWidthId } from "../../../api/index";
 import "./anime.scss";
 import AnimeEpisode from "../AnimeEpisode/AnimeEpisodeContainer/AnimeEpisode";
 import AnimeFavoriteButton from "../AnimeFavoriteButton/AnimeFavoriteButton";
+import AnimeRelate from "./../AnimeRelate/AnimeRelate";
+import AnimeMusicBar from "../AnimeMusicBar/AnimeMusicBar";
 import AnimeComments from "../AnimeComments/AnimeCommentContainer/AnimeCommentContainer";
+
 gsap.registerPlugin(CSSRulePlugin);
 function AnimePlay(props) {
   const [anime, setAnime] = useState(null);
@@ -41,6 +45,8 @@ function AnimePlay(props) {
   const desRef = useRef();
   const animeRef = useRef();
   const reduxSongRef = useRef();
+  const songRefT = useRef();
+  const animeInfoRef = useRef();
   const activeDialog = useSelector((state) => state.mycounter.active);
   //new song redux
   const songRedux = useSelector((state) => state.mySong.song);
@@ -90,14 +96,18 @@ function AnimePlay(props) {
     navigate(-1);
     dispatch(handleActiveClose());
   };
-  const handlePlay = () => {
+  const handlePlay = async () => {
+    let tl = gsap.timeline();
     let emm = document.querySelector("#emm");
+
     if (play) {
+      // await gsap.to()
       emm.pause();
       setPlay(false);
     }
     if (!play) {
       emm.play();
+
       setPlay(true);
     }
     // console.log(emm);
@@ -127,7 +137,7 @@ function AnimePlay(props) {
 
       const animedata = animethis.data.data;
       const songdata = songthis.data.data;
-      // console.log(animedata);
+      console.log(animedata);
       if (songdata) {
         await dispatch(getSong(songdata));
       }
@@ -153,6 +163,10 @@ function AnimePlay(props) {
           { y: "-50", duration: 0.5, autoAlpha: 0 },
           "-=0.3"
         )
+        .to(animeInfoRef.current, {
+          duration: 0.3,
+          autoAlpha: 1,
+        })
         .from(reduxSongRef.current, 0.5, { y: "100", autoAlpha: 0 }, "-=0.5");
     })();
   }, []);
@@ -164,7 +178,11 @@ function AnimePlay(props) {
       .to(imgRef.current, 0.5, { y: "-100", autoAlpha: 0 })
       .to(desRef.current, 0.5, { autoAlpha: 0 })
       .to(reduxSongRef.current, 0.5, { y: "100", autoAlpha: 0 })
-      .to(byeRef.current, 0.5, { autoAlpha: 1 });
+      .to(animeInfoRef.current, 0.3, {
+        x: "-100",
+        autoAlpha: 0,
+      })
+      .to(byeRef.current, 0.5, { autoAlpha: 1 }, "+=0.2");
 
     // .to()cssRule:
     await dispatch(delSong());
@@ -251,6 +269,7 @@ function AnimePlay(props) {
                   ? { opacity: 1, visibility: "visible" }
                   : { opacity: 0, visibility: "hidden" }
               }
+              ref={songRefT}
             >
               <h1>
                 {(songRedux?.type && handeTitleSong(songRedux?.type)) ||
@@ -279,6 +298,10 @@ function AnimePlay(props) {
                 ></PauseCircleRoundedIcon>
               )}
             </div>
+          </div>
+          <div ref={animeInfoRef} className="animeInfor">
+            {anime && !play && <AnimeInforContainer dataIn={anime} />}
+            {play && <AnimeMusicBar />}
           </div>
         </div>
 
@@ -330,7 +353,11 @@ function AnimePlay(props) {
         </Dialog>
       </section>
       {/* AnimeEpisode List */}
-      <AnimeEpisode title={anime?.titles.en || anime?.titles.it} idAnime={id} />
+      <AnimeEpisode
+        isStyle={anime?.["cover_color"]}
+        title={anime?.titles.en || anime?.titles.it}
+        idAnime={id}
+      />
       {/*anime Comments*/}
       <AnimeComments idAnime={id} />
     </>

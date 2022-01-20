@@ -66,13 +66,13 @@ const AnimeFavorite = (props) => {
       return (
         <div
           style={{
-            padding: "1rem",
             display: "inline-block",
             cursor: "pointer",
             border: "1px solid black",
             marginTop: "1.2rem",
           }}
           onClick={() => handleAddFavoriteView(idAnime, currentUser)}
+          className="animeFavoButton"
         >
           <BookmarkAddedIcon />
           Add Favorite
@@ -83,13 +83,13 @@ const AnimeFavorite = (props) => {
       return (
         <div
           style={{
-            padding: "1rem",
             display: "inline-block",
             cursor: "pointer",
             border: "1px solid black",
             marginTop: "1.2rem",
           }}
           onClick={() => handleRemoveFavoriteView(idAnime, currentUser)}
+          className="animeFavoButton"
         >
           <BookmarkRemoveIcon />
           Remove Favorite
@@ -103,13 +103,13 @@ const AnimeFavorite = (props) => {
       {!currentUser && (
         <div
           style={{
-            padding: "1rem",
             display: "inline-block",
             cursor: "pointer",
             border: "1px solid black",
             marginTop: "1.2rem",
           }}
           onClick={() => handleAddFavoriteView(props?.idAnime?.id)}
+          className="animeFavoButton"
         >
           <BookmarkAddedIcon />
           Add Favorite

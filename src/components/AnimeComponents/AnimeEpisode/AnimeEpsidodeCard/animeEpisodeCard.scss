@@ -10,6 +10,9 @@
   font-size: 1.5rem;
   cursor: pointer;
   transition: all 0.2s;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
   &:hover {
     box-shadow: 0 0 3px red;
   }

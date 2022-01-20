@@ -20,7 +20,20 @@ function PopoverItem(props) {
       { state: { gender: gender } }
     );
   };
-  return <li onClick={() => handleNavigate(props.gender)}>{props.gender}</li>;
+  return (
+    <li
+      style={
+        props.isStyle
+          ? {
+              backgroundColor: props.isStyle,
+            }
+          : { border: "1px solid black" }
+      }
+      onClick={() => handleNavigate(props.gender)}
+    >
+      {props.gender}
+    </li>
+  );
 }
 
 export default PopoverItem;
