@@ -87,3 +87,14 @@ export const hanleListAnimeWithArrayId = async (arrId) => {
   ]);
   return allAnime;
 };
+export const handleGenerateYear = () => {
+  let year = [];
+  let day = new Date();
+  let yearNow = day.getFullYear();
+  console.log(yearNow);
+  for (let i = yearNow; i >= 1940; i--) {
+    year.push(i);
+  }
+  console.log(year);
+  return year;
+};

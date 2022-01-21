@@ -14,6 +14,7 @@ import Signup from "./../components/User/Signup/Signup";
 import Login from "./../components/User/Login/Login";
 import Container from "./Container/Container";
 import ListLoveAnimes from "./../components/AnimeComponents/AnimeListLove/AnimeListLove";
+import AnimeSearchContainer from "./AnimeComponents/AnimeSearchView/AnimeSearchContainer/AnimeSearchContainer";
 function Index() {
   return (
     <React.Fragment>
@@ -33,6 +34,7 @@ function Index() {
           <Route path="signup" element={<Home />} />
           <Route path="login" element={<Home />} />
           <Route path="my-list-love-animes" element={<ListLoveAnimes />} />
+          <Route path="search" element={<AnimeSearchContainer />}></Route>
         </Route>
         <Route path="video" element={<AnimeLink />} />
         <Route path="*" element={<NotFound />} />

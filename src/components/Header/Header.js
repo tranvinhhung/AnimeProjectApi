@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from "react";
-import { Link } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import { activeForm } from "../../reduces/formDataUser";
 import PopoverEle from "./../Popover/PopoverContainer/PopoverContainer";
 import { useDispatch, useSelector } from "react-redux";
@@ -14,6 +14,7 @@ import "./header.scss";
 function Header() {
   const logoutButton = useRef();
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const handleOpen = () => {
     dispatch(activeForm());
   };
@@ -33,6 +34,9 @@ function Header() {
     console.log(formS.searchAnime.value, dateIo);
 
     console.log(formS.searchAnime.value, new Date(date).getTime());
+  };
+  const handleSearchView = () => {
+    navigate("/search");
   };
 
   const divRef = React.useRef();
@@ -70,7 +74,7 @@ function Header() {
               id="searchID"
               placeholder="tìm anime nào!!"
             />
-            <SearchIcon />
+            <SearchIcon onClick={handleSearchView} />
             <button type="submit">button</button>
           </form>
         </figure>
