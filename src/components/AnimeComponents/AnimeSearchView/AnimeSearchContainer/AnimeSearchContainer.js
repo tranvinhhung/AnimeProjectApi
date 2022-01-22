@@ -15,6 +15,7 @@ import {
 } from "./../../../../reduces/animeSearch";
 import { unwrapResult } from "@reduxjs/toolkit";
 import { useSelector, useDispatch } from "react-redux";
+import Card from "./../../../Card/Card";
 const AnimeSearchContainer = (props) => {
   let data = [1, 2, 3];
   const dispatch = useDispatch();
@@ -94,6 +95,8 @@ const AnimeSearchContainer = (props) => {
             />
             <div className="clearAll">ClearAll</div>
           </FormGroup>
+
+          <div className="containerListGenderImg">helllo</div>
         </>
       )}
       {/* <AnimeMutilCheckBox /> */}

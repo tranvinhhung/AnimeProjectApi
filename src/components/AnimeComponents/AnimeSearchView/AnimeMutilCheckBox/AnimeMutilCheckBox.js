@@ -48,25 +48,28 @@ export default function MultipleSelect(props) {
     (async () => {
       if (props.setname === "Genders") {
         let listAniSear = await dispatch(
-          handleAnimeSearchAsync({ dataSer: myData, name: "Genders" })
+          handleAnimeSearchAsync({ dataSer: myData.join(","), name: "Genders" })
         );
         let data = unwrapResult(listAniSear);
       }
       if (props.setname === "Year") {
         let listAniSear = await dispatch(
-          handleAnimeSearchAsync({ dataSer: myData, name: "Year" })
+          handleAnimeSearchAsync({ dataSer: myData.toString(), name: "Year" })
         );
         let data = unwrapResult(listAniSear);
       }
       if (props.setname === "Season") {
         let listAniSear = await dispatch(
-          handleAnimeSearchAsync({ dataSer: myData, name: "Season" })
+          handleAnimeSearchAsync({ dataSer: myData.toString(), name: "Season" })
         );
         let data = unwrapResult(listAniSear);
       }
       if (props.setname === "Format") {
         let listAniSear = await dispatch(
-          handleAnimeSearchAsync({ dataSer: myData, name: "Format" })
+          handleAnimeSearchAsync({
+            dataSer: myData,
+            name: "Format",
+          })
         );
         let data = unwrapResult(listAniSear);
       }
