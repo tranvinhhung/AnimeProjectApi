@@ -13,9 +13,12 @@ import {
   handleFormatSearch,
   handleAnimeYearAndGendersAsync,
 } from "./../../../../reduces/animeSearch";
+import Button from "@mui/material/Button";
 import { unwrapResult } from "@reduxjs/toolkit";
 import { useSelector, useDispatch } from "react-redux";
+import AnimeSearchRender from "./../AnimeSearchRender/AnimeSearchRender";
 import Card from "./../../../Card/Card";
+import DeleteIcon from "@mui/icons-material/Delete";
 const AnimeSearchContainer = (props) => {
   let data = [1, 2, 3];
   const dispatch = useDispatch();
@@ -93,10 +96,22 @@ const AnimeSearchContainer = (props) => {
               }
               label={false}
             />
-            <div className="clearAll">ClearAll</div>
+            <Button
+              size="small"
+              endIcon={<DeleteIcon />}
+              variant="contained"
+              className="clearAll"
+              sx={{
+                width: "100px !important",
+              }}
+            >
+              ClearAll
+            </Button>
           </FormGroup>
 
-          <div className="containerListGenderImg">helllo</div>
+          <div className="mainContainer genDerList" style={{ margin: "0" }}>
+            <AnimeSearchRender />
+          </div>
         </>
       )}
       {/* <AnimeMutilCheckBox /> */}

@@ -8,6 +8,7 @@ import { useTheme } from "@mui/material/styles";
 import { unwrapResult } from "@reduxjs/toolkit";
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import {
   handleAnimeSearchAsync,
   handleClearSearch,
@@ -25,7 +26,7 @@ export default function MultipleSelect(props) {
   const theme = useTheme();
   const dispatch = useDispatch();
   const [myData, setMyData] = useState([]);
-
+  const navigate = useNavigate();
   const handleChange = (event) => {
     const {
       target: { value },
@@ -42,6 +43,7 @@ export default function MultipleSelect(props) {
   useEffect(() => {
     document.querySelector(".clearAll").addEventListener("click", function () {
       setMyData([]);
+      navigate("/search");
       dispatch(handleClearSearch());
     });
 
@@ -78,11 +80,12 @@ export default function MultipleSelect(props) {
   return (
     <FormControl
       sx={{
-        m: 5,
+        m: 3,
         display: "flex",
         flexDirection: "row",
         alignItems: "center",
         gap: "1rem",
+        // height: "2rem",
       }}
     >
       <InputLabel id={`multiple-label-${props.setname}`}>
@@ -94,7 +97,12 @@ export default function MultipleSelect(props) {
         multiple={props.multiple}
         value={myData}
         onChange={handleChange}
-        input={<OutlinedInput style={{ width: 150 }} label={props.setname} />}
+        input={
+          <OutlinedInput
+            style={{ width: 100, height: 40 }}
+            label={props.setname}
+          />
+        }
         defaultValue=""
       >
         {props.datas.map((data, index) => (
@@ -113,8 +121,18 @@ export default function MultipleSelect(props) {
       <HighlightOffOutlinedIcon
         style={
           myData.toString()
-            ? { opacity: 1, width: "2rem", height: "2rem" }
-            : { opacity: 0, width: "2rem", height: "2rem" }
+            ? {
+                opacity: 1,
+                width: "2rem",
+                height: "2rem",
+                visibility: "visible",
+              }
+            : {
+                opacity: 0,
+                width: "2rem",
+                height: "2rem",
+                visibility: "hidden",
+              }
         }
         onClick={handleClear}
       />

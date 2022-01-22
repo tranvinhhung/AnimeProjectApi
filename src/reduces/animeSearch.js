@@ -1,5 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { handleGenerateYear, getGender } from "./../api/index";
+
 export const handleAnimeSearchAsync = createAsyncThunk(
   "handleAnimeSearch/list",
   async (data, thunkAPI) => {
@@ -77,12 +78,12 @@ const initialState = {
     year: "",
     season: "",
     format: "",
-    documents: [],
-    url: "https://api.aniapi.com/v1/anime?nsfw=true",
-    urlExamp:
-      "https://api.aniapi.com/v1/anime?formats=0&year=1999&season=3&genres=Pirates,War,Cyborg&nsfw=true",
+    detailSearchData: {},
+    url: "",
+    // urlExamp:
+    //   "https://api.aniapi.com/v1/anime?formats=0&year=1999&season=3&genres=Pirates,War,Cyborg&nsfw=true",
 
-    urlDum: "https://api.aniapi.com/v1/anime?title=notfound&nsfw=true",
+    urlDum: "https://api.aniapi.com/v1/anime?nsfw=true",
   },
   isFindData: false,
 };
@@ -104,9 +105,14 @@ const animeSearchSlice = createSlice({
       state.dataSearch.format = action.payload;
     },
     handleClearSearch(state, action) {
-      state.dataSearch = { ...initialState.dataSearch };
+      state.dataSearch.detailSearchData = {
+        ...initialState.dataSearch.detailSearchData,
+      };
+      state.dataSearch = {
+        ...initialState.dataSearch,
+      };
 
-      state.dataSearch.url = " ";
+      state.dataSearch.url = "";
     },
     handleReMoveSearchGender(state) {
       state.dataSearch.genres = "";
@@ -121,6 +127,12 @@ const animeSearchSlice = createSlice({
     handleRemoveSearchFormat(state) {
       state.dataSearch.format = "";
     },
+    handleDetailSearchData(state, action) {
+      state.dataSearch.detailSearchData = { ...action.payload };
+    },
+    handleChangePageValue(state, action) {
+      state.dataSearch.detailSearchData["current_page"] = action.payload;
+    },
   },
   extraReducers: {
     [handleAnimeSearchAsync.fulfilled]: (state, action) => {
@@ -132,9 +144,10 @@ const animeSearchSlice = createSlice({
         !state.dataSearch.format
       ) {
         state.dataSearch.url = "";
+        state.dataSearch.detailSearchData = {};
         // return;
       }
-      let url = initialState.dataSearch.url;
+      let url = initialState.dataSearch.urlDum;
       if (state.dataSearch.genres) {
         url += `&genres=${state.dataSearch.genres}`;
       }
@@ -147,7 +160,7 @@ const animeSearchSlice = createSlice({
       if (state.dataSearch.format) {
         url += `&formats=${state.dataSearch.format}`;
       }
-      if (url != initialState.dataSearch.url) {
+      if (url != initialState.dataSearch.urlDum) {
         state.dataSearch.url = url;
       } else {
         state.dataSearch.url = "";
@@ -178,5 +191,7 @@ export const {
   handleReMoveSearchYear,
   handleReMoveSearchSeason,
   handleRemoveSearchFormat,
+  handleDetailSearchData,
+  handleChangePageValue,
 } = animeSearchSlice.actions;
 export default animeSearchSlice;
