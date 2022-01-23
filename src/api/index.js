@@ -98,7 +98,7 @@ export const handleGenerateYear = () => {
   console.log(year);
   return year;
 };
-export const listAnimeSearchApi = async (url, page = 1, per_page = 21) => {
+export const listAnimeSearchApi = async ({ url, page = 1, per_page = 21 }) => {
   let arr = await axios.get(`${url}&per_page=${per_page}&page=${page}`);
   let data = arr?.data;
   // console.log(data);

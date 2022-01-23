@@ -1,5 +1,9 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { handleGenerateYear, getGender } from "./../api/index";
+import {
+  handleGenerateYear,
+  getGender,
+  listAnimeSearchApi,
+} from "./../api/index";
 
 export const handleAnimeSearchAsync = createAsyncThunk(
   "handleAnimeSearch/list",
@@ -7,21 +11,25 @@ export const handleAnimeSearchAsync = createAsyncThunk(
     let predat = thunkAPI.getState();
     console.log(predat);
     let url = thunkAPI.getState().mySearch.dataSearch.url;
+    let gender = thunkAPI.getState().mySearch.dataSearch.genres;
+    let format = thunkAPI.getState().mySearch.dataSearch.format;
+    let year = thunkAPI.getState().mySearch.dataSearch.year;
+    let season = thunkAPI.getState().mySearch.dataSearch.season;
     if (data.name === "Genders") {
       if (data.dataSer) {
         await thunkAPI.dispatch(handleGenderSearch(data.dataSer));
       }
-      if (!data.dataSer) {
-        await thunkAPI.dispatch(handleReMoveSearchGender());
-      }
+      !data.dataSer &&
+        gender &&
+        (await thunkAPI.dispatch(handleReMoveSearchGender()));
     }
     if (data.name === "Year") {
       if (data.dataSer) {
         await thunkAPI.dispatch(handleYearSearch(data.dataSer));
       }
-      if (!data.dataSer) {
-        await thunkAPI.dispatch(handleReMoveSearchYear());
-      }
+      !data.dataSer &&
+        year &&
+        (await thunkAPI.dispatch(handleReMoveSearchYear()));
     }
     if (data.name === "Season") {
       // console.log(data.dataSer);
@@ -30,9 +38,9 @@ export const handleAnimeSearchAsync = createAsyncThunk(
 
         await thunkAPI.dispatch(handleSeasonSearch(trandatatonumber));
       }
-      if (!data.dataSer) {
-        await thunkAPI.dispatch(handleReMoveSearchSeason());
-      }
+      !data.dataSer &&
+        season &&
+        (await thunkAPI.dispatch(handleReMoveSearchSeason()));
     }
     if (data.name === "Format") {
       // console.log(data.dataSer);
@@ -47,7 +55,7 @@ export const handleAnimeSearchAsync = createAsyncThunk(
         await thunkAPI.dispatch(handleFormatSearch(pointFormat));
       }
       if (!data.dataSer || data.dataSer.length === 0) {
-        await thunkAPI.dispatch(handleRemoveSearchFormat());
+        format && (await thunkAPI.dispatch(handleRemoveSearchFormat()));
       }
     }
 
@@ -62,6 +70,18 @@ export const handleAnimeYearAndGendersAsync = createAsyncThunk(
     let dataa = await Promise.all([getGender(), handleGenerateYear()]);
     // console.log(dataa);
     return dataa;
+  }
+);
+export const handleListCurrentAnimeSearchWithPage = createAsyncThunk(
+  "handleListCurrentAnimeSearchWithPage/list",
+  async (data, thunkAPI) => {
+    let predat = thunkAPI.getState();
+    console.log(data);
+    let dataSearchApi = await listAnimeSearchApi({
+      url: data.url,
+      page: data.page,
+    });
+    return dataSearchApi.data;
   }
 );
 
@@ -104,15 +124,11 @@ const animeSearchSlice = createSlice({
     handleFormatSearch(state, action) {
       state.dataSearch.format = action.payload;
     },
-    handleClearSearch(state, action) {
-      state.dataSearch.detailSearchData = {
-        ...initialState.dataSearch.detailSearchData,
-      };
-      state.dataSearch = {
-        ...initialState.dataSearch,
-      };
-
-      state.dataSearch.url = "";
+    handleClearDetailSearchData(state, action) {
+      state.dataSearch.detailSearchData = {};
+    },
+    handleClearSearch(state) {
+      state.dataSearch = { ...initialState.dataSearch };
     },
     handleReMoveSearchGender(state) {
       state.dataSearch.genres = "";
@@ -129,13 +145,18 @@ const animeSearchSlice = createSlice({
     },
     handleDetailSearchData(state, action) {
       state.dataSearch.detailSearchData = { ...action.payload };
+      state.isFindData = false;
     },
     handleChangePageValue(state, action) {
       state.dataSearch.detailSearchData["current_page"] = action.payload;
     },
+    handleFinData(state) {
+      state.isFindData = true;
+    },
   },
   extraReducers: {
     [handleAnimeSearchAsync.fulfilled]: (state, action) => {
+      state.isFindData = false;
       console.log(state.dataSearch);
       if (
         !state.dataSearch.gender &&
@@ -166,16 +187,37 @@ const animeSearchSlice = createSlice({
         state.dataSearch.url = "";
       }
     },
-    [handleAnimeSearchAsync.pending]: (state, action) => {},
-    [handleAnimeSearchAsync.rejected]: (state, action) => {},
+    [handleAnimeSearchAsync.pending]: (state, action) => {
+      state.isFindData = true;
+    },
+    [handleAnimeSearchAsync.rejected]: (state, action) => {
+      state.isFindData = false;
+    },
+
+    //handleAnimeYearAndGendersAsync
     [handleAnimeYearAndGendersAsync.fulfilled]: (state, action) => {
+      state.isFindData = false;
       let [gender, year] = action.payload;
       state.data.genres = [...gender];
       state.data.year = [...year];
       console.log(action.payload);
     },
-    [handleAnimeYearAndGendersAsync.pending]: (state, action) => {},
-    [handleAnimeYearAndGendersAsync.rejected]: (state, action) => {},
+    [handleAnimeYearAndGendersAsync.pending]: (state, action) => {
+      state.isFindData = true;
+    },
+    [handleAnimeYearAndGendersAsync.rejected]: (state, action) => {
+      state.isFindData = false;
+    },
+    //handleListCurrentAnimeSearchWithPage
+    [handleListCurrentAnimeSearchWithPage.fulfilled]: (state, action) => {
+      state.isFindData = false;
+    },
+    [handleListCurrentAnimeSearchWithPage.pending]: (state, action) => {
+      state.isFindData = true;
+    },
+    [handleListCurrentAnimeSearchWithPage.rejected]: (state, action) => {
+      state.isFindData = false;
+    },
   },
 });
 
@@ -193,5 +235,6 @@ export const {
   handleRemoveSearchFormat,
   handleDetailSearchData,
   handleChangePageValue,
+  handleClearDetailSearchData,
 } = animeSearchSlice.actions;
 export default animeSearchSlice;

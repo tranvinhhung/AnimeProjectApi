@@ -3,7 +3,7 @@ import "./footer.scss";
 function Footer() {
   return (
     <footer className="container footer">
-      <h1>MyAnime</h1>
+      <h2>MyAnime</h2>
       <ul>
         <li>Get started</li>
         <li>Home</li>

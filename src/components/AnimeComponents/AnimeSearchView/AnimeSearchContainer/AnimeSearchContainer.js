@@ -19,6 +19,7 @@ import { useSelector, useDispatch } from "react-redux";
 import AnimeSearchRender from "./../AnimeSearchRender/AnimeSearchRender";
 import Card from "./../../../Card/Card";
 import DeleteIcon from "@mui/icons-material/Delete";
+import LoadingNew from "../../../Loading/LoadingNew/LoadingNew";
 const AnimeSearchContainer = (props) => {
   let data = [1, 2, 3];
   const dispatch = useDispatch();
@@ -27,7 +28,7 @@ const AnimeSearchContainer = (props) => {
   let season = useSelector((state) => state.mySearch.data?.season);
   let format = useSelector((state) => state.mySearch.data?.format);
   // const [genderyearDum, setGenderYearDum] = useState([]);
-
+  let finData = useSelector((state) => state.mySearch.isFindData);
   // const handleClearAll = () => {};
 
   useEffect(() => {
@@ -105,12 +106,25 @@ const AnimeSearchContainer = (props) => {
                 width: "100px !important",
               }}
             >
-              ClearAll
+              Clear All
             </Button>
           </FormGroup>
 
           <div className="mainContainer genDerList" style={{ margin: "0" }}>
             <AnimeSearchRender />
+            {/* {finData && <LoadingNew />} */}
+            {/* <LoadingNew
+              style={
+                !finData
+                  ? { opacity: 0, visibility: "hidden" }
+                  : {
+                      opacity: 1,
+
+                      visibility: "visible",
+                    }
+              } */}
+            {/* {finData && <LoadingNew />} */}
+            <LoadingNew isFindata={finData} />
           </div>
         </>
       )}

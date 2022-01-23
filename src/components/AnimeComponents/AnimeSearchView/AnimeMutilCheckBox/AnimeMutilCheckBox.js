@@ -41,39 +41,59 @@ export default function MultipleSelect(props) {
     setMyData([]);
   };
   useEffect(() => {
-    document.querySelector(".clearAll").addEventListener("click", function () {
-      setMyData([]);
-      navigate("/search");
-      dispatch(handleClearSearch());
-    });
+    document
+      .querySelector(".clearAll")
+      .addEventListener("click", async function () {
+        setMyData([]);
+        dispatch(handleClearSearch());
+        navigate("/search");
+      });
 
     (async () => {
       if (props.setname === "Genders") {
-        let listAniSear = await dispatch(
-          handleAnimeSearchAsync({ dataSer: myData.join(","), name: "Genders" })
-        );
-        let data = unwrapResult(listAniSear);
+        let string = myData.join(",");
+        if (string) {
+          let listAniSear = await dispatch(
+            handleAnimeSearchAsync({
+              dataSer: string,
+              name: "Genders",
+            })
+          );
+          let data = unwrapResult(listAniSear);
+        }
       }
       if (props.setname === "Year") {
-        let listAniSear = await dispatch(
-          handleAnimeSearchAsync({ dataSer: myData.toString(), name: "Year" })
-        );
-        let data = unwrapResult(listAniSear);
+        let string = myData.toString();
+        if (string) {
+          let listAniSear = await dispatch(
+            handleAnimeSearchAsync({ dataSer: string, name: "Year" })
+          );
+          let data = unwrapResult(listAniSear);
+        }
       }
       if (props.setname === "Season") {
-        let listAniSear = await dispatch(
-          handleAnimeSearchAsync({ dataSer: myData.toString(), name: "Season" })
-        );
-        let data = unwrapResult(listAniSear);
+        let string = myData.toString();
+        if (string) {
+          let listAniSear = await dispatch(
+            handleAnimeSearchAsync({
+              dataSer: string,
+              name: "Season",
+            })
+          );
+          let data = unwrapResult(listAniSear);
+        }
       }
       if (props.setname === "Format") {
-        let listAniSear = await dispatch(
-          handleAnimeSearchAsync({
-            dataSer: myData,
-            name: "Format",
-          })
-        );
-        let data = unwrapResult(listAniSear);
+        let string = myData.join(",");
+        if (string) {
+          let listAniSear = await dispatch(
+            handleAnimeSearchAsync({
+              dataSer: myData,
+              name: "Format",
+            })
+          );
+          let data = unwrapResult(listAniSear);
+        }
       }
     })();
   }, [myData]);
