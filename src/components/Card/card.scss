@@ -80,6 +80,8 @@
   height: 30vh;
   transition: all 1s;
   position: relative;
+  opacity: 0;
+  visibility: hidden;
   &::after {
     content: "";
     position: absolute;

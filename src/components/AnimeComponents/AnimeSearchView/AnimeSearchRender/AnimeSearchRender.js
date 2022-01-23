@@ -16,6 +16,9 @@ import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import Card from "./../../../Card/Card";
 import { unwrapResult } from "@reduxjs/toolkit";
+import { gsap } from "gsap";
+import { CSSPlugin } from "gsap/CSSPlugin";
+gsap.registerPlugin(CSSPlugin);
 const AnimeSearchRender = () => {
   let url = useSelector((state) => state.mySearch.dataSearch?.url);
   let currentPage = useSelector(
@@ -33,6 +36,7 @@ const AnimeSearchRender = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const location = useLocation();
+  let tl = gsap.timeline();
   useEffect(() => {
     (async () => {
       try {
@@ -83,6 +87,34 @@ const AnimeSearchRender = () => {
   const handleChangePage = (e) => {
     dispatch(handleChangePageValue(e.target.value));
   };
+  useEffect(() => {
+    let card;
+    if (dataSearDetail) {
+      card = document.querySelectorAll(".cardConatiner");
+    }
+
+    function hide(elem) {
+      gsap.set(elem, { autoAlpha: 0, scale: 0.5 });
+    }
+
+    dataSearDetail &&
+      (function () {
+        card.forEach((el, index) => {
+          hide(el);
+        });
+        tl.to(".cardConatiner", 0.4, {
+          autoAlpha: 1,
+          scale: 1,
+
+          stagger: {
+            from: "random",
+
+            amount: 1.2,
+          },
+          ease: "Power3.easeOut",
+        });
+      })();
+  }, [dataSearDetail]);
   return (
     <>
       <div className="containerListGenderImg">
