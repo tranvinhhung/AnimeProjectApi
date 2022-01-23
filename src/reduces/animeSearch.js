@@ -35,8 +35,10 @@ export const handleAnimeSearchAsync = createAsyncThunk(
       // console.log(data.dataSer);
       if (data.dataSer) {
         let trandatatonumber = initialState.data.season.indexOf(data.dataSer);
-
-        await thunkAPI.dispatch(handleSeasonSearch(trandatatonumber));
+        console.log(trandatatonumber);
+        await thunkAPI.dispatch(
+          handleSeasonSearch(trandatatonumber.toString())
+        );
       }
       !data.dataSer &&
         season &&
@@ -145,8 +147,13 @@ const animeSearchSlice = createSlice({
     },
     handleDetailSearchData(state, action) {
       state.dataSearch.detailSearchData = { ...action.payload };
+      // state.dataSearch.detailSearchData["current_page"] = 1;
       state.isFindData = false;
     },
+    resetPageValue(state, action) {
+      state.dataSearch.detailSearchData["current_page"] = 1;
+    },
+
     handleChangePageValue(state, action) {
       state.dataSearch.detailSearchData["current_page"] = action.payload;
     },
@@ -236,5 +243,6 @@ export const {
   handleDetailSearchData,
   handleChangePageValue,
   handleClearDetailSearchData,
+  resetPageValue,
 } = animeSearchSlice.actions;
 export default animeSearchSlice;

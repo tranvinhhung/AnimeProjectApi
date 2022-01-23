@@ -12,6 +12,7 @@ import {
   handleSeasonSearch,
   handleFormatSearch,
   handleAnimeYearAndGendersAsync,
+  resetPageValue,
 } from "./../../../../reduces/animeSearch";
 import Button from "@mui/material/Button";
 import { unwrapResult } from "@reduxjs/toolkit";
@@ -34,6 +35,7 @@ const AnimeSearchContainer = (props) => {
   useEffect(() => {
     (async () => {
       try {
+        dispatch(resetPageValue());
         let dataa = await dispatch(handleAnimeYearAndGendersAsync());
         let dataa2 = unwrapResult(dataa);
         // const [gender, years] = dataa2;

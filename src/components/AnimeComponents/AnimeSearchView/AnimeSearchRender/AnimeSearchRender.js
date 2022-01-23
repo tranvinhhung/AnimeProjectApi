@@ -88,6 +88,7 @@ const AnimeSearchRender = () => {
       <div className="containerListGenderImg">
         {!finData &&
           location.search &&
+          url &&
           dataSearDetail?.map((el, index) => <Card key={index} data={el} />)}
       </div>
       {!location.search && !finData && (

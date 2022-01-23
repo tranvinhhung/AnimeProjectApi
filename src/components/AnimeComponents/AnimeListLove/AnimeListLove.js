@@ -7,16 +7,16 @@ import neZuko from "./../../../utils/img/nezuko.png";
 const AnimeListLove = () => {
   const listLoveAnimeId = useSelector((state) => state.myUsers.users);
   let currentUser = useSelector((state) => state.myLogin?.data?.data?.user);
-  console.log(currentUser);
+  // console.log(currentUser);
   const [animeLoveList, setanimeLoveList] = useState([]);
 
   useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (!token) {
+      setanimeLoveList([]);
+    }
     (async () => {
       try {
-        const token = localStorage.getItem("token");
-        if (!token) {
-          setanimeLoveList([]);
-        }
         if (token) {
           let decode = jwt_decode(token);
           let idUser = decode.id;
