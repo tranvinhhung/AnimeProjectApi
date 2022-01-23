@@ -1,0 +1,34 @@
+h5 {
+  font-family: "Courier New", Courier, monospace;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -150%);
+  color: #333;
+  font-size: 4em;
+  letter-spacing: 5px;
+  border-bottom: 16px solid #333;
+  line-height: 1.4;
+  display: inline-block;
+  text-transform: uppercase;
+  transition: all 0.8s;
+}
+h5::before {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  color: dodgerblue;
+  border-bottom: 16px solid dodgerblue;
+  animation: lod 0.5s linear infinite;
+  overflow: hidden;
+}
+@keyframes lod {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 100%;
+  }
+}
