@@ -24,14 +24,14 @@ const AnimeCommentContainer = (props) => {
   };
   useEffect(() => {
     activeComment &&
-      localStorage.getItem("token") &&
+      currentUser &&
       document
         .querySelector(".inputComment")
         .addEventListener("focus", function (e) {
           document.querySelector(".commentInput").classList.add("active");
         });
     activeComment &&
-      localStorage.getItem("token") &&
+      currentUser &&
       document
         .querySelector(".inputComment")
         .addEventListener("blur", function (e) {
@@ -80,7 +80,7 @@ const AnimeCommentContainer = (props) => {
 
           {/* check có user hay không để hiện cái input hay cái thông báo cần đăng nhập*/}
           <div className="commentInput">
-            {localStorage.getItem("token") && (
+            {currentUser && (
               <>
                 <form id="formComment" onSubmit={handleComment}>
                   <label htmlFor="commentID">{currentUser.name}</label>
@@ -97,9 +97,7 @@ const AnimeCommentContainer = (props) => {
                 </form>
               </>
             )}
-            {!localStorage.getItem("token") && (
-              <>Hãy đăng nhập để comment bạn nhé!!!</>
-            )}
+            {!currentUser && <>Hãy đăng nhập để comment bạn nhé!!!</>}
           </div>
         </div>
       )}
