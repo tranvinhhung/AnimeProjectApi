@@ -21,7 +21,6 @@ function About() {
   return (
     <>
       <main className="mainContainer">About</main>;
-      <button onClick={handleChangeUrl}>button</button>
     </>
   );
 }

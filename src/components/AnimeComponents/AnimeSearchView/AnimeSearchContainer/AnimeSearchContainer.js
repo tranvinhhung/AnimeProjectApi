@@ -33,6 +33,7 @@ const AnimeSearchContainer = (props) => {
   // const handleClearAll = () => {};
 
   useEffect(() => {
+    window.scroll(0, 0);
     (async () => {
       try {
         dispatch(resetPageValue());

@@ -1,6 +1,37 @@
-.listLoveanime {
-  .cardConatiner {
-    opacity: 1;
-    visibility: visible;
+.listLovecontainer {
+  position: relative;
+  //   background-color: rgba(255, 0, 0, 0.644);
+
+  .listLoveanime {
+    .cardConatiner {
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+  span {
+    display: inline-block;
+  }
+  .chucmung {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    // transform: translate(50%, 0);
+    font-size: 8rem;
+    color: red;
+  }
+  .nammoi {
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    font-size: 8rem;
+    color: red;
+  }
+  .animateTag {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 10%;
+    height: 100%;
+    background-color: rgba(255, 0, 0, 0.644);
   }
 }

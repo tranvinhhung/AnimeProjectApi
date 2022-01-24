@@ -134,7 +134,7 @@ const AnimeSearchRender = () => {
         </div>
       )}
       {!finData && dataSearDetail && location.search && (
-        <Box sx={{ width: 120, margin: "0 auto" }}>
+        <Box sx={{ width: 100, margin: "1rem auto" }}>
           <FormControl fullWidth>
             <InputLabel id="select-label">Trang</InputLabel>
             <Select
