@@ -7,6 +7,7 @@ import {
   addAnimeCommentID,
   handleCloseComment,
   handleOpenComment,
+  addCommentWithIDanimeAndUserID,
 } from "./../../../../reduces/animeComment";
 import "./animeCommentContainer.scss";
 const AnimeCommentContainer = (props) => {
@@ -60,11 +61,21 @@ const AnimeCommentContainer = (props) => {
       console.log(err);
     }
   }, [props.idAnime]);
-  const handleComment = (e) => {
-    e.preventDefault();
+  const handleComment = ({ user, idAnime }) => {
     console.log(inputComment.current.value);
     console.log(currentUser, props.idAnime);
-    inputComment.current.value = "";
+    if (inputComment.current.value.trim()) {
+      let createDate = new Date();
+      dispatch(
+        addCommentWithIDanimeAndUserID({
+          content: inputComment.current.value,
+          user,
+          idAnime,
+          createDate,
+        })
+      );
+      inputComment.current.value = "";
+    }
   };
   return (
     <div className="wrapper animeCommentContainer">
@@ -82,7 +93,16 @@ const AnimeCommentContainer = (props) => {
           <div className="commentInput">
             {currentUser && (
               <>
-                <form id="formComment" onSubmit={handleComment}>
+                <form
+                  id="formComment"
+                  onSubmit={(e) => {
+                    e.preventDefault();
+                    handleComment({
+                      user: currentUser,
+                      idAnime: props.idAnime,
+                    });
+                  }}
+                >
                   <label htmlFor="commentID">{currentUser.name}</label>
                   <input
                     type="text"

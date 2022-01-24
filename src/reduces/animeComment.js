@@ -1,4 +1,4 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk, current } from "@reduxjs/toolkit";
 import {
   getAnimeWidthId,
   handlePromis,
@@ -9,14 +9,6 @@ export const handleAnimeComments = createAsyncThunk(
   async (data, thunkAPI) => {
     let predat = thunkAPI;
     console.log(predat);
-    //cach 1
-    // const allAnime = await Promise.all([
-    //   ...(await handlePromis(getAnimeWidthId, data)),
-    // ]);
-    // return allAnime;
-    // cach2
-    let allAnime = await hanleListAnimeWithArrayId(data);
-    return allAnime;
   }
 );
 
@@ -52,7 +44,69 @@ const animeCommentSlice = createSlice({
     handleCloseComment(state) {
       state.activeComent = false;
     },
-    addComment(state, action) {},
+    addCommentWithIDanimeAndUserID(state, action) {
+      let listDataWithidAnimeComment = state.dataBaseComments.filter(
+        (el) => el.idAnimeComment === action.payload.idAnime
+      );
+      let listDataNotidAnimeComment = state.dataBaseComments.filter(
+        (el) => el.idAnimeComment !== action.payload.idAnime
+      );
+      console.log(current(state));
+      let { idAnimeComment, listUsersComment } = listDataWithidAnimeComment[0];
+      let filterUserID = listUsersComment.filter(
+        (el) => el.idUser === action.payload.user._id
+      );
+      let filterUserOtherID = listUsersComment.filter(
+        (el) => el.idUser != action.payload.user._id
+      );
+      if (filterUserID.length === 0) {
+        filterUserID.push({
+          idUserd: action.payload.user._id,
+          commentForUser: [
+            {
+              idComment: 1,
+              content: action.payload.content,
+              createAt: action.payload.createDate,
+              updateAt: 0,
+            },
+          ],
+        });
+
+        state.dataBaseComments = [
+          ...listDataNotidAnimeComment,
+          {
+            idAnimeComment: action.payload.idAnime,
+            listUsersComment: [{ ...filterUserID }],
+          },
+        ];
+        console.log(current(state));
+        // return;
+      }
+      if (filterUserID.length > 0) {
+        let arr = [...filterUserID[0]?.commentForUser];
+        arr.push({
+          idComment: arr.length + 1,
+          content: action.payload.content,
+          createAt: action.payload.createDate,
+          updateAt: 0,
+        });
+        let newdataa = [
+          ...listDataNotidAnimeComment,
+          {
+            idAnimeComment: action.payload.idAnime,
+            listUsersComment: [
+              ...filterUserOtherID,
+              {
+                idUser: action.payload.user._id,
+                commentForUser: [...arr],
+              },
+            ],
+          },
+        ];
+        state.dataBaseComments = newdataa;
+        console.log(current(state));
+      }
+    },
     removeComment(state, action) {},
     addAnimeCommentID(state, action) {
       state.dataBaseComments.push({
@@ -86,5 +140,6 @@ export const {
   addAnimeCommentID,
   handleOpenComment,
   handleCloseComment,
+  addCommentWithIDanimeAndUserID,
 } = animeCommentSlice.actions;
 export default animeCommentSlice;
