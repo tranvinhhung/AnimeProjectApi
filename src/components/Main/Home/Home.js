@@ -45,6 +45,7 @@ function Home() {
       setLoading(false);
     })();
   }, []);
+  useEffect(() => {});
   return (
     <>
       {/* <Header /> */}

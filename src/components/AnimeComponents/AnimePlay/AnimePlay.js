@@ -150,8 +150,7 @@ function AnimePlay(props) {
     window.scrollTo(0, 0);
     (async () => {
       let tl = gsap.timeline();
-      await tl
-        .from(boxRef.current, { autoAlpha: 0, duration: 0.5, scale: 0.6 })
+      tl.to(boxRef.current, { autoAlpha: 1, duration: 1, scale: 1 })
         .from(imgRef.current, {
           scale: 0.7,
           autoAlpha: 0,

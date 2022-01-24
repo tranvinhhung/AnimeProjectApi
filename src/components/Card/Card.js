@@ -27,7 +27,11 @@ function Card(props) {
   };
 
   return (
-    <figure className={lop || "cardConatiner"} onClick={handleChangeUrl}>
+    <figure
+      className={lop || "cardConatiner"}
+      onClick={handleChangeUrl}
+      style={lop ? { opacity: 1, visibility: "visible" } : {}}
+    >
       <PlayCircleOutlineIcon></PlayCircleOutlineIcon>
       {lop && (
         <img

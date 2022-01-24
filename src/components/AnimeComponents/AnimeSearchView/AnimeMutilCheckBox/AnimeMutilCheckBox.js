@@ -44,8 +44,8 @@ export default function MultipleSelect(props) {
     document
       .querySelector(".clearAll")
       .addEventListener("click", async function () {
-        // setMyData([]);
-        dispatch(handleClearSearch());
+        setMyData([]);
+        // dispatch(handleClearSearch());
         navigate("/search");
       });
 
