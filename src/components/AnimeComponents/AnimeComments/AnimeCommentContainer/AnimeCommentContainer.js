@@ -20,6 +20,7 @@ const AnimeCommentContainer = (props) => {
   let currentCommentId = useSelector(
     (state) => state.myComments?.commentCurrentDB
   );
+  console.log(currentCommentId);
   const handleOpenComments = () => {
     dispatch(handleOpenComment());
   };
@@ -41,7 +42,7 @@ const AnimeCommentContainer = (props) => {
         .addEventListener("blur", function (e) {
           document.querySelector(".commentInput").classList.remove("active");
         });
-  }, [activeComment]);
+  }, [activeComment, currentCommentId]);
   useEffect(() => {
     try {
       props.idAnime &&
@@ -101,12 +102,10 @@ const AnimeCommentContainer = (props) => {
             createAt: el2.createAt,
           };
         });
-        return arr;
+        return arr.filter((el, index) => index >= 1);
       });
-      let data = [...ray]
-        .flat()
-        .sort((a, b) => a.createAt - b.createAt)
-        .filter((el, index) => index >= 2);
+      let data = [...ray].flat().sort((a, b) => a.createAt - b.createAt);
+
       console.log(data);
       return data.map((el, index) => <AnimeCommentRow data={el} key={index} />);
     }
@@ -125,8 +124,16 @@ const AnimeCommentContainer = (props) => {
       {activeComment && (
         <div className="animeCommentActive">
           <span onClick={handleCloseComments}>Comment here</span>
-          <div>{currentCommentId && handleListComment(currentCommentId)}</div>
-
+          {currentCommentId.length > 0 && (
+            <div className="animeListComContai active">
+              {handleListComment(currentCommentId)}
+            </div>
+          )}
+          {currentCommentId.length === 0 && (
+            <div className="animeListComContai">
+              Hiện tại chưa có comment bạn hãy comment nào !!!
+            </div>
+          )}
           {/* check có user hay không để hiện cái input hay cái thông báo cần đăng nhập*/}
           <div className="commentInput">
             {currentUser && (
