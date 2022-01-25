@@ -1,16 +1,11 @@
 import React from "react";
-
-const AnimeCommentRow = () => {
+import { handleChangeDay } from "./../../../../api/handleData";
+const AnimeCommentRow = (props) => {
   return (
     <div className="aniCommentRow">
-      <span>ten</span>
-      <p className="animeCommentContent">
-        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Omnis
-        doloremque hic magni illum quod pariatur porro quam ullam aliquid, minus
-        accusamus, cum recusandae dignissimos aspernatur consequuntur sequi
-        voluptas beatae consectetur!{" "}
-      </p>
-      <p>Bình luận vào ngay thang</p>
+      <span>{props.data.name}</span>
+      <p className="animeCommentContent">{props.data.content}</p>
+      <p>{handleChangeDay(props.data.createAt)}</p>
     </div>
   );
 };

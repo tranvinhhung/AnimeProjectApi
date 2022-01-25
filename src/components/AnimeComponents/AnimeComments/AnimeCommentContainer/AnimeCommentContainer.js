@@ -8,15 +8,18 @@ import {
   handleCloseComment,
   handleOpenComment,
   addCommentWithIDanimeAndUserID,
+  getAllAnimeCommentCurrentWithId,
 } from "./../../../../reduces/animeComment";
 import "./animeCommentContainer.scss";
 const AnimeCommentContainer = (props) => {
-  const [activeComent, setactiveComent] = useState(false);
   const dispatch = useDispatch();
   const inputComment = useRef();
   let listComment = useSelector((state) => state.myComments.dataBaseComments);
   let currentUser = useSelector((state) => state.myLogin?.data?.data?.user);
   let activeComment = useSelector((state) => state.myComments.activeComent);
+  let currentCommentId = useSelector(
+    (state) => state.myComments?.commentCurrentDB
+  );
   const handleOpenComments = () => {
     dispatch(handleOpenComment());
   };
@@ -41,7 +44,6 @@ const AnimeCommentContainer = (props) => {
   }, [activeComment]);
   useEffect(() => {
     try {
-      dispatch(handleCloseComment());
       props.idAnime &&
         (async () => {
           try {
@@ -52,6 +54,10 @@ const AnimeCommentContainer = (props) => {
               dispatch(addAnimeCommentID({ idAnime: props.idAnime }));
             }
             if (arrayId.length > 0) {
+              // dispatch(
+              //   getAllAnimeCommentCurrentWithId({ idAnime: props.idAnime })
+              // );
+              currentCommentId && handleListComment(currentCommentId);
             }
           } catch (err) {
             throw new Error(err);
@@ -60,6 +66,9 @@ const AnimeCommentContainer = (props) => {
     } catch (err) {
       console.log(err);
     }
+  }, [props.idAnime, listComment]);
+  useEffect(() => {
+    dispatch(handleCloseComment());
   }, [props.idAnime]);
   const handleComment = ({ user, idAnime }) => {
     console.log(inputComment.current.value);
@@ -74,9 +83,40 @@ const AnimeCommentContainer = (props) => {
           createDate,
         })
       );
+      dispatch(getAllAnimeCommentCurrentWithId({ idAnime: props.idAnime }));
       inputComment.current.value = "";
     }
   };
+  const handleListComment = (arr) => {
+    console.log(arr);
+    if (arr.length > 0) {
+      let [a] = arr;
+      let { idAnimeComment, listUsersComment } = a;
+      let ray = listUsersComment.map((el1) => {
+        let arr = el1.commentForUser.map((el2, index) => {
+          return {
+            idUser: el1.idUser,
+            name: el1.nameUser,
+            content: el2.content,
+            createAt: el2.createAt,
+          };
+        });
+        return arr;
+      });
+      let data = [...ray]
+        .flat()
+        .sort((a, b) => a.createAt - b.createAt)
+        .filter((el, index) => index >= 2);
+      console.log(data);
+      return data.map((el, index) => <AnimeCommentRow data={el} key={index} />);
+    }
+    // for (let iidAnimeComment,listUsersComment = 0; i < arr; i++) {
+    //   for (let i = 0; i < arr[i].commentForUser.length; i++) {
+    //     console.log(arr[i].commentForUser);
+    //   }
+    // }
+  };
+
   return (
     <div className="wrapper animeCommentContainer">
       {!activeComment && (
@@ -85,9 +125,7 @@ const AnimeCommentContainer = (props) => {
       {activeComment && (
         <div className="animeCommentActive">
           <span onClick={handleCloseComments}>Comment here</span>
-          <div>
-            <AnimeCommentRow />
-          </div>
+          <div>{currentCommentId && handleListComment(currentCommentId)}</div>
 
           {/* check có user hay không để hiện cái input hay cái thông báo cần đăng nhập*/}
           <div className="commentInput">

@@ -32,6 +32,7 @@ const initialState = {
       ],
     },
   ],
+  commentCurrentDB: [],
 };
 
 const animeCommentSlice = createSlice({
@@ -62,6 +63,7 @@ const animeCommentSlice = createSlice({
       if (filterUserID.length === 0) {
         filterUserID.push({
           idUserd: action.payload.user._id,
+          nameUser: action.payload.user.name,
           commentForUser: [
             {
               idComment: 1,
@@ -98,6 +100,7 @@ const animeCommentSlice = createSlice({
               ...filterUserOtherID,
               {
                 idUser: action.payload.user._id,
+                nameUser: action.payload.user.name,
                 commentForUser: [...arr],
               },
             ],
@@ -126,6 +129,12 @@ const animeCommentSlice = createSlice({
         ],
       });
     },
+    getAllAnimeCommentCurrentWithId(state, action) {
+      let filterAnimeIdList = state.dataBaseComments.filter(
+        (el) => el.idAnimeComment === action.payload.idAnime
+      );
+      state.commentCurrentDB = [...filterAnimeIdList];
+    },
   },
   extraReducers: {
     [handleAnimeComments.fulfilled]: (state, action) => {},
@@ -141,5 +150,6 @@ export const {
   handleOpenComment,
   handleCloseComment,
   addCommentWithIDanimeAndUserID,
+  getAllAnimeCommentCurrentWithId,
 } = animeCommentSlice.actions;
 export default animeCommentSlice;

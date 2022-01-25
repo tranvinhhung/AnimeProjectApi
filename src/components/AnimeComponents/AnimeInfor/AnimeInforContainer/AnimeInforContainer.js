@@ -1,24 +1,25 @@
 import React, { useEffect } from "react";
 import PopoverItem from "./../../../Popover/PopoverItem/PopoverItem";
+import { handleChangeDay } from "./../../../../api/handleData";
 import "./AnimeInfor.scss";
 const AnimeInforContainer = (props) => {
-  const handleChangeDay = (date) => {
-    let day = new Date(date);
-    const options = {
-      hour: "2-digit",
-      minute: "numeric",
-      day: "numeric",
-      month: "long",
-      year: "numeric",
-      weekday: "short",
-      //   dateStyle: "short",
-    };
+  // const handleChangeDay = (date) => {
+  //   let day = new Date(date);
+  //   const options = {
+  //     hour: "2-digit",
+  //     minute: "numeric",
+  //     day: "numeric",
+  //     month: "long",
+  //     year: "numeric",
+  //     weekday: "short",
+  //     //   dateStyle: "short",
+  //   };
 
-    let a = new Intl.DateTimeFormat("en-US", options).format(day);
-    let b = a.replaceAll(",", " ");
-    console.log(b);
-    return b;
-  };
+  //   let a = new Intl.DateTimeFormat("en-US", options).format(day);
+  //   let b = a.replaceAll(",", " ");
+  //   console.log(b);
+  //   return b;
+  // };
 
   const handleEnum = (numberr) => {
     if (numberr === 0) {
@@ -72,6 +73,7 @@ const AnimeInforContainer = (props) => {
             if (el) {
               return (
                 <PopoverItem
+                  key={index}
                   isStyle={props.dataIn?.["cover_color"]}
                   gender={el}
                 />

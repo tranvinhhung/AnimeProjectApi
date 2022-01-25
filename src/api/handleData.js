@@ -30,3 +30,21 @@ export const handerAnime = async (count) => {
   return arrayList;
 };
 export const handerCollection = async (sesionid) => {};
+
+export const handleChangeDay = (date) => {
+  let day = new Date(date);
+  const options = {
+    hour: "2-digit",
+    minute: "numeric",
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+    weekday: "short",
+    //   dateStyle: "short",
+  };
+
+  let a = new Intl.DateTimeFormat("en-US", options).format(day);
+  let b = a.replaceAll(",", " ");
+  console.log(b);
+  return b;
+};

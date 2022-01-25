@@ -10,6 +10,7 @@
   &.active {
     opacity: 1;
     visibility: visible;
+    z-index: 99999;
   }
   #preloader {
     position: fixed;
