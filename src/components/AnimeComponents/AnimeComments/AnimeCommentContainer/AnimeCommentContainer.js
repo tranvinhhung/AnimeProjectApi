@@ -9,6 +9,7 @@ import {
   handleOpenComment,
   addCommentWithIDanimeAndUserID,
   getAllAnimeCommentCurrentWithId,
+  handleClearComment,
 } from "./../../../../reduces/animeComment";
 import "./animeCommentContainer.scss";
 const AnimeCommentContainer = (props) => {
@@ -17,6 +18,9 @@ const AnimeCommentContainer = (props) => {
   let listComment = useSelector((state) => state.myComments.dataBaseComments);
   let currentUser = useSelector((state) => state.myLogin?.data?.data?.user);
   let activeComment = useSelector((state) => state.myComments.activeComent);
+  let currentCommentIdCheck = useSelector(
+    (state) => state.myComments?.commentCurrentDB[0]?.listUsersComment
+  );
   let currentCommentId = useSelector(
     (state) => state.myComments?.commentCurrentDB
   );
@@ -27,6 +31,10 @@ const AnimeCommentContainer = (props) => {
   const handleCloseComments = () => {
     dispatch(handleCloseComment());
   };
+  useEffect(() => {
+    dispatch(handleCloseComment());
+    dispatch(handleClearComment());
+  }, [props.idAnime]);
   useEffect(() => {
     activeComment &&
       currentUser &&
@@ -55,10 +63,10 @@ const AnimeCommentContainer = (props) => {
               dispatch(addAnimeCommentID({ idAnime: props.idAnime }));
             }
             if (arrayId.length > 0) {
-              // dispatch(
-              //   getAllAnimeCommentCurrentWithId({ idAnime: props.idAnime })
-              // );
-              currentCommentId && handleListComment(currentCommentId);
+              dispatch(
+                getAllAnimeCommentCurrentWithId({ idAnime: props.idAnime })
+              );
+              // currentCommentId && handleListComment(currentCommentId);
             }
           } catch (err) {
             throw new Error(err);
@@ -68,9 +76,7 @@ const AnimeCommentContainer = (props) => {
       console.log(err);
     }
   }, [props.idAnime, listComment]);
-  useEffect(() => {
-    dispatch(handleCloseComment());
-  }, [props.idAnime]);
+
   const handleComment = ({ user, idAnime }) => {
     console.log(inputComment.current.value);
     console.log(currentUser, props.idAnime);
@@ -124,12 +130,12 @@ const AnimeCommentContainer = (props) => {
       {activeComment && (
         <div className="animeCommentActive">
           <span onClick={handleCloseComments}>Comment here</span>
-          {currentCommentId.length > 0 && (
+          {currentCommentId && (
             <div className="animeListComContai active">
               {handleListComment(currentCommentId)}
             </div>
           )}
-          {currentCommentId.length === 0 && (
+          {currentCommentIdCheck.length <= 1 && (
             <div className="animeListComContai">
               Hiện tại chưa có comment bạn hãy comment nào !!!
             </div>

@@ -45,6 +45,9 @@ const animeCommentSlice = createSlice({
     handleCloseComment(state) {
       state.activeComent = false;
     },
+    handleClearComment(state) {
+      state.commentCurrentDB = [];
+    },
     addCommentWithIDanimeAndUserID(state, action) {
       let listDataWithidAnimeComment = state.dataBaseComments.filter(
         (el) => el.idAnimeComment === action.payload.idAnime
@@ -151,5 +154,6 @@ export const {
   handleCloseComment,
   addCommentWithIDanimeAndUserID,
   getAllAnimeCommentCurrentWithId,
+  handleClearComment,
 } = animeCommentSlice.actions;
 export default animeCommentSlice;
