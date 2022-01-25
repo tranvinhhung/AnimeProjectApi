@@ -79,7 +79,11 @@ const AnimeSearchRender = () => {
   const handleCountPage = (countpage) => {
     let arr = [];
     for (let i = 1; i <= countpage; i++) {
-      arr.push(<MenuItem value={i}>{i}</MenuItem>);
+      arr.push(
+        <MenuItem key={i} value={i}>
+          {i}
+        </MenuItem>
+      );
     }
     return arr;
     // return <MenuItem></MenuItem>

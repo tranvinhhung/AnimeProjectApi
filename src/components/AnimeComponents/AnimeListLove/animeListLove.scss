@@ -1,3 +1,4 @@
+@use "./../../../sass/" as *;
 .listLovecontainer {
   position: relative;
   //   background-color: rgba(255, 0, 0, 0.644);
@@ -17,6 +18,7 @@
     left: 0;
     // transform: translate(50%, 0);
     font-size: 8rem;
+    color: $main_color;
     color: red;
   }
   .nammoi {
