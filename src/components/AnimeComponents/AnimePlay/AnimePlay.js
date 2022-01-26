@@ -158,11 +158,15 @@ function AnimePlay(props) {
           y: "50",
         })
         .from(desRef.current, { y: "-50", duration: 0.5, autoAlpha: 0 })
-        .to(animeInfoRef.current, {
-          duration: 0.3,
-          autoAlpha: 1,
-        })
-        .from(reduxSongRef.current, 0.5, { y: "100", autoAlpha: 0 }, "-=0.2");
+        .from(reduxSongRef.current, 0.5, { y: "100", autoAlpha: 0 }, "-=0.2")
+        .to(
+          animeInfoRef.current,
+          {
+            duration: 0.3,
+            autoAlpha: 1,
+          },
+          "+=0.1"
+        );
     })();
   }, []);
   const handleAnimation = async () => {
