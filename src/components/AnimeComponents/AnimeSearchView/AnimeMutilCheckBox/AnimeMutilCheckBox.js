@@ -94,7 +94,7 @@ export default function MultipleSelect(props) {
   return (
     <FormControl
       sx={{
-        m: 3,
+        m: 2,
         display: "flex",
         flexDirection: "row",
         alignItems: "center",

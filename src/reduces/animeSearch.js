@@ -157,6 +157,13 @@ const animeSearchSlice = createSlice({
     handleChangePageValue(state, action) {
       state.dataSearch.detailSearchData["current_page"] = action.payload;
     },
+
+    handleChangePageValueIncre(state, action) {
+      state.dataSearch.detailSearchData["current_page"] += 1;
+    },
+    handleChangePageValueDecre(state, action) {
+      state.dataSearch.detailSearchData["current_page"] -= 1;
+    },
     handleFinData(state) {
       state.isFindData = true;
     },
@@ -244,5 +251,7 @@ export const {
   handleChangePageValue,
   handleClearDetailSearchData,
   resetPageValue,
+  handleChangePageValueIncre,
+  handleChangePageValueDecre,
 } = animeSearchSlice.actions;
 export default animeSearchSlice;

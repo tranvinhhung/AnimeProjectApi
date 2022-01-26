@@ -8,6 +8,8 @@ import {
   handleClearSearch,
   handleListCurrentAnimeSearchWithPage,
   handleClearDetailSearchData,
+  handleChangePageValueIncre,
+  handleChangePageValueDecre,
 } from "./../../../../reduces/animeSearch";
 import Box from "@mui/material/Box";
 import InputLabel from "@mui/material/InputLabel";
@@ -15,6 +17,8 @@ import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import Card from "./../../../Card/Card";
+import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
+import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import { unwrapResult } from "@reduxjs/toolkit";
 import { gsap } from "gsap";
 import { CSSPlugin } from "gsap/CSSPlugin";
@@ -91,6 +95,12 @@ const AnimeSearchRender = () => {
   const handleChangePage = (e) => {
     dispatch(handleChangePageValue(e.target.value));
   };
+  const handleDecre = () => {
+    dispatch(handleChangePageValueDecre());
+  };
+  const handleIncre = () => {
+    dispatch(handleChangePageValueIncre());
+  };
   useEffect(() => {
     let card;
     if (dataSearDetail) {
@@ -138,23 +148,43 @@ const AnimeSearchRender = () => {
         </div>
       )}
       {!finData && dataSearDetail && location.search && (
-        <Box sx={{ width: 100, margin: "1rem auto" }}>
-          <FormControl fullWidth>
-            <InputLabel id="select-label">Trang</InputLabel>
-            <Select
-              labelId="select-label"
-              id="simple-select"
-              value={currentPage}
-              label="Trang"
-              onChange={handleChangePage}
-            >
-              {/* <MenuItem value={10}>Ten</MenuItem>
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            /* width: 30%; */
+            width: "fit-content",
+            textAlign: "center",
+            margin: "0 auto",
+          }}
+        >
+          <ArrowBackIosIcon
+            onClick={handleDecre}
+            style={{ cusor: "pointer", width: "2rem", height: "2rem" }}
+          />
+          <Box sx={{ width: 100, margin: "1rem 1rem" }}>
+            <FormControl fullWidth>
+              <InputLabel id="select-label">Trang</InputLabel>
+              <Select
+                labelId="select-label"
+                id="simple-select"
+                value={currentPage}
+                label="Trang"
+                onChange={handleChangePage}
+              >
+                {/* <MenuItem value={10}>Ten</MenuItem>
               <MenuItem value={20}>Twenty</MenuItem>
               <MenuItem value={30}>Thirty</MenuItem> */}
-              {handleCountPage(lastPage)}
-            </Select>
-          </FormControl>
-        </Box>
+                {handleCountPage(lastPage)}
+              </Select>
+            </FormControl>
+          </Box>
+          <ArrowForwardIosIcon
+            onClick={handleIncre}
+            style={{ cusor: "pointer", width: "2rem", height: "2rem" }}
+          />
+        </div>
       )}
     </>
   );
