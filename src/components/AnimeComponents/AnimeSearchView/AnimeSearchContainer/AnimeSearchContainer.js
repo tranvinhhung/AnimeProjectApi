@@ -21,6 +21,7 @@ import AnimeSearchRender from "./../AnimeSearchRender/AnimeSearchRender";
 import Card from "./../../../Card/Card";
 import DeleteIcon from "@mui/icons-material/Delete";
 import LoadingNew from "../../../Loading/LoadingNew/LoadingNew";
+import Container from "@mui/material/Container";
 const AnimeSearchContainer = (props) => {
   let data = [1, 2, 3];
   const dispatch = useDispatch();
@@ -54,106 +55,72 @@ const AnimeSearchContainer = (props) => {
     >
       {genres.length > 0 && years.length > 0 && (
         <>
-          <FormGroup
-            style={
-              window.screen.width > 500
-                ? {
-                    display: "flex",
-                    flexDirection: "row",
-                    alignItems: "center",
-                    flexWrap: "nowrap",
-                    padding: "1rem",
-                    justifyContent: "space-around",
-                    boxSizing: "border-box",
-                  }
-                : {
-                    display: "flex",
-                    justifyContent: "flex-start",
-                    alignItems: "center",
-                    flexWrap: "nowrap",
-                    padding: "1rem",
-                  }
-            }
-          >
-            <FormControlLabel
-              control={
-                <AnimeMutilCheckBox
-                  datas={genres}
-                  multiple={true}
-                  setname="Genders"
-                />
-              }
-              label={false}
-            />
+          <Container>
+            <FormGroup
+              row={true}
+              sx={{ m: 2, display: "flex", alignItems: "center" }}
+            >
+              <FormControlLabel
+                control={
+                  <AnimeMutilCheckBox
+                    datas={genres}
+                    multiple={true}
+                    setname="Genders"
+                  />
+                }
+                label={false}
+              />
 
-            <FormControlLabel
-              control={
-                <AnimeMutilCheckBox
-                  datas={years}
-                  multiple={false}
-                  setname="Year"
-                />
-              }
-              label={false}
-            />
+              <FormControlLabel
+                control={
+                  <AnimeMutilCheckBox
+                    datas={years}
+                    multiple={false}
+                    setname="Year"
+                  />
+                }
+                label={false}
+              />
 
-            <FormControlLabel
-              control={
-                <AnimeMutilCheckBox
-                  datas={season}
-                  multiple={false}
-                  setname="Season"
-                />
-              }
-              label={false}
-            />
-            <FormControlLabel
-              control={
-                <AnimeMutilCheckBox
-                  datas={format}
-                  multiple={true}
-                  setname="Format"
-                />
-              }
-              label={false}
-            />
-          </FormGroup>
-          <Button
-            size="small"
-            endIcon={<DeleteIcon />}
-            variant="contained"
-            className="clearAll"
-            style={
-              window.screen.width < 500
-                ? {
-                    margin: "0 auto 1rem",
-                    width: "50px !important",
-                    display: "flex",
-                  }
-                : {
-                    width: "100px !important",
-                    display: "flex",
-                    margin: "0 auto",
-                  }
-            }
-          >
-            Clear All
-          </Button>
+              <FormControlLabel
+                control={
+                  <AnimeMutilCheckBox
+                    datas={season}
+                    multiple={false}
+                    setname="Season"
+                  />
+                }
+                label={false}
+              />
+              <FormControlLabel
+                control={
+                  <AnimeMutilCheckBox
+                    datas={format}
+                    multiple={true}
+                    setname="Format"
+                  />
+                }
+                label={false}
+              />
+              <FormControlLabel
+                control={
+                  <Button
+                    size="small"
+                    endIcon={<DeleteIcon />}
+                    variant="contained"
+                    className="clearAll"
+                  >
+                    Clear All
+                  </Button>
+                }
+                label={false}
+              />
+            </FormGroup>
+          </Container>
 
           <div className="mainContainer genDerList" style={{ margin: "0" }}>
             <AnimeSearchRender />
-            {/* {finData && <LoadingNew />} */}
-            {/* <LoadingNew
-              style={
-                !finData
-                  ? { opacity: 0, visibility: "hidden" }
-                  : {
-                      opacity: 1,
 
-                      visibility: "visible",
-                    }
-              } */}
-            {/* {finData && <LoadingNew />} */}
             <LoadingNew isFindata={finData} />
           </div>
         </>
