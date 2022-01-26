@@ -69,10 +69,17 @@ export default function App() {
       }
     } catch (error) {
       console.log(error);
-      reset({ ...getValues(), password: "", passwordConfirm: "" });
-      enqueueSnackbar("Tài  khoản đã tồn tại xin nhập lại tài khoản khác!!!", {
-        variant: "error",
-      });
+      if (error.message === "Network Error") {
+        reset({ ...getValues(), password: "", passwordConfirm: "" });
+        enqueueSnackbar("Đã có lỗi gì đấy mong bạn thử lại sau!!!", {
+          variant: "error",
+        });
+      } else {
+        reset({ ...getValues(), password: "", passwordConfirm: "" });
+        enqueueSnackbar("Tài khoản đã tồn tại mong bạn nhập lại!!!", {
+          variant: "error",
+        });
+      }
     }
   };
 
