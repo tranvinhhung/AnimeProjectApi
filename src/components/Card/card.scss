@@ -82,6 +82,7 @@
   position: relative;
   opacity: 0;
   visibility: hidden;
+  filter: drop-shadow(2px 4px 6px black);
   &::after {
     content: "";
     position: absolute;
@@ -115,9 +116,7 @@
     bottom: 0;
     height: 100%;
   }
-  &:hover {
-    box-shadow: 0 0 10px aquamarine;
-  }
+
   svg {
     height: 7rem;
     width: 7rem;

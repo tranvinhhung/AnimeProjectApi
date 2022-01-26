@@ -20,11 +20,14 @@ nav.nav {
   figure {
     display: flex;
     align-items: center;
-    width: 40%;
+    width: 20%;
     img {
       width: 5rem;
       border-radius: 50%;
     }
+  }
+
+  .navright {
     form {
       display: flex;
       margin-left: auto;
@@ -59,29 +62,68 @@ nav.nav {
         right: 0;
       }
     }
-  }
-  .navright {
-    width: 50%;
+    width: 70%;
     padding: 0 4rem;
     @include flexCen(row, space-evenly);
     gap: 2rem;
     flex: 1;
     flex-shrink: 0;
     position: relative;
+    @include reponsive($bp-largest) {
+      & {
+        position: absolute;
+        width: 60vw;
+        height: calc(100vh - $height-nav);
+        top: $height-nav;
+        left: 0;
+        flex-direction: column;
+        background-color: $main_color;
+        transform: translate(-100%, 0);
+        z-index: 99;
+        transition: all 0.5s;
+        &.active {
+          transform: translate(0, 0);
+        }
+      }
+    }
+  }
+  .menuIcon {
+    display: none;
+  }
+  @include reponsive($bp-largest) {
+    & {
+      .menuIcon {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        svg {
+          width: 1.5em;
+          height: 1.5em;
+        }
+      }
+    }
   }
 }
 .user {
-  position: absolute;
-  flex-shrink: 0;
-  width: 20%;
-
-  right: 0;
   border-radius: 100rem;
   background-color: black;
   white-space: nowrap;
   padding: 0.5rem;
-  transform: translate(20%, -50%);
+  position: relative;
   color: white;
+  .logoutButton {
+    position: absolute;
+    top: 100%;
+    padding: 1rem;
+    // height: 3rem;
+    left: 50%;
+    background-color: red;
+    opacity: 0;
+    transition: all 0.3s;
+
+    transform: translate(-50%, -100%);
+    visibility: hidden;
+  }
   span {
     padding: 1px;
     box-shadow: 0 0 1px black;
@@ -100,17 +142,6 @@ nav.nav {
     // background-color: yellow;
     background-color: transparent;
     z-index: 99999;
-  }
-  & + .logoutButton {
-    position: absolute;
-    top: 100%;
-    padding: 1rem;
-    // height: 3rem;
-    background-color: red;
-    opacity: 0;
-    transition: all 0.3s;
-    transform: translateY(100%);
-    visibility: hidden;
   }
 }
 .mouseover {

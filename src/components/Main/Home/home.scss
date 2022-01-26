@@ -3,6 +3,8 @@
   position: relative;
   min-height: calc(100vh - $height-nav);
   margin-top: $height-nav;
+
+  // filter: drop-shadow(1px 1px 2px black);
   .bannerContainer {
     min-height: 70vh;
   }

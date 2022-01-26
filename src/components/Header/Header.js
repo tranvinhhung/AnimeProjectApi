@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Link, Navigate, useNavigate } from "react-router-dom";
 import { activeForm } from "../../reduces/formDataUser";
 import PopoverEle from "./../Popover/PopoverContainer/PopoverContainer";
@@ -10,13 +10,21 @@ import SearchIcon from "@mui/icons-material/Search";
 import Popover from "@mui/material/Popover";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
+import MenuIcon from "@mui/icons-material/Menu";
+import MenuOpenIcon from "@mui/icons-material/MenuOpen";
 import "./header.scss";
 function Header() {
   const logoutButton = useRef();
+  const menuButtonRef = useRef();
+  const navright = useRef();
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const [openMenu, setOpenMenu] = useState(false);
   const handleOpen = () => {
     dispatch(activeForm());
+  };
+  const handleOpenMenu = () => {
+    setOpenMenu(!openMenu);
   };
   const activeLogin = useSelector((state) => state.myForm.activeLogin);
   const dataUser = useSelector((state) => state.myLogin.data);
@@ -56,7 +64,17 @@ function Header() {
         logoutButton.current.classList.remove("mouseover");
       });
     }
-  }, [dataUser]);
+    if (menuButtonRef && menuButtonRef.current) {
+      openMenu &&
+        menuButtonRef.current.addEventListener("click", function () {
+          navright.current.classList.remove("active");
+        });
+      !openMenu &&
+        menuButtonRef.current.addEventListener("click", function () {
+          navright.current.classList.add("active");
+        });
+    }
+  }, [dataUser, openMenu]);
   return (
     <>
       <nav className="nav">
@@ -67,18 +85,20 @@ function Header() {
           <Link to="/home" style={{ marginLeft: 2 + "rem" }} className="notext">
             MyAnime
           </Link>
-          <form id="formSearch" onSubmit={handleSubmit}>
-            <input
-              type="search"
-              name="searchAnime"
-              id="searchID"
-              placeholder="tìm anime nào!!"
-            />
-            <SearchIcon onClick={handleSearchView} />
-            <button type="submit">button</button>
-          </form>
         </figure>
-        <ul className="navright">
+        <ul className="navright" ref={navright}>
+          <li>
+            <form id="formSearch" onSubmit={handleSubmit}>
+              <input
+                type="search"
+                name="searchAnime"
+                id="searchID"
+                placeholder="tìm anime nào!!"
+              />
+              <SearchIcon onClick={handleSearchView} />
+              <button type="submit">button</button>
+            </form>
+          </li>
           <li>
             <Link className="notext" to="/home">
               Home
@@ -110,14 +130,14 @@ function Header() {
               <>
                 <div className="user" ref={divRef}>
                   <span>Xin chào</span>
-                  {`${dataUser?.data?.user?.name}`}
-                </div>
-                <div
-                  className="logoutButton"
-                  onClick={handleLogout}
-                  ref={logoutButton}
-                >
-                  Logout
+                  <span>{`${dataUser?.data?.user?.name}`}</span>
+                  <div
+                    className="logoutButton"
+                    onClick={handleLogout}
+                    ref={logoutButton}
+                  >
+                    Logout
+                  </div>
                 </div>
                 {/* <Popover
                   id={id}
@@ -147,6 +167,14 @@ function Header() {
           </Link>
         </li> */}
         </ul>
+        <figure className="menuIcon">
+          {!openMenu && (
+            <MenuIcon onClick={handleOpenMenu} ref={menuButtonRef} />
+          )}
+          {openMenu && (
+            <MenuOpenIcon onClick={handleOpenMenu} ref={menuButtonRef} />
+          )}
+        </figure>
       </nav>
 
       {!activeLogin && <Signup />}
