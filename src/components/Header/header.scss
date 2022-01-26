@@ -51,6 +51,11 @@ nav.nav {
         &::-webkit-input-placeholder {
           font-family: "Courier New", Courier, monospace;
         }
+        @include reponsive($bp-small) {
+          & {
+            width: auto;
+          }
+        }
       }
       button {
         opacity: 0;

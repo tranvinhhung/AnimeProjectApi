@@ -1,5 +1,14 @@
 @forward "font";
-@forward "base";
 @forward "variable";
 @forward "mixin";
 @forward "reponsive";
+@forward "base";
+@import "reponsive";
+html {
+  font-size: 62.5%;
+  @include reponsive($bp-small) {
+    & {
+      font-size: 32.5%;
+    }
+  }
+}

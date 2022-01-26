@@ -48,15 +48,32 @@ const AnimeSearchContainer = (props) => {
     })();
   }, []);
   return (
-    <div className="mainContainer " style={{ margin: "7rem 3rem 0" }}>
+    <div
+      className="mainContainer "
+      style={window.screen.width > 500 ? { margin: "7rem 3rem 0" } : {}}
+    >
       {genres.length > 0 && years.length > 0 && (
         <>
           <FormGroup
-            style={{
-              display: "flex",
-              flexDirection: "row",
-              alignItems: "center",
-            }}
+            style={
+              window.screen.width > 500
+                ? {
+                    display: "flex",
+                    flexDirection: "row",
+                    alignItems: "center",
+                    flexWrap: "nowrap",
+                    padding: "1rem",
+                    justifyContent: "space-around",
+                    boxSizing: "border-box",
+                  }
+                : {
+                    display: "flex",
+                    justifyContent: "flex-start",
+                    alignItems: "center",
+                    flexWrap: "nowrap",
+                    padding: "1rem",
+                  }
+            }
           >
             <FormControlLabel
               control={
@@ -100,18 +117,28 @@ const AnimeSearchContainer = (props) => {
               }
               label={false}
             />
-            <Button
-              size="small"
-              endIcon={<DeleteIcon />}
-              variant="contained"
-              className="clearAll"
-              sx={{
-                width: "100px !important",
-              }}
-            >
-              Clear All
-            </Button>
           </FormGroup>
+          <Button
+            size="small"
+            endIcon={<DeleteIcon />}
+            variant="contained"
+            className="clearAll"
+            style={
+              window.screen.width < 500
+                ? {
+                    margin: "0 auto 1rem",
+                    width: "50px !important",
+                    display: "flex",
+                  }
+                : {
+                    width: "100px !important",
+                    display: "flex",
+                    margin: "0 auto",
+                  }
+            }
+          >
+            Clear All
+          </Button>
 
           <div className="mainContainer genDerList" style={{ margin: "0" }}>
             <AnimeSearchRender />

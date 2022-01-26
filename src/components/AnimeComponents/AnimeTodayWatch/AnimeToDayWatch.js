@@ -30,7 +30,7 @@ function AnimeToDayWatch() {
   const location = useLocation();
   let [searchParams, setSearchParams] = useSearchParams();
   //   const [myData, setmyData] = useState([]);
-  // console.log(location);
+  console.log(location);
   let myData = useSelector((state) => state.myTodayWatchList.data);
   let isFindData = useSelector((state) => state.myTodayWatchList.isFindData);
   const [countPage, setCountPage] = useState(1);
@@ -50,8 +50,8 @@ function AnimeToDayWatch() {
     let arrID = arrVideo.documents.map((element) => {
       return element["anime_id"];
     });
-    await dispatch(handleAnimeWatchToday(arrID));
     navigate(`/anime-today-can-watch/trang-${event.target.value}`);
+    dispatch(handleAnimeWatchToday(arrID));
   };
   //   console.log(handlePromis(tinh, [1, 2, 3]));
   useEffect(() => {
@@ -142,6 +142,7 @@ function AnimeToDayWatch() {
                   id="simple-select"
                   label="Trang"
                   onChange={handleListId}
+                  value={location.pathname[location.pathname.length - 1]}
                   defaultValue=""
                 >
                   {handleCountPage(countPage).map((el, index) => (

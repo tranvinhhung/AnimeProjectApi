@@ -93,14 +93,24 @@ export default function MultipleSelect(props) {
   }, [myData]);
   return (
     <FormControl
-      sx={{
-        m: 2,
-        display: "flex",
-        flexDirection: "row",
-        alignItems: "center",
-        gap: "1rem",
-        // height: "2rem",
-      }}
+      sx={
+        window.screen.width > 500
+          ? {
+              m: 2,
+              display: "flex",
+              flexDirection: "row",
+              alignItems: "center",
+              gap: "1rem",
+              // height: "2rem",
+            }
+          : {
+              m: 1,
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              flexWrap: "nowrap",
+            }
+      }
     >
       <InputLabel id={`multiple-label-${props.setname}`}>
         {props.setname}
@@ -113,7 +123,11 @@ export default function MultipleSelect(props) {
         onChange={handleChange}
         input={
           <OutlinedInput
-            style={{ width: 100, height: 40 }}
+            sx={
+              window.screen.width > 500
+                ? { width: 100, height: 40 }
+                : { width: 50, height: 20 }
+            }
             label={props.setname}
           />
         }

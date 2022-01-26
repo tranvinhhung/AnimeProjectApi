@@ -6,6 +6,9 @@
   height: 60vh;
   overflow: hidden;
   backface-visibility: hidden;
+  @include reponsive($bp-small) {
+    height: 30vh;
+  }
   &:hover svg {
     opacity: 1;
   }

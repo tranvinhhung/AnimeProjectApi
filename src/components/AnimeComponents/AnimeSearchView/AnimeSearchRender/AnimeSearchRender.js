@@ -138,12 +138,16 @@ const AnimeSearchRender = () => {
           dataSearDetail?.map((el, index) => <Card key={index} data={el} />)}
       </div>
       {!location.search && !finData && (
-        <div style={{ textAlign: "center", fontSize: 30, marginTop: "2rem" }}>
+        <div
+          style={{ textAlign: "center", fontSize: "3rem", marginTop: "2rem" }}
+        >
           Bạn hãy tìm kiếm nào
         </div>
       )}
       {location.search && !finData && !dataSearDetail && (
-        <div style={{ textAlign: "center", fontSize: 30, marginTop: "2rem" }}>
+        <div
+          style={{ textAlign: "center", fontSize: "3rem", marginTop: "2rem" }}
+        >
           Không có kết quả bạn tìm kiếm
         </div>
       )}

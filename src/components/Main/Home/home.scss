@@ -7,6 +7,16 @@
   // filter: drop-shadow(1px 1px 2px black);
   .bannerContainer {
     min-height: 70vh;
+    @include reponsive($bp-medium) {
+      & {
+        min-height: 40vh;
+      }
+    }
+    @include reponsive($bp-small) {
+      & {
+        min-height: 0;
+      }
+    }
   }
   .genderContainer {
     margin-top: 5rem;

@@ -6,6 +6,10 @@
     display: grid;
     grid-template-columns: repeat(7, 1fr);
     grid-template-rows: repeat(3, 1fr);
+    @include reponsive($bp-small) {
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: repeat(3, 1fr);
+    }
     .cardConatiner {
       height: 23vh;
       .cardImg {
