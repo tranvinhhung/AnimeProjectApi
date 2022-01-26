@@ -80,6 +80,7 @@ nav.nav {
         background-color: $main_color;
         transform: translate(-100%, 0);
         z-index: 99;
+        padding: 0;
         transition: all 0.5s;
         &.active {
           transform: translate(0, 0);

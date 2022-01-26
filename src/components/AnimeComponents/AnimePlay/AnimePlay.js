@@ -151,14 +151,18 @@ function AnimePlay(props) {
     (async () => {
       let tl = gsap.timeline();
       tl.to(boxRef.current, { autoAlpha: 1, duration: 0.7, scale: 1 })
-        .from(imgRef.current, {
-          scale: 0.7,
-          autoAlpha: 0,
-          duration: 0.5,
-          y: "50",
-        })
-        .from(desRef.current, { y: "-50", duration: 0.5, autoAlpha: 0 })
-        .from(reduxSongRef.current, 0.5, { y: "100", autoAlpha: 0 }, "-=0.2")
+        .from(
+          imgRef.current,
+          {
+            scale: 0.7,
+            autoAlpha: 0,
+            duration: 0.4,
+            y: "50",
+          },
+          "+=0.1"
+        )
+        .from(desRef.current, { y: "-50", duration: 0.4, autoAlpha: 0 })
+        .from(reduxSongRef.current, 0.4, { y: "100", autoAlpha: 0 }, "-=0.2")
         .to(
           animeInfoRef.current,
           {
