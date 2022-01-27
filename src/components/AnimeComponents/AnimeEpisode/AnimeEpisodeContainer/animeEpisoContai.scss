@@ -1,8 +1,12 @@
+@use "./../../../../sass/" as *;
 .animeEpisodeContainer {
   min-height: 6rem;
   width: 90%;
   margin: 6rem auto 0;
   font-size: 3rem;
+  @include reponsive($bp-small) {
+    margin: 2rem auto 0;
+  }
   .boxChangePage {
     display: flex;
     justify-content: center;
@@ -13,6 +17,10 @@
   .animeEpisodeListTitle {
     scroll-margin: 5rem;
     padding: 3rem;
+    @include reponsive($bp-small) {
+      padding: 1rem;
+      font-size: 2rem;
+    }
   }
   .ListAnimeEpiso {
     padding: 1rem;
@@ -28,6 +36,12 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    @include reponsive($bp-small) {
+      & {
+        font-size: 2rem;
+        padding: 1rem;
+      }
+    }
     svg {
       width: 4rem;
       height: 4rem;

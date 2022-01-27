@@ -19,6 +19,7 @@ function Header() {
   const navright = useRef();
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const refR = useRef();
   const [openMenu, setOpenMenu] = useState(false);
   const handleOpen = () => {
     dispatch(activeForm());
@@ -73,6 +74,10 @@ function Header() {
         menuButtonRef.current.addEventListener("click", function () {
           navright.current.classList.add("active");
         });
+      refR.current.addEventListener("click", function () {
+        navright.current.classList.remove("active");
+        setOpenMenu(false);
+      });
     }
   }, [dataUser, openMenu]);
   return (
@@ -82,7 +87,12 @@ function Header() {
           <img
             src={`https://png.pngtree.com/png-clipart/20200727/original/pngtree-svg-phrase-always-stay-young-black-english-flat-illustration-png-image_5433656.jpg`}
           />
-          <Link to="/home" style={{ marginLeft: 2 + "rem" }} className="notext">
+          <Link
+            ref={refR}
+            to="/home"
+            style={{ marginLeft: 2 + "rem" }}
+            className="notext"
+          >
             MyAnime
           </Link>
         </figure>
@@ -100,7 +110,7 @@ function Header() {
             </form>
           </li>
           <li>
-            <Link className="notext" to="/home">
+            <Link ref={refR} className="notext" to="/home">
               Home
             </Link>
           </li>

@@ -119,7 +119,8 @@ const AnimeListLove = () => {
             </span>
           </p>
           <img
-            style={{ width: "30%", alignSelf: "center" }}
+            className="nezuko"
+            style={{ alignSelf: "center" }}
             src={neZuko}
             alt="nezukoimg"
           />
@@ -142,7 +143,7 @@ const AnimeListLove = () => {
           <div className="chucmung">Chúc mừng</div>
           <img
             className="nezuko"
-            style={{ width: "30%", alignSelf: "center", opacity: 0 }}
+            style={{ alignSelf: "center", opacity: 0 }}
             src={neZuko}
             alt="nezukoimg"
           />

@@ -22,6 +22,7 @@ import Card from "./../../../Card/Card";
 import DeleteIcon from "@mui/icons-material/Delete";
 import LoadingNew from "../../../Loading/LoadingNew/LoadingNew";
 import Container from "@mui/material/Container";
+import Grid from "@mui/material/Grid";
 const AnimeSearchContainer = (props) => {
   let data = [1, 2, 3];
   const dispatch = useDispatch();
@@ -55,67 +56,69 @@ const AnimeSearchContainer = (props) => {
     >
       {genres.length > 0 && years.length > 0 && (
         <>
-          <Container>
-            <FormGroup
-              row={true}
-              sx={{ m: 2, display: "flex", alignItems: "center" }}
-            >
-              <FormControlLabel
-                control={
-                  <AnimeMutilCheckBox
-                    datas={genres}
-                    multiple={true}
-                    setname="Genders"
-                  />
-                }
-                label={false}
-              />
+          <Container maxWidth="md">
+            <Grid container columns={{ xs: 4, sm: 8, md: 12 }}>
+              <FormGroup
+                row={true}
+                sx={{ m: 2, display: "flex", alignItems: "center" }}
+              >
+                <FormControlLabel
+                  control={
+                    <AnimeMutilCheckBox
+                      datas={genres}
+                      multiple={true}
+                      setname="Genders"
+                    />
+                  }
+                  label={false}
+                />
 
-              <FormControlLabel
-                control={
-                  <AnimeMutilCheckBox
-                    datas={years}
-                    multiple={false}
-                    setname="Year"
-                  />
-                }
-                label={false}
-              />
+                <FormControlLabel
+                  control={
+                    <AnimeMutilCheckBox
+                      datas={years}
+                      multiple={false}
+                      setname="Year"
+                    />
+                  }
+                  label={false}
+                />
 
-              <FormControlLabel
-                control={
-                  <AnimeMutilCheckBox
-                    datas={season}
-                    multiple={false}
-                    setname="Season"
-                  />
-                }
-                label={false}
-              />
-              <FormControlLabel
-                control={
-                  <AnimeMutilCheckBox
-                    datas={format}
-                    multiple={true}
-                    setname="Format"
-                  />
-                }
-                label={false}
-              />
-              <FormControlLabel
-                control={
-                  <Button
-                    size="small"
-                    endIcon={<DeleteIcon />}
-                    variant="contained"
-                    className="clearAll"
-                  >
-                    Clear All
-                  </Button>
-                }
-                label={false}
-              />
-            </FormGroup>
+                <FormControlLabel
+                  control={
+                    <AnimeMutilCheckBox
+                      datas={season}
+                      multiple={false}
+                      setname="Season"
+                    />
+                  }
+                  label={false}
+                />
+                <FormControlLabel
+                  control={
+                    <AnimeMutilCheckBox
+                      datas={format}
+                      multiple={true}
+                      setname="Format"
+                    />
+                  }
+                  label={false}
+                />
+                <FormControlLabel
+                  control={
+                    <Button
+                      size="small"
+                      endIcon={<DeleteIcon />}
+                      variant="contained"
+                      className="clearAll"
+                    >
+                      Clear All
+                    </Button>
+                  }
+                  label={false}
+                />
+              </FormGroup>
+            </Grid>
           </Container>
 
           <div className="mainContainer genDerList" style={{ margin: "0" }}>

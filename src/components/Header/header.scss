@@ -33,6 +33,12 @@ nav.nav {
       margin-left: auto;
       position: relative;
       align-items: center;
+      @include reponsive($bp-small) {
+        & {
+          width: 50%;
+          margin: 0 auto;
+        }
+      }
       input {
         outline: none;
         padding: 1rem;
@@ -50,11 +56,6 @@ nav.nav {
         }
         &::-webkit-input-placeholder {
           font-family: "Courier New", Courier, monospace;
-        }
-        @include reponsive($bp-small) {
-          & {
-            width: auto;
-          }
         }
       }
       button {

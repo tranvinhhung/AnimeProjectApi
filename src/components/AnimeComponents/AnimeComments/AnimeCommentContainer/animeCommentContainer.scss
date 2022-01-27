@@ -7,12 +7,21 @@
   border-right: 1px solid $main_color;
   border-left: 1px solid $main_color;
   font-size: 2.5rem;
+  @include reponsive($bp-small) {
+    font-size: 1.9rem;
+  }
   .animeCommentActive {
     min-height: 50vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    @include reponsive($bp-small) {
+      & {
+        min-height: 0;
+        font-size: 1.9rem;
+      }
+    }
     span {
       align-self: start;
     }
@@ -24,6 +33,7 @@
       height: 100%;
       flex: 1;
       display: flex;
+      white-space: nowrap;
       &.active {
         flex-direction: column;
         align-items: center;
@@ -60,6 +70,9 @@
       background-color: #ededed;
       width: 60%;
       padding: 2rem;
+      @include reponsive($bp-small) {
+        padding: 1rem;
+      }
       //   box-shadow: 0 0px 5px 1px #0080a4;
 
       transition: all 0.5s;

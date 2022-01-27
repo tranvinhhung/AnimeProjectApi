@@ -4,9 +4,14 @@
 .anime {
   display: flex;
   position: relative;
-  min-height: calc(100vh - $height-nav);
+  // min-height: calc(100vh - $height-nav);
   margin-top: 7rem;
   height: calc(100vh - $height-nav);
+  @include reponsive($bp-small) {
+    & {
+      height: 50vh;
+    }
+  }
   .animerBanner {
     border-radius: 100rem;
     box-shadow: 0 0 2px rgb(146, 142, 142);
@@ -18,6 +23,11 @@
     opacity: 0;
     visibility: hidden;
     transition: all 1s;
+    @include reponsive($bp-small) {
+      & {
+        border-radius: 50%;
+      }
+    }
   }
   div.animeLi {
     position: absolute;
@@ -77,6 +87,9 @@
       &:hover {
         box-shadow: 0 0 5px black;
       }
+      @include reponsive($bp-small) {
+        display: none;
+      }
     }
     .anime_descContainer {
       font-family: "Courier New", Courier, monospace;
@@ -101,6 +114,9 @@
         -webkit-line-clamp: 4;
         -webkit-box-orient: vertical;
         overflow: hidden;
+        @include reponsive($bp-small) {
+          -webkit-line-clamp: 3;
+        }
       }
     }
     .animeAudioContai {
@@ -131,6 +147,9 @@
         transition: all 0.5s;
         white-space: nowrap;
         overflow: hidden;
+        @include reponsive($bp-small) {
+          font-size: 1.1rem;
+        }
         .songAlbum {
           overflow: hidden;
           text-overflow: ellipsis;
@@ -160,11 +179,17 @@
       transition: all 1s;
       opacity: 0;
       visibility: hidden;
-
+      @include reponsive($bp-small) {
+        padding: 1rem 1rem;
+      }
       ul {
         display: flex;
         gap: 0.7rem;
         flex-direction: column;
+        @include reponsive($bp-small) {
+          gap: 0;
+          font-size: 1.3rem;
+        }
         li {
           word-spacing: 1px;
         }
