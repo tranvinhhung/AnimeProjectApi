@@ -36,6 +36,9 @@
     display: grid;
     grid-template-columns: repeat(10, 1fr);
     grid-template-rows: repeat(6, 1fr);
+    @include reponsive($bp-small) {
+      padding: 1rem;
+    }
     .animeContainer {
       overflow: hidden;
       // box-shadow: 0 0 5px rgba(0, 0, 0, 0.267);
@@ -43,6 +46,9 @@
       grid-row: 2 / 6;
       position: relative;
       overflow: hidden;
+      @include reponsive($bp-small) {
+        grid-column: 1 / 4;
+      }
       &:hover button {
         opacity: 1;
       }
@@ -181,6 +187,7 @@
       visibility: hidden;
       @include reponsive($bp-small) {
         padding: 1rem 1rem;
+        grid-column: 4/10;
       }
       ul {
         display: flex;
