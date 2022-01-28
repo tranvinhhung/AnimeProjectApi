@@ -93,13 +93,15 @@ export default function MultipleSelect(props) {
   }, [myData]);
   return (
     <FormControl
-      sx={{
-        mr: 2,
-        display: "flex",
-        flexDirection: "row",
-        alignItems: "center",
-        gap: "2px",
-      }}
+      // sx={{
+      //   mr: 2,
+      //   display: "flex",
+      //   flexDirection: "row",
+      //   alignItems: "center",
+      //   gap: "2px",
+      // }}
+      size={window.screen.width < 500 ? "small" : "medium"}
+      // fullWidth
     >
       <InputLabel id={`multiple-label-${props.setname}`}>
         {props.setname}

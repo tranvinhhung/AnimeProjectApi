@@ -52,72 +52,58 @@ const AnimeSearchContainer = (props) => {
   return (
     <div
       className="mainContainer "
-      style={window.screen.width > 500 ? { margin: "7rem 3rem 0" } : {}}
+      // style={window.screen.width > 500 ? { margin: "7rem 3rem 0" } : {}}
     >
       {genres.length > 0 && years.length > 0 && (
         <>
-          <Container maxWidth="md">
-            <Grid container columns={{ xs: 4, sm: 8, md: 12 }}>
-              <FormGroup
-                row={true}
-                sx={{ m: 2, display: "flex", alignItems: "center" }}
-              >
-                <FormControlLabel
-                  control={
-                    <AnimeMutilCheckBox
-                      datas={genres}
-                      multiple={true}
-                      setname="Genders"
-                    />
-                  }
-                  label={false}
+          <Container maxWidth="md" sx={{ mt: 1 }}>
+            <Grid
+              container
+              xs={12}
+              spacing={1}
+              justifyContent="center"
+              // alignItems="center"
+              columns={{ xs: 12, sm: 12 }}
+            >
+              <Grid item xs={3} sm={2}>
+                <AnimeMutilCheckBox
+                  datas={genres}
+                  multiple={true}
+                  setname="Genders"
                 />
+              </Grid>
 
-                <FormControlLabel
-                  control={
-                    <AnimeMutilCheckBox
-                      datas={years}
-                      multiple={false}
-                      setname="Year"
-                    />
-                  }
-                  label={false}
+              <Grid item xs={3} sm={2}>
+                <AnimeMutilCheckBox
+                  datas={years}
+                  multiple={false}
+                  setname="Year"
                 />
-
-                <FormControlLabel
-                  control={
-                    <AnimeMutilCheckBox
-                      datas={season}
-                      multiple={false}
-                      setname="Season"
-                    />
-                  }
-                  label={false}
+              </Grid>
+              <Grid item xs={3} sm={2}>
+                <AnimeMutilCheckBox
+                  datas={season}
+                  multiple={false}
+                  setname="Season"
                 />
-                <FormControlLabel
-                  control={
-                    <AnimeMutilCheckBox
-                      datas={format}
-                      multiple={true}
-                      setname="Format"
-                    />
-                  }
-                  label={false}
+              </Grid>
+              <Grid item xs={3} sm={2}>
+                <AnimeMutilCheckBox
+                  datas={format}
+                  multiple={true}
+                  setname="Format"
                 />
-                <FormControlLabel
-                  control={
-                    <Button
-                      size="small"
-                      endIcon={<DeleteIcon />}
-                      variant="contained"
-                      className="clearAll"
-                    >
-                      Clear All
-                    </Button>
-                  }
-                  label={false}
-                />
-              </FormGroup>
+              </Grid>
+              <Grid item xs={12} sm={3}>
+                <Button
+                  size="small"
+                  endIcon={<DeleteIcon />}
+                  variant="contained"
+                  className="clearAll"
+                >
+                  Clear All
+                </Button>
+              </Grid>
             </Grid>
           </Container>
 
