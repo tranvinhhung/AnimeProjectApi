@@ -32,9 +32,9 @@ const AnimeListLove = () => {
           let listId = animeListLoveFilterWithId[0]?.listLove
             ?.filter((el) => (el.id ? true : false))
             .map((el) => el.id);
-          console.log(listId);
+          // console.log(listId);
           let myDataListLove = await hanleListAnimeWithArrayId(listId);
-          console.log(myDataListLove);
+          // console.log(myDataListLove);
           setanimeLoveList(myDataListLove);
         }
       } catch (err) {

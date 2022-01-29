@@ -10,26 +10,18 @@ export const handleAnimeSearchAsync = createAsyncThunk(
   async (data, thunkAPI) => {
     let predat = thunkAPI.getState();
     console.log(predat);
-    let url = thunkAPI.getState().mySearch.dataSearch.url;
-    let gender = thunkAPI.getState().mySearch.dataSearch.genres;
-    let format = thunkAPI.getState().mySearch.dataSearch.format;
-    let year = thunkAPI.getState().mySearch.dataSearch.year;
-    let season = thunkAPI.getState().mySearch.dataSearch.season;
+
     if (data.name === "Genders") {
       if (data.dataSer) {
         await thunkAPI.dispatch(handleGenderSearch(data.dataSer));
       }
-      !data.dataSer &&
-        gender &&
-        (await thunkAPI.dispatch(handleReMoveSearchGender()));
+      !data.dataSer && (await thunkAPI.dispatch(handleReMoveSearchGender()));
     }
     if (data.name === "Year") {
       if (data.dataSer) {
         await thunkAPI.dispatch(handleYearSearch(data.dataSer));
       }
-      !data.dataSer &&
-        year &&
-        (await thunkAPI.dispatch(handleReMoveSearchYear()));
+      !data.dataSer && (await thunkAPI.dispatch(handleReMoveSearchYear()));
     }
     if (data.name === "Season") {
       // console.log(data.dataSer);
@@ -40,9 +32,7 @@ export const handleAnimeSearchAsync = createAsyncThunk(
           handleSeasonSearch(trandatatonumber.toString())
         );
       }
-      !data.dataSer &&
-        season &&
-        (await thunkAPI.dispatch(handleReMoveSearchSeason()));
+      !data.dataSer && (await thunkAPI.dispatch(handleReMoveSearchSeason()));
     }
     if (data.name === "Format") {
       // console.log(data.dataSer);
@@ -56,8 +46,8 @@ export const handleAnimeSearchAsync = createAsyncThunk(
 
         await thunkAPI.dispatch(handleFormatSearch(pointFormat));
       }
-      if (!data.dataSer || data.dataSer.length === 0) {
-        format && (await thunkAPI.dispatch(handleRemoveSearchFormat()));
+      if (!data.dataSer) {
+        await thunkAPI.dispatch(handleRemoveSearchFormat());
       }
     }
 
@@ -127,7 +117,7 @@ const animeSearchSlice = createSlice({
       state.dataSearch.format = action.payload;
     },
     handleClearDetailSearchData(state, action) {
-      state.dataSearch.detailSearchData = {};
+      state.dataSearch = initialState.dataSearch;
     },
     handleClearSearch(state) {
       state.dataSearch = { ...initialState.dataSearch };
@@ -172,16 +162,16 @@ const animeSearchSlice = createSlice({
     [handleAnimeSearchAsync.fulfilled]: (state, action) => {
       state.isFindData = false;
       console.log(state.dataSearch);
-      if (
-        !state.dataSearch.gender &&
-        !state.dataSearch.year &&
-        !state.dataSearch.season &&
-        !state.dataSearch.format
-      ) {
-        state.dataSearch.url = "";
-        state.dataSearch.detailSearchData = {};
-        // return;
-      }
+      // if (
+      //   !state.dataSearch.gender &&
+      //   !state.dataSearch.year &&
+      //   !state.dataSearch.season &&
+      //   !state.dataSearch.format
+      // ) {
+      //   // state.dataSearch.url = "";
+      //   // state.dataSearch = initialState.dataSearch;
+      //   // return;
+      // }
       let url = initialState.dataSearch.urlDum;
       if (state.dataSearch.genres) {
         url += `&genres=${state.dataSearch.genres}`;
@@ -197,8 +187,6 @@ const animeSearchSlice = createSlice({
       }
       if (url != initialState.dataSearch.urlDum) {
         state.dataSearch.url = url;
-      } else {
-        state.dataSearch.url = "";
       }
     },
     [handleAnimeSearchAsync.pending]: (state, action) => {

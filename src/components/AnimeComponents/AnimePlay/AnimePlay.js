@@ -137,7 +137,7 @@ function AnimePlay(props) {
 
       const animedata = animethis.data.data;
       const songdata = songthis.data.data;
-      console.log(animedata);
+      // console.log(animedata);
       if (songdata) {
         await dispatch(getSong(songdata));
       }

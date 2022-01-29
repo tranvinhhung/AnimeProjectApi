@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate, useLocation, useSearchParams } from "react-router-dom";
 import { scrollToTopWhenCheck } from "./../../../../api/handleData";
 import {
   handleDetailSearchData,
@@ -25,6 +25,7 @@ import { CSSPlugin } from "gsap/CSSPlugin";
 gsap.registerPlugin(CSSPlugin);
 const AnimeSearchRender = () => {
   let url = useSelector((state) => state.mySearch.dataSearch?.url);
+  let urlDum = useSelector((state) => state.mySearch.dataSearch?.urlDum);
   let currentPage = useSelector(
     (state) => state.mySearch.dataSearch.detailSearchData?.["current_page"]
   );
@@ -35,21 +36,24 @@ const AnimeSearchRender = () => {
     (state) => state.mySearch.dataSearch.detailSearchData?.documents
   );
   let finData = useSelector((state) => state.mySearch.isFindData);
+  let [searchParams, setSearchParams] = useSearchParams();
   //   let dataChange =useSelector(state => state.)
   const [listSearch, setListSearch] = useState([]);
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const location = useLocation();
+  console.log(location);
   let tl = gsap.timeline();
   useEffect(() => {
     (async () => {
       try {
-        if (!url) {
-          navigate("/search");
-        }
+        // if (!url) {
+        //   navigate("/search");
+        // }
         if (url) {
+          let trang = searchParams.get("trang");
           // dispatch(handleClearDetailSearchData());
-          let cunrentPageApi = currentPage || 1;
+          let cunrentPageApi = trang || 1;
           // let dataSearchApi = await listAnimeSearchApi(url, cunrentPageApi);
           // console.log(dataSearchApi);
           // console.log(url);
@@ -60,25 +64,35 @@ const AnimeSearchRender = () => {
             })
           );
           let unWrapdataSearchApi = unwrapResult(dataSearchApi);
-          console.log(unWrapdataSearchApi);
-          console.log(url);
+          // console.log(unWrapdataSearchApi);
+          // console.log(url);
           let index = url.indexOf("&");
-          console.log(index);
+          // console.log(index);\
+          let getUrlForSearch = "";
           if (index > 0) {
-            let getUrlForSearch = url.slice(index + 1).replaceAll(" ", "%");
-            console.log(getUrlForSearch);
+            getUrlForSearch = url.slice(index + 1).replaceAll(" ", "%");
+            // console.log(getUrlForSearch);
+            navigate(`/search?${getUrlForSearch}&trang=${cunrentPageApi}`);
+          } else {
+            getUrlForSearch = url.slice(index + 1);
+            // console.log(getUrlForSearch);
             navigate(`/search?${getUrlForSearch}&trang=${cunrentPageApi}`);
           }
+          console.log(unWrapdataSearchApi);
           if (unWrapdataSearchApi) {
-            await dispatch(handleDetailSearchData(unWrapdataSearchApi));
+            dispatch(handleDetailSearchData(unWrapdataSearchApi));
           }
         }
       } catch (err) {
         console.log(err);
       }
     })();
-    return () => {};
-  }, [url, currentPage]);
+    return () => {
+      if (location.pathname != "/search") {
+        dispatch(handleClearDetailSearchData());
+      }
+    };
+  }, [url, searchParams]);
 
   const handleCountPage = (countpage) => {
     let arr = [];
@@ -94,15 +108,31 @@ const AnimeSearchRender = () => {
   };
   const handleChangePage = (e) => {
     scrollToTopWhenCheck(1000);
-    dispatch(handleChangePageValue(e.target.value));
+    let trang = Number(searchParams.get("trang"));
+    console.log(trang);
+
+    let arr = location.search.split("&");
+    console.log(arr);
+    let ray2 = [];
+    for (let i = 0; i < arr.length - 1; i++) {
+      ray2.push(arr[i]);
+    }
+    let string = ray2.join("&");
+    console.log(string);
+    navigate(`${location.pathname}${string}&trang=${e.target.value}`);
+    // dispatch(handleChangePageValue(e.target.value));
   };
   const handleDecre = () => {
     scrollToTopWhenCheck(1000);
-    dispatch(handleChangePageValueDecre());
+    let trang = searchParams.get("trang");
+    console.log(trang);
+    // dispatch(handleChangePageValueDecre());
   };
   const handleIncre = () => {
     scrollToTopWhenCheck(1000);
-    dispatch(handleChangePageValueIncre());
+    let trang = searchParams.get("trang");
+    console.log(trang);
+    // dispatch(handleChangePageValueIncre());
   };
   useEffect(() => {
     let card;

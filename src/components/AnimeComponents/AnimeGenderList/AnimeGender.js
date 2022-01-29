@@ -69,7 +69,7 @@ function AnimeGender() {
         await dispatch(resetListGender());
       })();
     };
-  }, [gender, pathname]);
+  }, [gender, pathname, searchParams]);
   useEffect(() => {
     let card;
     if (myData) {
@@ -105,14 +105,14 @@ function AnimeGender() {
       behavior: "smooth",
     });
     let arr = await listAnimeWithGender(gender, 21, event.target.value);
-    await dispatch(getListGender(arr));
-
-    navigate(
+    await navigate(
       `${pathname}?name=${searchParams.get("name")}&trang=${
         event.target.value
       }`,
       { state: { gender } }
     );
+    dispatch(getListGender(arr));
+
     console.log(arr);
   };
   const handleCountPage = (page) => {
@@ -143,6 +143,7 @@ function AnimeGender() {
                   id="simple-select"
                   label="Trang"
                   onChange={handleChange}
+                  value={Number(searchParams.get("trang"))}
                   defaultValue=""
                 >
                   {myData.data?.last_page &&
