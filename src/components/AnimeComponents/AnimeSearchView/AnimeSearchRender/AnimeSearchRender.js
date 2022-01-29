@@ -93,15 +93,15 @@ const AnimeSearchRender = () => {
     // return <MenuItem></MenuItem>
   };
   const handleChangePage = (e) => {
-    scrollToTopWhenCheck(500);
+    scrollToTopWhenCheck(1000);
     dispatch(handleChangePageValue(e.target.value));
   };
   const handleDecre = () => {
-    scrollToTopWhenCheck(500);
+    scrollToTopWhenCheck(1000);
     dispatch(handleChangePageValueDecre());
   };
   const handleIncre = () => {
-    scrollToTopWhenCheck(500);
+    scrollToTopWhenCheck(1000);
     dispatch(handleChangePageValueIncre());
   };
   useEffect(() => {
