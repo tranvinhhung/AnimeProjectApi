@@ -180,9 +180,6 @@ const AnimeSearchRender = () => {
                 label="Trang"
                 onChange={handleChangePage}
               >
-                {/* <MenuItem value={10}>Ten</MenuItem>
-              <MenuItem value={20}>Twenty</MenuItem>
-              <MenuItem value={30}>Thirty</MenuItem> */}
                 {handleCountPage(lastPage)}
               </Select>
             </FormControl>

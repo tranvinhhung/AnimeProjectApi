@@ -53,10 +53,18 @@ export default function Login() {
       console.log(data2);
     } catch (error) {
       console.log(error);
-      reset({ ...getValues(), password: "" });
-      enqueueSnackbar("Tài  khoản hoặc mật khẩu sai !!!", {
-        variant: "error",
-      });
+
+      if (error.message === "Network Error") {
+        reset({ ...getValues(), password: "" });
+        enqueueSnackbar("Đã có lỗi gì đấy mong bạn thử lại sau!!!", {
+          variant: "error",
+        });
+      } else {
+        reset({ ...getValues(), password: "" });
+        enqueueSnackbar("Tài  khoản hoặc mật khẩu sai !!!", {
+          variant: "error",
+        });
+      }
     }
   };
   const handleClickOpen = () => {

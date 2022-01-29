@@ -7,11 +7,12 @@ import {
   useParams,
   useRoutes,
 } from "react-router-dom";
+import "./About.scss";
 import AnimePlay from "../../AnimeComponents/AnimePlay/AnimePlay";
 function About() {
   const params = useParams();
   const location = useLocation();
-  const [numBer, setnumBer] = useState(params.id);
+
   const navigate = useNavigate();
   console.log(params);
   console.log(location);
@@ -19,9 +20,11 @@ function About() {
     navigate("/home");
   };
   return (
-    <>
-      <main className="mainContainer">About</main>;
-    </>
+    <main className="mainContainer">
+      <div>Trang web anime do Tôi lập trình vào ngày 17/12/2021</div>
+      <div>Chúc các bạn xem anime một cách vui vẻ</div>
+      <div onClick={handleChangeUrl}>Quay về home nào</div>
+    </main>
   );
 }
 
