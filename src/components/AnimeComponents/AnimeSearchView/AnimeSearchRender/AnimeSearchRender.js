@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate, useLocation } from "react-router-dom";
-import { listAnimeSearchApi } from "./../../../../api/index";
+import { scrollToTopWhenCheck } from "./../../../../api/handleData";
 import {
   handleDetailSearchData,
   handleChangePageValue,
@@ -93,12 +93,15 @@ const AnimeSearchRender = () => {
     // return <MenuItem></MenuItem>
   };
   const handleChangePage = (e) => {
+    scrollToTopWhenCheck(500);
     dispatch(handleChangePageValue(e.target.value));
   };
   const handleDecre = () => {
+    scrollToTopWhenCheck(500);
     dispatch(handleChangePageValueDecre());
   };
   const handleIncre = () => {
+    scrollToTopWhenCheck(500);
     dispatch(handleChangePageValueIncre());
   };
   useEffect(() => {

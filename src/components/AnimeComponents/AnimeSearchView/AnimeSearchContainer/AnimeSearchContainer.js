@@ -107,7 +107,10 @@ const AnimeSearchContainer = (props) => {
             </Grid>
           </Container>
 
-          <div className="mainContainer genDerList" style={{ margin: "0" }}>
+          <div
+            className="mainContainer genDerList"
+            style={{ margin: "1rem 2rem" }}
+          >
             <AnimeSearchRender />
 
             <LoadingNew isFindata={finData} />

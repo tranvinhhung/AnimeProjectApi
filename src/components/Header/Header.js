@@ -20,6 +20,8 @@ function Header() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const refR = useRef();
+  const refR1 = useRef();
+  const refR2 = useRef();
   const [openMenu, setOpenMenu] = useState(false);
   const handleOpen = () => {
     dispatch(activeForm());
@@ -78,6 +80,20 @@ function Header() {
         navright.current.classList.remove("active");
         setOpenMenu(false);
       });
+      refR1.current.addEventListener("click", function () {
+        navright.current.classList.remove("active");
+        setOpenMenu(false);
+      });
+      Object.keys(dataUser).length === 0 &&
+        refR2.current.addEventListener("click", function () {
+          navright.current.classList.remove("active");
+          setOpenMenu(false);
+        });
+      Object.keys(dataUser).length > 0 &&
+        logoutButton.current.addEventListener("click", function () {
+          navright.current.classList.remove("active");
+          setOpenMenu(false);
+        });
     }
   }, [dataUser, openMenu]);
   return (
@@ -120,7 +136,7 @@ function Header() {
           </li>
 
           <li>
-            <Link className="notext" to="/my-list-love-animes">
+            <Link ref={refR1} className="notext" to="/my-list-love-animes">
               List L.animes
             </Link>
           </li>
@@ -132,7 +148,7 @@ function Header() {
           </li>
           <li>
             {Object.keys(dataUser).length === 0 && (
-              <div className="notext" onClick={handleOpen}>
+              <div ref={refR2} className="notext" onClick={handleOpen}>
                 Sign Up/Login
               </div>
             )}

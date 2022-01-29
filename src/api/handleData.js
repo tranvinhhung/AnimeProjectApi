@@ -48,3 +48,6 @@ export const handleChangeDay = (date) => {
   console.log(b);
   return b;
 };
+export const scrollToTopWhenCheck = (width) => {
+  return window.screen.width < width ? window.scroll(0, 0) : null;
+};

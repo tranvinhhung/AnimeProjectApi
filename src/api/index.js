@@ -46,9 +46,9 @@ export const listAnimeEpisole = async (idani) => {
   return data;
 };
 export const listAnimeEpisoleToday = async ({ perPage = 21, page = 1 }) => {
-  let width = window.screen.width;
+  // let width = window.screen.width;
 
-  if (width < 500) perPage = 9;
+  // if (width < 500) perPage = 9;
   let arr = await axios.get(
     `https://api.aniapi.com/v1/episode?number=1&per_page=${perPage}&page=${page}&source=dreamsub&locale=it`
   );
@@ -102,9 +102,9 @@ export const handleGenerateYear = () => {
   return year;
 };
 export const listAnimeSearchApi = async ({ url, page = 1, per_page = 21 }) => {
-  let width = window.screen.width;
-  console.log(width);
-  if (width < 500) per_page = 9;
+  // let width = window.screen.width;
+  // console.log(width);
+  // if (width < 500) per_page = 9;
   let arr = await axios.get(`${url}&per_page=${per_page}&page=${page}`);
   let data = arr?.data;
   // console.log(data);

@@ -251,3 +251,22 @@
     @include centerItem();
   }
 }
+.trailerConatainerIfra {
+  position: relative;
+  width: $aspectWidthTrailer;
+  padding-top: calc($aspectWidthTrailer * 9 / 16);
+  // height: 100px;
+  @include reponsive($bp-small) {
+    $aspectWidthTrailer: 70rem;
+    width: $aspectWidthTrailer;
+    padding-top: calc($aspectWidthTrailer * 9 / 16);
+  }
+  .iframeTrailer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+}

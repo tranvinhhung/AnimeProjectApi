@@ -326,21 +326,21 @@ function AnimePlay(props) {
               position: "absolute",
               right: 0,
               color: "red",
+              zIndex: 999,
             }}
           ></ClearIcon>
           {anime?.["trailer_url"] && (
-            <iframe
-              width="900"
-              height="506"
-              loading="lazy"
-              src={`${anime?.["trailer_url"]}`}
-            ></iframe>
+            <div className="trailerConatainerIfra">
+              <iframe
+                className="iframeTrailer"
+                loading="lazy"
+                src={`${anime?.["trailer_url"]}`}
+              ></iframe>
+            </div>
           )}
           {!anime?.["trailer_url"] && (
             <div
               style={{
-                height: 506,
-                width: 900,
                 display: "flex",
                 justifyContent: "center",
                 alignItems: "center",

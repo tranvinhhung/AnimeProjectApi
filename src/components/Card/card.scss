@@ -86,6 +86,9 @@
   opacity: 0;
   visibility: hidden;
   filter: drop-shadow(2px 4px 6px black);
+  @include reponsive($bp-small) {
+    height: 25vh;
+  }
   &::after {
     content: "";
     position: absolute;
