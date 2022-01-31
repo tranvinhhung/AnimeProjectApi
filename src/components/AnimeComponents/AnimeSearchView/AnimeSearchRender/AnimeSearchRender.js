@@ -1,27 +1,22 @@
-import React, { useState, useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { useNavigate, useLocation, useSearchParams } from "react-router-dom";
-import { scrollToTopWhenCheck } from "./../../../../api/handleData";
-import {
-  handleDetailSearchData,
-  handleChangePageValue,
-  handleClearSearch,
-  handleListCurrentAnimeSearchWithPage,
-  handleClearDetailSearchData,
-  handleChangePageValueIncre,
-  handleChangePageValueDecre,
-} from "./../../../../reduces/animeSearch";
-import Box from "@mui/material/Box";
-import InputLabel from "@mui/material/InputLabel";
-import MenuItem from "@mui/material/MenuItem";
-import FormControl from "@mui/material/FormControl";
-import Select from "@mui/material/Select";
-import Card from "./../../../Card/Card";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
+import Box from "@mui/material/Box";
+import FormControl from "@mui/material/FormControl";
+import InputLabel from "@mui/material/InputLabel";
+import MenuItem from "@mui/material/MenuItem";
+import Select from "@mui/material/Select";
 import { unwrapResult } from "@reduxjs/toolkit";
 import { gsap } from "gsap";
 import { CSSPlugin } from "gsap/CSSPlugin";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useLocation, useNavigate, useSearchParams } from "react-router-dom";
+import { scrollToTopWhenCheck } from "./../../../../api/handleData";
+import {
+  handleDetailSearchData,
+  handleListCurrentAnimeSearchWithPage,
+} from "./../../../../reduces/animeSearch";
+import Card from "./../../../Card/Card";
 gsap.registerPlugin(CSSPlugin);
 const AnimeSearchRender = () => {
   let url = useSelector((state) => state.mySearch.dataSearch?.url);
@@ -47,9 +42,6 @@ const AnimeSearchRender = () => {
   useEffect(() => {
     (async () => {
       try {
-        // if (!url) {
-        //   navigate("/search");
-        // }
         if (url) {
           let trang = searchParams.get("trang");
           // dispatch(handleClearDetailSearchData());
@@ -87,11 +79,6 @@ const AnimeSearchRender = () => {
         console.log(err);
       }
     })();
-    return () => {
-      if (location.pathname != "/search") {
-        dispatch(handleClearDetailSearchData());
-      }
-    };
   }, [url, searchParams]);
 
   const handleCountPage = (countpage) => {
@@ -124,14 +111,34 @@ const AnimeSearchRender = () => {
   };
   const handleDecre = () => {
     scrollToTopWhenCheck(1000);
-    let trang = searchParams.get("trang");
-    console.log(trang);
+
+    let trang = Number(searchParams.get("trang"));
+
+    let arr = location.search.split("&");
+
+    let ray2 = [];
+    for (let i = 0; i < arr.length - 1; i++) {
+      ray2.push(arr[i]);
+    }
+    let string = ray2.join("&");
+
+    navigate(`${location.pathname}${string}&trang=${trang - 1}`);
+
     // dispatch(handleChangePageValueDecre());
   };
   const handleIncre = () => {
     scrollToTopWhenCheck(1000);
-    let trang = searchParams.get("trang");
-    console.log(trang);
+    let trang = Number(searchParams.get("trang"));
+
+    let arr = location.search.split("&");
+
+    let ray2 = [];
+    for (let i = 0; i < arr.length - 1; i++) {
+      ray2.push(arr[i]);
+    }
+    let string = ray2.join("&");
+
+    navigate(`${location.pathname}${string}&trang=${trang + 1}`);
     // dispatch(handleChangePageValueIncre());
   };
   useEffect(() => {

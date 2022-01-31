@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { Link, Navigate, useNavigate } from "react-router-dom";
+import { Link, Navigate, useNavigate, useLocation } from "react-router-dom";
 import { activeForm } from "../../reduces/formDataUser";
 import PopoverEle from "./../Popover/PopoverContainer/PopoverContainer";
 import { useDispatch, useSelector } from "react-redux";
@@ -12,6 +12,7 @@ import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import MenuIcon from "@mui/icons-material/Menu";
 import MenuOpenIcon from "@mui/icons-material/MenuOpen";
+import { handleClearDetailSearchData } from "./../../reduces/animeSearch";
 import "./header.scss";
 function Header() {
   const logoutButton = useRef();
@@ -29,6 +30,7 @@ function Header() {
   const handleOpenMenu = () => {
     setOpenMenu(!openMenu);
   };
+  const location = useLocation();
   const activeLogin = useSelector((state) => state.myForm.activeLogin);
   const dataUser = useSelector((state) => state.myLogin.data);
   // console.log(Object.keys(dataUser).length);
@@ -51,7 +53,11 @@ function Header() {
   };
 
   const divRef = React.useRef();
-
+  useEffect(() => {
+    if (location.pathname != "/search") {
+      dispatch(handleClearDetailSearchData());
+    }
+  }, [location]);
   useEffect(() => {
     if (logoutButton && logoutButton.current) {
       divRef.current.addEventListener("mouseover", function () {

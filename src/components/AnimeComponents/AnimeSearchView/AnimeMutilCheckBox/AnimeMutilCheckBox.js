@@ -141,7 +141,7 @@ export default function MultipleSelect(props) {
       navigate("/search");
     });
   }, [myData]);
-  const checkValue = (name) => {
+  const checkValueSelect = (name) => {
     if (name === "Year") {
       return year || "";
     }
@@ -153,7 +153,7 @@ export default function MultipleSelect(props) {
       return a.toString();
     }
   };
-  const checkValueMu = (name) => {
+  const checkValueMuSelect = (name) => {
     let a = [];
     if (name === "Genders") {
       if (!genres) return [];
@@ -178,7 +178,25 @@ export default function MultipleSelect(props) {
       }
     }
   };
-  const handleCheckPropsValueHas = () => {};
+  const handleCheckPropsValueHas = (name) => {
+    switch (name) {
+      case "Genders":
+        // code block
+        return genres ? true : false;
+        break;
+      case "Year":
+        return year ? true : false;
+        break;
+      case "Season":
+        return season ? true : false;
+        break;
+      case "Format":
+        return format ? true : false;
+        break;
+      default:
+        return false;
+    }
+  };
   // console.log(checkValue("Genders"));
   return (
     <FormControl
@@ -201,8 +219,8 @@ export default function MultipleSelect(props) {
         multiple={props.multiple}
         value={
           props.multiple
-            ? checkValueMu(props.setname)
-            : checkValue(props.setname)
+            ? checkValueMuSelect(props.setname)
+            : checkValueSelect(props.setname)
         }
         // value={myData}
         onChange={(e) => handleChange(e, props.setname)}
@@ -233,8 +251,7 @@ export default function MultipleSelect(props) {
       </Select>
       <HighlightOffOutlinedIcon
         style={
-          // handleCheckPropsValueHas(123)
-          true
+          handleCheckPropsValueHas(props.setname)
             ? {
                 opacity: 1,
                 width: "2rem",
