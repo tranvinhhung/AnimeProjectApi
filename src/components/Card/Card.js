@@ -16,7 +16,7 @@ function Card(props) {
     cover_image: img,
 
     banner_image: img2,
-    titles: { jp: alt = "No alt", en },
+    titles: { jp = "No alt", en },
     episodes_count,
     episode_duration,
   } = props.data;
@@ -36,11 +36,11 @@ function Card(props) {
       {lop && (
         <img
           data-src={img2 ? img2 : img}
-          alt={alt}
+          alt={jp}
           className={lop ? "swiper-lazy cardImg" : "cardImg"}
         />
       )}
-      {!lop && <img src={img2 ? img2 : img} alt={alt} className="cardImg" />}
+      {!lop && <img src={img2 ? img2 : img} alt={jp} className="cardImg" />}
       <span>{en}</span>
       <span className="tap">{`Đã có   ${episodes_count}`}</span>
 

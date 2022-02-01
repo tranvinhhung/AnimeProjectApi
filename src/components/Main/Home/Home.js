@@ -16,11 +16,12 @@ import Card from "../../Card/Card";
 import Section from "../../Section/Section";
 import "./home.scss";
 import Collection from "../../Collections/CollectionContai/CollectionConta";
-
+import { useNavigate } from "react-router-dom";
 function Home() {
   const [loading, setLoading] = useState(true);
   const [coverList, setcoverList] = useState([]);
   const [listGender, setListGender] = useState([]);
+  const navigate = useNavigate();
   useEffect(() => {
     (async () => {
       window.scrollTo(0, 0);
@@ -46,6 +47,9 @@ function Home() {
     })();
   }, []);
   useEffect(() => {});
+  const handleNavigateTop100 = () => {
+    navigate("/top-100-anime");
+  };
   return (
     <>
       {/* <Header /> */}
@@ -71,6 +75,7 @@ function Home() {
             ))}
 
             <Collection list={[0, 1, 2, 3, 4]} />
+            <div onClick={handleNavigateTop100}>top 100 anime</div>
           </>
         )}
       </main>

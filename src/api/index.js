@@ -110,3 +110,11 @@ export const listAnimeSearchApi = async ({ url, page = 1, per_page = 21 }) => {
   // console.log(data);
   return data;
 };
+export const handleAnimeTop = async ({ per_page = 20, page }) => {
+  let arr = await axios.get(
+    `https://api.aniapi.com/v1/anime?sort_fields=score&sort_directions=-1&per_page=${per_page}&page=${page}`
+  );
+  let data = arr?.data.data;
+  // console.log(data);
+  return data;
+};

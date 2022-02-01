@@ -1,0 +1,14 @@
+.top100animeConati {
+  display: flex;
+  //   flex-direction: column;
+  padding: 1rem;
+  gap: 1rem;
+  flex-wrap: wrap;
+  .top100item {
+    flex-basis: calc(25% - 1rem);
+    // width: 25%;
+  }
+}
+.top100Tile {
+  padding: 2rem;
+}

@@ -21,6 +21,7 @@ import animeLogin from "./../reduces/animeLogin";
 import myListUsersSlice from "../reduces/myUsersSlice";
 import animeCommentSlice from "../reduces/animeComment";
 import animeSearchSlice from "../reduces/animeSearch";
+import animeTopSlice from "../reduces/animeTop";
 // const persistConfig = {
 //   key: "root",
 //   version: 1,
@@ -38,6 +39,7 @@ const rootReducer = combineReducers({
   myUsers: myListUsersSlice.reducer,
   myComments: animeCommentSlice.reducer,
   mySearch: animeSearchSlice.reducer,
+  myAnimeTop: animeTopSlice.reducer,
 });
 // const persistedReducer = persistReducer(persistConfig, rootReducer);
 const store = configureStore({
