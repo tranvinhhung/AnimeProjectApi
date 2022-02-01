@@ -1,3 +1,5 @@
+@use "./../../../../sass/" as *;
+$width_card: 25%;
 .top100animeConati {
   display: flex;
   //   flex-direction: column;
@@ -5,10 +7,44 @@
   gap: 1rem;
   flex-wrap: wrap;
   .top100item {
-    flex-basis: calc(25% - 1rem);
+    flex-basis: calc($width_card - 1rem);
     // width: 25%;
+    position: relative;
+    @include reponsive($bp-small) {
+      $width_card: 33.333333333%;
+      flex-basis: calc($width_card - 1rem);
+    }
+    @include reponsive($bp-smallest) {
+      $width_card: 50%;
+      flex-basis: calc($width_card - 1rem);
+    }
+    .top100itemRank {
+      position: absolute;
+      width: 4rem;
+      height: 4rem;
+      border-radius: 50%;
+      top: 0;
+      left: 0;
+      background-color: $main_color;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 1.5rem;
+    }
   }
 }
 .top100Tile {
   padding: 2rem;
+}
+.top100wrap {
+  width: 90%;
+  margin: 0 auto;
+  font-size: 3rem;
+  text-transform: uppercase;
+  cursor: pointer;
+  img {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
 }

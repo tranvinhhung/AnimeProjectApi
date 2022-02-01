@@ -75,7 +75,18 @@ function Home() {
             ))}
 
             <Collection list={[0, 1, 2, 3, 4]} />
-            <div onClick={handleNavigateTop100}>top 100 anime</div>
+            <section
+              className="genderContainer top100wrap"
+              onClick={handleNavigateTop100}
+            >
+              top 100 anime
+              <figure>
+                <img
+                  src="https://3.bp.blogspot.com/-yKT-n-nCbrU/WmCm8PV95rI/AAAAAAAAtzA/ChnCm_9XXYM8kjxpkaBfRRnkto-TSDuvQCEwYBhgL/s1600/hinh-nen-may-tinh-anime-de-thuong-6.jpg"
+                  alt=""
+                />
+              </figure>
+            </section>
           </>
         )}
       </main>

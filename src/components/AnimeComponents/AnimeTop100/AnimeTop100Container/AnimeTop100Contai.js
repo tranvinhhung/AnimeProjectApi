@@ -25,10 +25,11 @@ const AnimeTop100Contai = () => {
       if (top100aniData.length >= 100) {
         dispatch(handleHasMore());
         return;
+      } else {
+        let dataTop = await dispatch(handleAnimeTopAsyncRedux());
+        let dataHanle = unwrapResult(dataTop);
+        console.log(top100aniHas);
       }
-      let dataTop = await dispatch(handleAnimeTopAsyncRedux());
-      let dataHanle = unwrapResult(dataTop);
-      console.log(top100aniHas);
     } catch (err) {
       console.log(err);
     }
@@ -37,9 +38,11 @@ const AnimeTop100Contai = () => {
     window.scroll(0, 0);
     (async () => {
       try {
-        let data = await handleAnimeTop({ page: top100AniPage });
-        if (data) {
-          dispatch(addAnimeTop(data.documents));
+        if (top100aniHas) {
+          let data = await handleAnimeTop({ page: top100AniPage });
+          if (data) {
+            dispatch(addAnimeTop(data.documents));
+          }
         }
       } catch (err) {
         console.log(err);
@@ -70,12 +73,21 @@ const AnimeTop100Contai = () => {
           dataLength={top100aniData?.length}
           next={fetchMoreData}
           hasMore={top100aniHas}
-          loader={<LoadingNew isFindata={true} />}
         >
           <div className="top100animeConati">
             {top100aniData?.map((data, index) => (
               <div className="top100item" key={index}>
                 <Card data={data} />
+                <div
+                  style={
+                    data?.["cover_color"]
+                      ? { backgroundColor: data?.["cover_color"] }
+                      : {}
+                  }
+                  className="top100itemRank"
+                >
+                  #{index + 1}
+                </div>
               </div>
             ))}
           </div>
