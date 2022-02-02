@@ -45,12 +45,12 @@ Fe:
 - Clone the Project
 
 - Run npm install
--
+
 Be:
 
-- install MongoDB
+- Install MongoDB
 - Clone BackEnd for Users:https://github.com/tranvinhhung/usersAnimeApi
-- run npm install
+- Run npm install
 
 ## Screenshots, Preview
 
