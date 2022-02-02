@@ -24,7 +24,7 @@ Front End:
 - Many good Animes and many episodes
 - Suggested movies
 - Many beautiful animations
-- Top 100 Anime
+- Top 100 Anime(Infinite loading)
 - Filter by genres, year, season,format.
 - Add List Favorite Anime For Each User(require authentication)
 - Login,SignUp
