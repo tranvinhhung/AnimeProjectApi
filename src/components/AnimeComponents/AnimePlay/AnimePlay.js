@@ -124,6 +124,7 @@ function AnimePlay(props) {
   //console.log(id);
   useEffect(() => {
     window.scrollTo(0, 0);
+    document.title = "Anime Detail";
     handleAsync(async () => {
       // const animeId = await getAnimeWidthId(id);
       // const animeSong = await songWidthId(id);

@@ -36,6 +36,7 @@ const AnimeTop100Contai = () => {
   };
   useEffect(() => {
     window.scroll(0, 0);
+    document.title = "Top 100 Animes";
     (async () => {
       try {
         if (top100aniHas) {

@@ -88,6 +88,7 @@ function AnimeToDayWatch() {
     };
   }, []);
   useEffect(() => {
+    document.title = "Anime Watch Today";
     window.scroll(0, 0);
     let card;
     if (myData) {

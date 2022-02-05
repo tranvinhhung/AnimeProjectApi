@@ -1,16 +1,9 @@
-import React, { useEffect, useRef } from "react";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import React, { useEffect, useRef } from "react";
 import { useDispatch } from "react-redux";
-import {
-  NavLink,
-  useNavigate,
-  useSearchParams,
-  useLocation,
-} from "react-router-dom";
-import slugify from "slugify";
-import { resetListEpisode } from "./../../../reduces/animeListEpisode";
-import "./videojs.scss";
+import { useLocation, useNavigate } from "react-router-dom";
 import VideoJS from "./VideoJS";
+import "./videojs.scss";
 function AnimeLink(props) {
   const { state } = useLocation();
   const navigate = useNavigate();
@@ -46,7 +39,8 @@ function AnimeLink(props) {
 
   useEffect(() => {
     el.current.scrollIntoView({ block: "end", behavior: "smooth" });
-  });
+    document.title = "Watch Anime";
+  }, []);
   const handlePlayerReady = (player) => {
     playerRef.current = player;
 

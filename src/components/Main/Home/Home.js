@@ -23,6 +23,7 @@ function Home() {
   const [listGender, setListGender] = useState([]);
   const navigate = useNavigate();
   useEffect(() => {
+    document.title = "Home";
     (async () => {
       window.scrollTo(0, 0);
       setLoading(true);

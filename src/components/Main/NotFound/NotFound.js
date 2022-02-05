@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./notfound.scss";
 function NotFound() {
+  useEffect(() => {
+    document.title = "Not Found";
+  }, []);
   return (
     <div id="oopss">
       <div id="error-text">

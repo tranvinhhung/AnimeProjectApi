@@ -36,6 +36,7 @@ const AnimeSearchContainer = (props) => {
 
   useEffect(() => {
     window.scroll(0, 0);
+    document.title = "Search Anime";
     (async () => {
       try {
         dispatch(resetPageValue());

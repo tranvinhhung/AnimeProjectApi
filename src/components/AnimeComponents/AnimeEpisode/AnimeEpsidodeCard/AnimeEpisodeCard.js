@@ -39,7 +39,8 @@ function AnimeEpisodeCard(props) {
       }}
       style={props.isStyle ? { backgroundColor: props.isStyle } : {}}
     >
-      {props.data.number} {props.data.title || `. Chapter ${props.data.number}`}
+      {props.data.number}{" "}
+      <span>{props.data.title || `. Chapter ${props.data.number}`}</span>
       <ArrowForwardOutlinedIcon />
     </li>
   );

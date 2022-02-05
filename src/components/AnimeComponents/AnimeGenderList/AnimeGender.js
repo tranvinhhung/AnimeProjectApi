@@ -46,6 +46,7 @@ function AnimeGender() {
     window.scrollTo(0, 0);
     trang = Number(searchParams.get("trang"));
     // console.log(Number(trang));
+    document.title = "Genres";
     handleAsync(async () => {
       try {
         let arr = await listAnimeWithGender(gender, 21, trang);

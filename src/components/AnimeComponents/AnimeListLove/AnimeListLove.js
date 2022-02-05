@@ -19,6 +19,7 @@ const AnimeListLove = () => {
     if (!token) {
       setanimeLoveList([]);
     }
+    document.title = "List Love Anime";
     (async () => {
       try {
         if (token) {

@@ -13,6 +13,13 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  @include reponsive($bp-small) {
+    & {
+      span {
+        display: none;
+      }
+    }
+  }
   &:hover {
     box-shadow: 0 0 3px red;
   }

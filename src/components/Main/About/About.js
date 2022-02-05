@@ -1,15 +1,11 @@
-import React, { useState } from "react";
-import {
-  NavLink,
-  useLocation,
-  useMatch,
-  useNavigate,
-  useParams,
-  useRoutes,
-} from "react-router-dom";
+import React, { useEffect } from "react";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import "./About.scss";
 
 function About() {
+  useEffect(() => {
+    document.title = "About";
+  }, []);
   const params = useParams();
   const location = useLocation();
 
