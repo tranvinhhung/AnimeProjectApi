@@ -1,70 +1,91 @@
-# Getting Started with Create React App
+## AnimeProjectApi
+Anime Watching Website
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+## Anime Sources
+I use AniApi  written by the [AniAPI Team](https://github.com/AniAPI-Team) with community contributions.
 
-In the project directory, you can run:
+link docs api: https://aniapi.com/docs/
 
-### `npm start`
+## Main technology used
+- React
+- Redux,Redux Toolkit(State management)
+- Axios (Data fetching)
+- React-Hook-Form(validate data) with Yup,
+- Swiper (slider)
+- Material Ui(CSS framework)
+- React-router-dom(v6)
+- Gsap(Green sock for animation)
+- react-infinite-scroll-component (Infinite loading)
+- Sass (styling)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Features
+Front End:
+- Many good Animes and many episodes
+- Suggested movies
+- Many beautiful animations
+- Top 100 Anime(Infinite loading)
+- Filter by genres, year, season,format.
+- Add List Favorite Anime For Each User(require authentication)
+- Login,SignUp
+- Comments (require authentication )
+- Paging(Search filter, Episodes list,...)
+- Reponsive
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Back End:
 
-### `npm test`
+I use a Api for User authentication  written Nodejs,Express,MongoDB
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+I just use this Api , i don't code them
+link git:https://github.com/tranvinhhung/usersAnimeApi
 
-### `npm run build`
+## Installation
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Fe:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- Clone the Project
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- Run npm install
 
-### `npm run eject`
+Be:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- Install MongoDB
+- Clone BackEnd for Users:https://github.com/tranvinhhung/usersAnimeApi
+- Run npm install
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Screenshots, Preview
+HomePage
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+![image](https://user-images.githubusercontent.com/67729427/152113610-4d68336f-7d45-40d3-af87-a6ec310ba29a.png)
+![image](https://user-images.githubusercontent.com/67729427/152114017-eec0c959-61c3-4a59-9603-7c0a730b8c08.png)
+![image](https://user-images.githubusercontent.com/67729427/152114207-dfe22342-4012-455e-b74e-6b794d317f6d.png)
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+![image](https://user-images.githubusercontent.com/67729427/152114387-5595cc10-5253-4d90-b199-a2340e04d543.png)
 
-## Learn More
+AnimeDetails
+![image](https://user-images.githubusercontent.com/67729427/152114997-e08abefb-9331-4aed-99ee-e1eacf89c01d.png)
+![image](https://user-images.githubusercontent.com/67729427/152115078-263a64dd-a868-413e-a5cb-4a5fdc817324.png)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Watch Anime
+![image](https://user-images.githubusercontent.com/67729427/152115913-6722c1e2-4b02-47e1-8b01-8e47abacbcd7.png)
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Login/SignUp
+![image](https://user-images.githubusercontent.com/67729427/152115533-afbd6dd4-a987-4b1f-85da-31148f4cfa3a.png)
+![image](https://user-images.githubusercontent.com/67729427/152115567-c629c890-294d-4301-a2cf-d473ee990675.png)
+![image](https://user-images.githubusercontent.com/67729427/152117361-8882466d-d3f8-47f3-8342-992bca8c0f08.png)
 
-### Code Splitting
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Search Filter 
+![image](https://user-images.githubusercontent.com/67729427/152116425-fcff5e16-68e1-4fd4-86c6-52f3bb328c04.png)
 
-### Analyzing the Bundle Size
+Comments
+![image](https://user-images.githubusercontent.com/67729427/152118710-dab8a58b-8a12-4aea-8776-ee8bfabdabe3.png)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
 
-### Making a Progressive Web App
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
 
-### Advanced Configuration
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
 
-### Deployment
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
 
-### `npm run build` fails to minify
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
