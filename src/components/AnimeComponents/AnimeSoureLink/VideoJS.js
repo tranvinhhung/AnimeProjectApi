@@ -1,12 +1,15 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import videojs from "video.js";
 import "video.js/dist/video-js.css";
 
 export const VideoJS = (props) => {
   const videoRef = React.useRef(null);
   const playerRef = React.useRef(null);
+  const urlRef = React.useRef(null);
   const { options, onReady } = props;
-
+  const optionRedux = useSelector((state) => state.myVideo.config);
+  const currentTimeRedux = useSelector((state) => state.myVideo.currentTimee);
   React.useEffect(() => {
     // make sure Video.js player is only initialized once
     if (!playerRef.current) {
@@ -19,10 +22,21 @@ export const VideoJS = (props) => {
       }));
     } else {
       // you can update player here [update player through props]
+
       const player = playerRef.current;
-      // player.autoplay(options.autoplay);
-      player.src(options.sources);
+      console.log(urlRef.current === optionRedux.sources[0].src);
+      if (urlRef.current !== optionRedux.sources[0].src) {
+        // player.seeking();
+        player.autoplay(true);
+        player.src(options.sources);
+
+        // set
+      }
     }
+    return () => {
+      urlRef.current = optionRedux.sources[0].src;
+      console.log(urlRef.current);
+    };
   }, [options, videoRef]);
 
   // Dispose the Video.js player when the functional component unmounts

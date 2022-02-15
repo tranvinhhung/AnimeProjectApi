@@ -11,6 +11,7 @@ import {
   handleAnimeVideoAsync,
   resetAnimeVideo,
   handleConfigVideo,
+  setCurrentTime,
 } from "./../../../reduces/animeVideos";
 import VideoJS from "./VideoJS";
 import "./videojs.scss";
@@ -36,18 +37,23 @@ function AnimeLink(props) {
 
   const handleClose = async (e) => {
     setAnchorEl(null);
+    console.log(e.currentTarget.textContent);
     // setCheck(e.currentTarget.textContent);
     try {
-      let dataQuantity = await dispatch(
-        handleAnimeVideoAsync({
-          id: state.dataEpisodeLink["anime_id"],
-          number: state.dataEpisodeLink.number,
-          quality: e.currentTarget.textContent,
-        })
-      );
+      if (e.currentTarget.textContent) {
+        let dataQuantity = await dispatch(
+          handleAnimeVideoAsync({
+            id: state.dataEpisodeLink["anime_id"],
+            number: state.dataEpisodeLink.number,
+            quality: e.currentTarget.textContent,
+          })
+        );
 
-      let unRapdataQuti = unwrapResult(dataQuantity);
-      console.log(unRapdataQuti);
+        let unRapdataQuti = unwrapResult(dataQuantity);
+        // let current = document.querySelector("video-js").currentTime;
+        // dispatch(setCurrentTime(current));
+        // console.log(unRapdataQuti);
+      }
     } catch (err) {
       console.log(err);
     }

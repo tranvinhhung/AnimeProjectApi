@@ -40,6 +40,7 @@ const initialState = {
   },
   allLink: [],
   quality: "",
+  currentTimee: 0,
   isFindData: false,
 };
 
@@ -53,6 +54,9 @@ const animeVideosSlice = createSlice({
     resetAnimeVideo(state, action) {
       state.config.sources = [...initialState.config.sources];
       state.allLink = [...initialState.allLink];
+    },
+    setCurrentTime(state, action) {
+      state.currentTimee = action.payload;
     },
   },
   extraReducers: {
@@ -80,5 +84,6 @@ const animeVideosSlice = createSlice({
   },
 });
 
-export const { handleConfigVideo, resetAnimeVideo } = animeVideosSlice.actions;
+export const { handleConfigVideo, resetAnimeVideo, setCurrentTime } =
+  animeVideosSlice.actions;
 export default animeVideosSlice;
