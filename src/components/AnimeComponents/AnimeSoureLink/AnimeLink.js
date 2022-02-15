@@ -99,10 +99,8 @@ function AnimeLink(props) {
     <div className="animeLink" ref={el}>
       {configVideo.sources[0].src && (
         <>
-          <VideoJS
-            options={configVideo.sources[0].src ? configVideo : null}
-            onReady={handlePlayerReady}
-          />
+          <VideoJS options={configVideo} onReady={handlePlayerReady} />
+
           <ArrowBackIcon onClick={handleBack} />
           {linkQuantityAnime?.length > 0 && (
             <IconButton

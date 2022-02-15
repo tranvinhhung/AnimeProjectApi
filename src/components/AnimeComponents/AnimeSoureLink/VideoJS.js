@@ -19,9 +19,9 @@ export const VideoJS = (props) => {
       }));
     } else {
       // you can update player here [update player through props]
-      // const player = playerRef.current;
+      const player = playerRef.current;
       // player.autoplay(options.autoplay);
-      // player.src(options.sources[1]);
+      player.src(options.sources);
     }
   }, [options, videoRef]);
 
