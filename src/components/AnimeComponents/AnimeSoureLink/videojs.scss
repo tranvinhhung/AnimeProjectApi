@@ -21,4 +21,15 @@
     transition: all 0.3s;
     cursor: pointer;
   }
+  svg + button {
+    bottom: 20%;
+    right: 0;
+    width: 10%;
+    display: inline-block;
+    position: absolute;
+    transition: all 0.3s;
+    &.nonee {
+      display: none !important;
+    }
+  }
 }

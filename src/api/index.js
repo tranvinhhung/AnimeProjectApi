@@ -50,7 +50,7 @@ export const listAnimeEpisoleToday = async ({ perPage = 21, page = 1 }) => {
 
   // if (width < 500) perPage = 9;
   let arr = await axios.get(
-    `https://api.aniapi.com/v1/episode?number=1&per_page=${perPage}&page=${page}&source=dreamsub&locale=it`
+    `https://api.aniapi.com/v1/episode?number=1&per_page=${perPage}&page=${page}&is_dub=true&locale=it`
   );
   let data = arr?.data?.data;
   return data;
@@ -62,7 +62,7 @@ export const handleListEpisodeWitdID = async ({
   perPage = 32,
 }) => {
   let list = await axios.get(
-    `https://api.aniapi.com/v1/episode?anime_id=${id}&source=dreamsub&locale=it&page=${page}&per_page=${perPage}`
+    `https://api.aniapi.com/v1/episode?anime_id=${id}&is_dub=true&locale=it&page=${page}&per_page=${perPage}`
   );
   let myData = await list?.data?.data;
   return myData;
@@ -117,4 +117,12 @@ export const handleAnimeTop = async ({ per_page = 20, page }) => {
   let data = arr?.data.data;
   // console.log(data);
   return data;
+};
+
+export const handleAnimeEpisodeWithQuantity = async ({ id, number }) => {
+  let list = await axios.get(
+    `https://api.aniapi.com/v1/episode?anime_id=${id}&number=${number}&is_dub=false&locale=it`
+  );
+  let myData = await list?.data?.data;
+  return myData;
 };

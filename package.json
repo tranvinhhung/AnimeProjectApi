@@ -32,6 +32,7 @@
     "sass": "^1.45.0",
     "slugify": "^1.6.4",
     "swiper": "^7.3.3",
+    "videojs-resolution-switcher": "^0.4.2",
     "web-vitals": "^2.1.2",
     "yup": "^0.32.11"
   },

@@ -21,7 +21,7 @@ export const VideoJS = (props) => {
       // you can update player here [update player through props]
       // const player = playerRef.current;
       // player.autoplay(options.autoplay);
-      // player.src(options.sources);
+      // player.src(options.sources[1]);
     }
   }, [options, videoRef]);
 
