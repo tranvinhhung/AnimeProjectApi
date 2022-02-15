@@ -10,6 +10,7 @@ import {
   getGender,
   ramdomValueArrayGender,
   listAnimeWithGender,
+  handleAnimeTop,
 } from "./../../../api/index";
 import { handerAnime } from "./../../../api/handleData";
 import Card from "../../Card/Card";
@@ -31,18 +32,18 @@ function Home() {
       // let animeGender = await handerAnime();
       // console.log(animeGender);
       let allArrHandle = await Promise.all([
-        getAnimeRamdom(10),
+        // getAnimeRamdom(10),
+        handleAnimeTop({ per_page: 20, page: 1 }),
         handerAnime(4),
       ]);
       // console.log(allArrHandle);
       let [arr, listGender] = allArrHandle;
-      let arrr = await arr.data.data;
 
-      // console.log(arrr);
+      console.log(arr);
 
       let listGenderr = listGender.filter((el) => el["status_code"] === 200);
 
-      setcoverList(arrr);
+      setcoverList(arr?.documents);
       setListGender(listGenderr);
       setLoading(false);
     })();

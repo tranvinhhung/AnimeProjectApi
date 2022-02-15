@@ -6,8 +6,8 @@
 
   // filter: drop-shadow(1px 1px 2px black);
   .bannerContainer {
-    min-height: 70vh;
-    @include reponsive($bp-medium) {
+    min-height: 60vh;
+    @include reponsive($bp-large) {
       & {
         min-height: 40vh;
       }

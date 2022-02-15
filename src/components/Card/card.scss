@@ -3,9 +3,12 @@
 .gender,
 .cardConatiner {
   position: relative;
-  height: 60vh;
+  height: 55vh;
   overflow: hidden;
   backface-visibility: hidden;
+  @include reponsive($bp-medium) {
+    height: 30vh;
+  }
   @include reponsive($bp-small) {
     height: 30vh;
   }
