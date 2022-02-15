@@ -37,7 +37,7 @@ function AnimeGender() {
   console.log(gender);
   console.log(location);
   let myData = useSelector((state) => state.myAnime.data);
-  let countPage;
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
   let tl = gsap.timeline();
@@ -45,24 +45,23 @@ function AnimeGender() {
   useEffect(() => {
     window.scrollTo(0, 0);
     trang = Number(searchParams.get("trang"));
-    // console.log(Number(trang));
+
     document.title = "Genres";
     handleAsync(async () => {
       try {
         let arr = await listAnimeWithGender(gender, 21, trang);
         if (arr["status_code"] === 200) {
-          await dispatch(getListGender(arr));
+          dispatch(getListGender(arr));
         } else if (arr["status_code"] === 404) {
           navigate("/not-found");
         }
-        countPage = myData?.data.last_page;
 
         // console.log(arr);
         // console.log(dataa);
         // console.log(dataa.data.documents);
       } catch (err) {
         console.log(err);
-        // navigate("/not-found");
+        navigate("/not-found");
       }
     })();
     return () => {
@@ -105,16 +104,13 @@ function AnimeGender() {
       top: 0,
       behavior: "smooth",
     });
-    let arr = await listAnimeWithGender(gender, 21, event.target.value);
-    await navigate(
+
+    navigate(
       `${pathname}?name=${searchParams.get("name")}&trang=${
         event.target.value
       }`,
       { state: { gender } }
     );
-    dispatch(getListGender(arr));
-
-    console.log(arr);
   };
   const handleCountPage = (page) => {
     let arr = [];
@@ -122,6 +118,22 @@ function AnimeGender() {
       arr.push(i);
     }
     return arr;
+  };
+  const handleIncrePage = () => {
+    navigate(
+      `${pathname}?name=${searchParams.get("name")}&trang=${
+        Number(searchParams.get("trang")) + 1
+      }`,
+      { state: { gender } }
+    );
+  };
+  const handleDecrePage = () => {
+    navigate(
+      `${pathname}?name=${searchParams.get("name")}&trang=${
+        Number(searchParams.get("trang")) - 1
+      }`,
+      { state: { gender } }
+    );
   };
 
   return (
@@ -135,7 +147,7 @@ function AnimeGender() {
             ))}
           </div>
           <div className="boxChangePage">
-            <ArrowBackIosNewOutlinedIcon />
+            <ArrowBackIosNewOutlinedIcon onClick={handleDecrePage} />
             <Box sx={{ minWidth: 100 }}>
               <FormControl fullWidth>
                 <InputLabel id="select-label">Trang</InputLabel>
@@ -156,7 +168,7 @@ function AnimeGender() {
                 </Select>
               </FormControl>
             </Box>
-            <ArrowForwardIosOutlinedIcon />
+            <ArrowForwardIosOutlinedIcon onClick={handleIncrePage} />
           </div>
         </>
       )}
