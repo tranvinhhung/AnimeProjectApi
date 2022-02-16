@@ -9,7 +9,7 @@ link docs api: https://aniapi.com/docs/
 
 ## Main technology used
 - React
-- Redux,Redux Toolkit(State management)
+- Redux,Redux Toolkit,Redux Thunk(State management)
 - Axios (Data fetching)
 - React-Hook-Form(validate data) with Yup,
 - Swiper (slider)
