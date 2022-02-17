@@ -126,6 +126,7 @@ function Header() {
                 name="searchAnime"
                 id="searchID"
                 placeholder="tìm anime nào!!"
+                onClick={handleSearchView}
               />
               <SearchIcon onClick={handleSearchView} />
               <button type="submit">button</button>
