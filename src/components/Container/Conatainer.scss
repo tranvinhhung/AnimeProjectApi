@@ -1,0 +1,16 @@
+@use "./../../sass" as *;
+.overlayC {
+  position: fixed;
+  z-index: 2;
+  background-color: #ededed;
+  width: 100vw;
+  height: 100vh;
+  display: none;
+  opacity: 0;
+  @include reponsive($bp-large) {
+    &.active {
+      display: block;
+      opacity: 0.5;
+    }
+  }
+}

@@ -1,18 +1,15 @@
-import React, { useEffect, useRef, useState } from "react";
-import { Link, Navigate, useNavigate, useLocation } from "react-router-dom";
-import { activeForm } from "../../reduces/formDataUser";
-import PopoverEle from "./../Popover/PopoverContainer/PopoverContainer";
-import { useDispatch, useSelector } from "react-redux";
-import Signup from "./../User/Signup/Signup";
-import Login from "./../User/Login/Login";
-import { logout } from "./../../reduces/animeLogin";
-import SearchIcon from "@mui/icons-material/Search";
-import Popover from "@mui/material/Popover";
-import Typography from "@mui/material/Typography";
-import Button from "@mui/material/Button";
 import MenuIcon from "@mui/icons-material/Menu";
 import MenuOpenIcon from "@mui/icons-material/MenuOpen";
+import SearchIcon from "@mui/icons-material/Search";
+import React, { useEffect, useRef, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { activeForm } from "../../reduces/formDataUser";
+import { logout } from "./../../reduces/animeLogin";
 import { handleClearDetailSearchData } from "./../../reduces/animeSearch";
+import PopoverEle from "./../Popover/PopoverContainer/PopoverContainer";
+import Login from "./../User/Login/Login";
+import Signup from "./../User/Signup/Signup";
 import "./header.scss";
 function Header() {
   const logoutButton = useRef();
@@ -77,27 +74,33 @@ function Header() {
       openMenu &&
         menuButtonRef.current.addEventListener("click", function () {
           navright.current.classList.remove("active");
+          document.querySelector(".overlayC").classList.remove("active");
         });
       !openMenu &&
         menuButtonRef.current.addEventListener("click", function () {
           navright.current.classList.add("active");
+          document.querySelector(".overlayC").classList.add("active");
         });
       refR.current.addEventListener("click", function () {
         navright.current.classList.remove("active");
+        document.querySelector(".overlayC").classList.remove("active");
         setOpenMenu(false);
       });
       refR1.current.addEventListener("click", function () {
         navright.current.classList.remove("active");
+        document.querySelector(".overlayC").classList.remove("active");
         setOpenMenu(false);
       });
       Object.keys(dataUser).length === 0 &&
         refR2.current.addEventListener("click", function () {
           navright.current.classList.remove("active");
+          document.querySelector(".overlayC").classList.remove("active");
           setOpenMenu(false);
         });
       Object.keys(dataUser).length > 0 &&
         logoutButton.current.addEventListener("click", function () {
           navright.current.classList.remove("active");
+          document.querySelector(".overlayC").classList.remove("active");
           setOpenMenu(false);
         });
     }

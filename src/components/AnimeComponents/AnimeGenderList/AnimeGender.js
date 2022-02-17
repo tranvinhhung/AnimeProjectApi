@@ -98,7 +98,11 @@ function AnimeGender() {
         });
       })();
   }, [myData]);
-
+  useEffect(() => {
+    if (document.querySelector(".navright").classList.contains("active")) {
+      document.querySelector(".navright").classList.remove("active");
+    }
+  }, []);
   const handleChange = async (event) => {
     window.scroll({
       top: 0,
