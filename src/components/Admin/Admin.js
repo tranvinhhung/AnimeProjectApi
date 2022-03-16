@@ -4,6 +4,7 @@ function Admin() {
   // console.log("testbarnádas");
   console.log("testttttttt");
   // console.log("123123123213");
+  console.log("maianana");
   return <div>Admin33333</div>;
 }
 
