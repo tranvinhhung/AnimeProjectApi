@@ -1,0 +1,667 @@
+[33mcommit c8e1ced6f346be4b0146a7ac0a24ae3309cee1ac[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m)[m
+Author: Tran Vinh Hung <hungtv@MECORP.LOCAL>
+Date:   Wed Mar 16 09:54:01 2022 +0700
+
+    test2
+
+[33mcommit 704e7415a5d3c178d8146830ca857a757957bc59[m
+Author: Tran Vinh Hung <hungtv@MECORP.LOCAL>
+Date:   Wed Mar 16 09:51:11 2022 +0700
+
+    pull
+
+[33mcommit a1654bdd006ae754f85e0f6cb12bfc3bb0024028[m
+Author: Tran Vinh Hung <hungtv@MECORP.LOCAL>
+Date:   Wed Mar 16 09:48:59 2022 +0700
+
+    asda
+
+[33mcommit f042228fe50606ec6b31173b035c6be229ada339[m
+Author: Tran Vinh Hung <hungtv@MECORP.LOCAL>
+Date:   Wed Mar 16 09:37:10 2022 +0700
+
+    tess3
+
+[33mcommit 142db23299933377b4c3984c62d1a975bd5f7e7a[m
+Author: Tran Vinh Hung <hungtv@MECORP.LOCAL>
+Date:   Wed Mar 16 09:33:37 2022 +0700
+
+    cm2
+
+[33mcommit bbcc8e0e22dc7d2b73d2ab2e7ec191b0e90694c1[m
+Author: Tran Vinh Hung <hungtv@MECORP.LOCAL>
+Date:   Wed Mar 16 09:28:40 2022 +0700
+
+    testing
+
+[33mcommit a6b4178c3d9bb6fd23f1187d402b146e52c26598[m
+Author: Tran Vinh Hung <hungtv@MECORP.LOCAL>
+Date:   Wed Mar 16 09:25:55 2022 +0700
+
+    cm
+
+[33mcommit 405f5809cad8cb3ca1c8334741bf8864f3105b9d[m
+Author: Tran Vinh Hung <hungtv@MECORP.LOCAL>
+Date:   Wed Mar 16 09:13:19 2022 +0700
+
+    fixbarnh
+
+[33mcommit 8f7860961ed79d3eb97d5f7ddbcecfb278a34bfa[m
+Author: tranvinhhung <tranvinhung2k@gmail.com>
+Date:   Thu Feb 17 11:02:01 2022 +0700
+
+    add overlay for navigation on mobie
+
+[33mcommit a4ca3d13df108807fccc308c0e79cf67be00e7d7[m
+Author: tranvinhhung <tranvinhung2k@gmail.com>
+Date:   Thu Feb 17 09:21:47 2022 +0700
+
+    fix hearder
+
+[33mcommit f7d94ba5f0f7da2294332378853dd48f72af62d7[m
+Merge: c9bb58b 647577f
+Author: tranvinhhung <tranvinhung2k@gmail.com>
+Date:   Wed Feb 16 17:26:45 2022 +0700
+
+    Merge branch 'main' of https://github.com/tranvinhhung/AnimeProjectApi into main
+
+[33mcommit c9bb58bacf833302c6e7e1063db0a172dfb91383[m
+Author: tranvinhhung <tranvinhung2k@gmail.com>
+Date:   Wed Feb 16 17:26:24 2022 +0700
+
+    change eviroment
+
+[33mcommit 647577f6a0421321634c1b2aaf3057bbbbdb7b7d[m
+Author: tranvinhhung <67729427+tranvinhhung@users.noreply.github.com>
+Date:   Wed Feb 16 07:55:50 2022 +0700
+
+    Update README.md
+
+[33mcommit dff798e55af9777745182ccafff5c4061335bf2b[m
+Author: tranvinhhung <tranvinhung2k@gmail.com>
+Date:   Tue Feb 15 19:17:55 2022 +0700
+
+    fix error when blur no choice quatity that video re-render
+
+[33mcommit b305a836615a5832b19c2a29f6be1442a0ca4a80[m
+Author: tranvinhhung <tranvinhung2k@gmail.com>
+Date:   Tue Feb 15 17:53:20 2022 +0700
+
+    fix bug when change quatity no change
+
+[33mcommit 3fe475e1bf85d2f323296a00c342c02510548355[m
+Author: tranvinhhung <tranvinhung2k@gmail.com>
+Date:   Tue Feb 15 15:50:55 2022 +0700
+
+    handle change quantity video
+
+[33mcommit 9b2c3217ef3eb9719f6ec45c0c2ae7bd9ad89403[m
+Author: tranvinhhung <tranvinhung2k@gmail.com>
+Date:   Tue Feb 15 08:10:14 2022 +0700
+
+    handle change url with data in genres view
+
+[33mcommit 08a1642221664e98f76a2a80edfc9b893fdc049a[m
+Author: tranvinhhung <tranvinhung2k@gmail.com>
+Date:   Tue Feb 15 07:31:39 2022 +0700
+
+    fix reponsive card ,homepage and change ramdom anime because this api point usually error cors
+
+[33mcommit 93b6cf922c5b05e067a8210d87adf75c4282e71f[m
+Merge: 82ff56b 852766e
+Author: tranvinhhung <tranvinhung2k@gmail.com>
+Date:   Sat Feb 5 19:40:44 2022 +0700
+
+    Merge branch 'main' of https://github.com/tranvinhhung/AnimeProjectApi into main
+
+[33mcommit 82ff56bf253962f7ec07f55594631841b632bfb5[m
+Author: tranvinhhung <tranvinhung2k@gmail.com>
+Date:   Sat Feb 5 19:37:50 2022 +0700
+
+    handle change title for each Anime  view
+
+[33mcommit 852766eccd5d4eef5a14003a14bbf8b29a10a5d7[m
+Author: tranvinhhung <67729427+tranvinhhung@users.noreply.github.com>
+Date:   Wed Feb 2 15:39:45 2022 +0700
+
+    Update README.md
+
+[33mcommit b27ea821b9893c0290f264b56d9b9f6960fad354[m
+Author: tranvinhhung <67729427+tranvinhhung@users.noreply.github.com>
+Date:   Wed Feb 2 15:29:31 2022 +0700
+
+    Update README.md
+
+[33mcommit 553b2ff533739134f59a56ef2588122dc223c11d[m
+Author: tranvinhhung <67729427+tranvinhhung@users.noreply.github.com>
+Date:   Wed Feb 2 14:39:35 2022 +0700
+
+    Update README.md
+
+[33mcommit a1800baa9a8d87882af795663211cc37164fe940[m
+Author: tranvinhhung <67729427+tranvinhhung@users.noreply.github.com>
+Date:   Wed Feb 2 14:38:36 2022 +0700
+
+    Update README.md
+
+[33mcommit 3cd473f86d92f30a40d1d18b3e03199725485e4e[m
+Author: tranvinhhung <67729427+tranvinhhung@users.noreply.github.com>
+Date:   Wed Feb 2 13:32:04 2022 +0700
+
+    Update README.md
+
+[33mcommit 7b993ba8581bab2efea59223969a9a2ee9eee621[m
+Author: tranvinhhung <tranvinhung2k@gmail.com>
+Date:   Tue Feb 1 17:33:08 2022 +0700
+
+    add view animetop100 and handle scroll infinite reatcjs with reduxasync
+
+[33mcommit 29cbbd1bfc89e81b409a57a6d677e0bbd6627e9f[m
+Author: tranvinhhung <tranvinhung2k@gmail.com>
+Date:   Tue Feb 1 10:46:07 2022 +0700
+
+    add top100anime with infinite scroll react js
+
+[33mcommit c49a67e4597b44618eace9ca92892208972a74bb[m
+Author: tranvinhhung <tranvinhung2k@gmail.com>
+Date:   Mon Jan 31 07:21:39 2022 +0700
+
+    handle transform page ,handle check icon deletel search for each select box
+
+[33mcommit 8c1250abccfeaa3634f33970bdb674e8a4b389d5[m
+Author: tranvinhhung <tranvinhung2k@gmail.com>
+Date:   Sat Jan 29 18:20:55 2022 +0700
+
+    change search all logic ĩn search view and data for component to redux for usefull handle data , and from that we can use router for handle data when router change ,data will change too,
+
+[33mcommit f10dd191ae677b63679a2eebd54bd4aa78f7da4e[m
+Author: tranvinhhung <tranvinhung2k@gmail.com>
+Date:   Sat Jan 29 10:47:50 2022 +0700
+
+    handle fix notitask in login and add some ui for about component
+
+[33mcommit 3ad82e42ef86be737421dfe6ce86dc8a8c504a0b[m
+Author: tranvinhhung <tranvinhung2k@gmail.com>
+Date:   Sat Jan 29 07:48:07 2022 +0700
+
+    change value scroll top check
+
+[33mcommit b895b7666bf96eedf184ad6dd7d81dfd946b0452[m
+Author: tranvinhhung <tranvinhung2k@gmail.com>
+Date:   Sat Jan 29 07:34:36 2022 +0700
+
+    fix ui and some logic ui home ,fix reponsive
+
+[33mcommit afd5e3c7f195633570bede11f80fc8c447628d6c[m
+Author: tranvinhhung <tranvinhung2k@gmail.com>
+Date:   Fri Jan 28 08:16:49 2022 +0700
+
+    reponsive material ui search
+
+[33mcommit f90433cdfa649dde8f063319cf646c2ea2aafd6f[m
+Author: tranvinhhung <tranvinhung2k@gmail.com>
+Date:   Thu Jan 27 10:17:46 2022 +0700
+
+    fix reponsive:anime.scss
+
+[33mcommit 09b9fd01e197b327e0836e258091cbfb2120e1b9[m
+Author: tranvinhhung <tranvinhung2k@gmail.com>
+Date:   Thu Jan 27 10:12:24 2022 +0700
+
+    add video js fullscreen when start
+
+[33mcommit ad3a8180976976528533d2af682b72b5ec993101[m
+Author: tranvinhhung <tranvinhung2k@gmail.com>
+Date:   Thu Jan 27 09:37:21 2022 +0700
+
+    fix reponsive
+
+[33mcommit bb3e397b1e6cf5fab2a805c9e9722d7ea2dd80ac[m
+Author: tranvinhhung <tranvinhung2k@gmail.com>
+Date:   Thu Jan 27 09:20:31 2022 +0700
+
+    reponsive animeplayDetail
+
+[33mcommit 3ada1d126e8318ce8697103269a7efb84f1686cc[m
+Author: tranvinhhung <tranvinhung2k@gmail.com>
+Date:   Thu Jan 27 06:27:28 2022 +0700
+
+    reponsive ui search view
+
+[33mcommit a1e1480ae7db4415f97569929e8ccc3044342ba6[m
+Author: tranvinhhung <tranvinhung2k@gmail.com>
+Date:   Wed Jan 26 17:47:27 2022 +0700
+
+    reponsive all
+
+[33mcommit bcd8ebb6d0767100e1f272454fb54efc7add35e7[m
+Author: tranvinhhung <tranvinhung2k@gmail.com>
+Date:   Wed Jan 26 14:37:52 2022 +0700
+
+    fix logic error Notification for ui
+
+[33mcommit 002a50db4b30c053bc4b73f4dbb7b1e1a1a743b9[m
+Author: tranvinhhung <tranvinhung2k@gmail.com>
+Date:   Wed Jan 26 14:15:04 2022 +0700
+
+    handle click next and pre button in search view result
+
+[33mcommit 31be013e88ffb7d70771e0141709560ceca6974d[m
+Author: tranvinhhung <tranvinhung2k@gmail.com>
+Date:   Wed Jan 26 10:22:56 2022 +0700
+
+    fix reponsive header and change animation timeline
+
+[33mcommit e3700a0bb0a504d6d7fb0fee9f3c7bf6b38520d0[m
+Author: tranvinhhung <tranvinhung2k@gmail.com>
+Date:   Wed Jan 26 10:04:40 2022 +0700
+
+    change animation animePlay
+
+[33mcommit 20df3ba95242d3b67162fe89e9ecc7b76f384ec0[m
+Author: tranvinhhung <tranvinhung2k@gmail.com>
+Date:   Wed Jan 26 10:01:55 2022 +0700
+
+    fix animation logout,pre commit handle openmenuNav open reponsive
+
+[33mcommit c05d1927932e0d84dff272ec794191d6d0de99ce[m
+Author: tranvinhhung <tranvinhung2k@gmail.com>
+Date:   Wed Jan 26 09:57:27 2022 +0700
+
+    fix ui nav reponsive nav ,fix animation animeplay
+
+[33mcommit 7dcafe7339d709ea8da58e078b582c5d4325adf1[m
+Author: tranvinhhung <tranvinhung2k@gmail.com>
+Date:   Wed Jan 26 09:55:57 2022 +0700
+
+    add mixin reponsive
+
+[33mcommit e83fe603973c43f85fef244de8ca36b33990c017[m
+Author: tranvinhhung <tranvinhung2k@gmail.com>
+Date:   Tue Jan 25 15:39:41 2022 +0700
+
+    fix bug scss
+
+[33mcommit ff46a5c8a65365c44b202fd6c67acbc347080a2a[m
+Author: tranvinhhung <tranvinhung2k@gmail.com>
+Date:   Tue Jan 25 11:03:05 2022 +0700
+
+    fix comment logic in  redux
+
+[33mcommit 6c62bfad46b1374e94b3f23719b3f3e7277c1b08[m
+Author: tranvinhhung <tranvinhung2k@gmail.com>
+Date:   Tue Jan 25 10:17:34 2022 +0700
+
+    fix css for animeComment row
+
+[33mcommit 4f2ff232c0738548deb9a81d002c2f405240b5bd[m
+Author: tranvinhhung <tranvinhung2k@gmail.com>
+Date:   Tue Jan 25 09:22:06 2022 +0700
+
+    handle logic comment finish if have bug fix later :)))
+
+[33mcommit ab985aac146d973e8c2d30cabd980bbc2541b5fb[m
+Author: tranvinhhung <tranvinhung2k@gmail.com>
+Date:   Mon Jan 24 18:44:04 2022 +0700
+
+    add logic for comment with a small bug ,tômrrow i will fix late
+
+[33mcommit 122a4f456822e420956dd1086cb4316beb9fbc87[m
+Author: tranvinhhung <tranvinhung2k@gmail.com>
+Date:   Mon Jan 24 15:35:42 2022 +0700
+
+    changle logic open comment
+
+[33mcommit 7c7f3b0ce1c46677fef3bc599d6dd36d66e7f13d[m
+Author: tranvinhhung <tranvinhung2k@gmail.com>
+Date:   Mon Jan 24 15:29:45 2022 +0700
+
+    add animation listlove
+
+[33mcommit f1045c9a7f497a592bcad73ea55e4450b7e95a8e[m
+Author: tranvinhhung <tranvinhung2k@gmail.com>
+Date:   Mon Jan 24 11:31:04 2022 +0700
+
+    add animeListLove.scss
+
+[33mcommit a53760554f6b919313e81a6149aaafe6985115d6[m
+Author: tranvinhhung <tranvinhung2k@gmail.com>
+Date:   Mon Jan 24 11:13:15 2022 +0700
+
+    fix animation index anime home id
+
+[33mcommit e9ea3b4280b43d5bdf65ec12ca25cffd012afc0f[m
+Author: tranvinhhung <tranvinhung2k@gmail.com>
+Date:   Sun Jan 23 14:52:12 2022 +0700
+
+    add animation for smoothinger
+
+[33mcommit ef82f12fb2949968d4a7b76b9dd4824681450fa5[m
+Author: tranvinhhung <tranvinhung2k@gmail.com>
+Date:   Sun Jan 23 14:19:40 2022 +0700
+
+    fix logic navipage
+
+[33mcommit 6079a06e64503a628edc318ce4c6cf7ce7e4ff59[m
+Author: tranvinhhung <tranvinhung2k@gmail.com>
+Date:   Sun Jan 23 12:02:19 2022 +0700
+
+    if i change optimate the logic will active correct ,i change agian ,i will optimate late when i cant
+
+[33mcommit 403bd733d29c95f917dfe7abdb2aeac7e3a76a50[m
+Author: tranvinhhung <tranvinhung2k@gmail.com>
+Date:   Sun Jan 23 11:50:07 2022 +0700
+
+    optimate code for redux search
+
+[33mcommit e4b62c3f6d06eb74a476c17686ae01c57ddc443a[m
+Author: tranvinhhung <tranvinhung2k@gmail.com>
+Date:   Sun Jan 23 11:49:37 2022 +0700
+
+    scss loading new
+
+[33mcommit 2815f95a7859586a8b330aadd1d8cf77d85441c6[m
+Author: tranvinhhung <tranvinhung2k@gmail.com>
+Date:   Sat Jan 22 18:25:33 2022 +0700
+
+    add router and view for search filter component view
+
+[33mcommit e0d4673a36e34da577b0374a8c97421f472795ca[m
+Author: tranvinhhung <tranvinhung2k@gmail.com>
+Date:   Sat Jan 22 09:58:40 2022 +0700
+
+    handle change url search finish next time i will get this url get api render data
+
+[33mcommit 87fc251705de299dbaa43d624f52228ca3c1fee0[m
+Author: tranvinhhung <tranvinhung2k@gmail.com>
+Date:   Fri Jan 21 17:58:39 2022 +0700
+
+    handle logic search fiter in redux
+
+[33mcommit e5c022691f428246b8bcd17038f115ba67a26904[m
+Author: tranvinhhung <tranvinhung2k@gmail.com>
+Date:   Thu Jan 20 15:28:23 2022 +0700
+
+    handle some ui and animation fix ui in animeplay
+
+[33mcommit a04042a8fb9a92bab78d1ad209c2209c18d7b765[m
+Author: tranvinhhung <tranvinhung2k@gmail.com>
+Date:   Mon Jan 17 15:31:46 2022 +0700
+
+    add animation logout
+
+[33mcommit 124473ab4111ef37f72985e45a203856d2d1bd73[m
+Author: tranvinhhung <tranvinhung2k@gmail.com>
+Date:   Mon Jan 17 10:41:24 2022 +0700
+
+    change new ui for login and signup for logicer
+
+[33mcommit c7ae6b137be7a5e3b54fb9692fc872fa4ef4240f[m
+Author: tranvinhhung <tranvinhung2k@gmail.com>
+Date:   Sun Jan 16 17:34:38 2022 +0700
+
+    handle fix ui add ui for comments ...
+
+[33mcommit 1c4535814833c634c99aa002713733647a53d4a8[m
+Author: tranvinhhung <tranvinhung2k@gmail.com>
+Date:   Sun Jan 16 17:33:58 2022 +0700
+
+    add reducer for animeComent ,prepare for handle commoments
+
+[33mcommit e8f9c033c01ece3f16d7966f09b21cb095513319[m
+Author: tranvinhhung <tranvinhung2k@gmail.com>
+Date:   Sat Jan 15 17:44:42 2022 +0700
+
+    add view comments
+
+[33mcommit 7bc26d1bdc4f7d14344563751bbb91d2b6c549ea[m
+Author: tranvinhhung <tranvinhung2k@gmail.com>
+Date:   Sat Jan 15 12:49:14 2022 +0700
+
+    add some logic render component for listlove
+
+[33mcommit d77bbea60af20162d206b25aca8a7b85803c2f6f[m
+Author: tranvinhhung <tranvinhung2k@gmail.com>
+Date:   Sat Jan 15 12:04:46 2022 +0700
+
+    add png nezuko
+
+[33mcommit c0f73dca25303edb5dc243cbef65fd810f352046[m
+Author: tranvinhhung <tranvinhung2k@gmail.com>
+Date:   Sat Jan 15 11:30:46 2022 +0700
+
+    add view for list Love animes
+
+[33mcommit af445112695a72f965099b0df3c60c02551634ac[m
+Author: tranvinhhung <tranvinhung2k@gmail.com>
+Date:   Sat Jan 15 11:02:47 2022 +0700
+
+    change new logic for easy list favorite
+
+[33mcommit b0dc2405862ae20555c6e89f76ef47c0d4621dac[m
+Author: tranvinhhung <tranvinhung2k@gmail.com>
+Date:   Fri Jan 14 08:21:47 2022 +0700
+
+    Add view for list love anime
+
+[33mcommit 1aa677e775041789dcd3f686bf37b38e8354e1fd[m
+Author: tranvinhhung <tranvinhung2k@gmail.com>
+Date:   Wed Jan 12 08:45:49 2022 +0700
+
+    fix erorr logic lastnight caused by redux persit holy!!! just remove localstore whe fix
+
+[33mcommit 49d47cd06bcd1c3422329ea09e50f197f33ee05e[m
+Author: tranvinhhung <tranvinhung2k@gmail.com>
+Date:   Tue Jan 11 19:02:01 2022 +0700
+
+    finally i finish list anime love omg so hard
+
+[33mcommit d529c5e85407831453c459821e72e80fd96456fa[m
+Author: tranvinhhung <tranvinhung2k@gmail.com>
+Date:   Tue Jan 11 09:36:26 2022 +0700
+
+    fix bug darkMode
+
+[33mcommit dfd075aa28d2441fd7c87de8bd668da27bdfe937[m
+Author: tranvinhhung <tranvinhung2k@gmail.com>
+Date:   Tue Jan 11 09:26:28 2022 +0700
+
+    fix no see button hover trailer  and logout
+
+[33mcommit ac43ddcbc4a3f779754182dd046a6feaaf9a9fea[m
+Author: tranvinhhung <tranvinhung2k@gmail.com>
+Date:   Mon Jan 10 18:15:38 2022 +0700
+
+    finish today tomorow going
+
+[33mcommit dee8a848d188259c5055237632f7777d0cc71d41[m
+Author: tranvinhhung <tranvinhung2k@gmail.com>
+Date:   Mon Jan 10 15:58:28 2022 +0700
+
+    add persit redux and fix router cleaner
+
+[33mcommit 6a2e085c72483dfc01894e0c7ca055e505e357f3[m
+Author: tranvinhhung <tranvinhung2k@gmail.com>
+Date:   Tue Jan 4 17:13:16 2022 +0700
+
+    finish login lout signup ... so hard
+
+[33mcommit 33c9932de06f26525b1104dea17c05a2dba60586[m
+Author: tranvinhhung <tranvinhung2k@gmail.com>
+Date:   Sat Jan 1 13:03:43 2022 +0700
+
+    add router handle logic complex in todaywatch componet so hard
+
+[33mcommit 4d77825803e07873c426fa5c084cf79f6c650cc3[m
+Author: tranvinhhung <tranvinhung2k@gmail.com>
+Date:   Fri Dec 31 18:48:42 2021 +0700
+
+    end 31/12
+
+[33mcommit ec110c3fb0a27b44bd8baba387aa8ab4cf5d1e81[m
+Author: tranvinhhung <tranvinhung2k@gmail.com>
+Date:   Fri Dec 31 17:32:48 2021 +0700
+
+    handle and change logic very much to i cant remember
+
+[33mcommit 15a5beebc9ab49820ab7ca5bc0d10e163231492b[m
+Author: tranvinhhung <tranvinhung2k@gmail.com>
+Date:   Fri Dec 31 17:31:30 2021 +0700
+
+    add new popover
+
+[33mcommit e7ee7c1732e7904a487ba586b4d2e3f8e67ddbb9[m
+Author: tranvinhhung <tranvinhung2k@gmail.com>
+Date:   Fri Dec 31 17:30:29 2021 +0700
+
+    config vsJson
+
+[33mcommit effdee945169dbd5330e1a7480bbbb47cbd510c4[m
+Author: tranvinhhung <tranvinhung2k@gmail.com>
+Date:   Fri Dec 31 17:29:19 2021 +0700
+
+    add css not found component
+
+[33mcommit 24bd87d1825942610812dc7c3e4c1f9cfebb9116[m
+Author: tranvinhhung <tranvinhung2k@gmail.com>
+Date:   Fri Dec 31 17:28:31 2021 +0700
+
+    fix ui Notfound
+
+[33mcommit d04367a498b5734eee38834250da00ad32043818[m
+Author: tranvinhhung <tranvinhung2k@gmail.com>
+Date:   Wed Dec 29 19:42:15 2021 +0700
+
+    handle and fix logic router ui v.v.v.v
+
+[33mcommit 44dcd392260f6de260352eff21f277018de4e6e8[m
+Author: tranvinhhung <tranvinhung2k@gmail.com>
+Date:   Wed Dec 29 19:40:39 2021 +0700
+
+    add new list  reducer and fix gender reducer ,handle much logic
+
+[33mcommit 5a8e846a5c2ba4a20df5b7822d5fbc47ba1fbfd6[m
+Author: tranvinhhung <tranvinhung2k@gmail.com>
+Date:   Wed Dec 29 19:39:16 2021 +0700
+
+    add collections css
+
+[33mcommit 203791d71ef16ddd585679d1b8ba9dd3a907f56d[m
+Author: tranvinhhung <tranvinhung2k@gmail.com>
+Date:   Wed Dec 29 19:38:14 2021 +0700
+
+    video js and handle link video config
+
+[33mcommit 93847ce6fd89ee6376060e3a86813e68ffea632a[m
+Author: tranvinhhung <tranvinhung2k@gmail.com>
+Date:   Wed Dec 29 19:36:32 2021 +0700
+
+    add gender handle animation logic navigate
+
+[33mcommit f89a7955b8438b6d91fa7bfca71f12abc1accc0e[m
+Author: tranvinhhung <tranvinhung2k@gmail.com>
+Date:   Wed Dec 29 19:34:21 2021 +0700
+
+    hadle AnimeEpsido and css card
+
+[33mcommit 001724565458e5c122e89da8dc8839fe23d47b58[m
+Author: tranvinhhung <tranvinhung2k@gmail.com>
+Date:   Mon Dec 27 18:40:39 2021 +0700
+
+    handle logic fix ui css and add new features
+
+[33mcommit fc1d7c35db7587326d469183b741727617b51b01[m
+Author: tranvinhhung <tranvinhung2k@gmail.com>
+Date:   Mon Dec 27 18:39:27 2021 +0700
+
+    create new method call api for esppanime
+
+[33mcommit ba69794cb8742480f8adc65db4c03b98155eb4eb[m
+Author: tranvinhhung <tranvinhung2k@gmail.com>
+Date:   Mon Dec 27 18:35:43 2021 +0700
+
+    create new songSlice in redux usefull
+
+[33mcommit 88a47eff6223ada1ce6480829b9e2daf087fb95f[m
+Author: tranvinhhung <tranvinhung2k@gmail.com>
+Date:   Mon Dec 27 18:34:13 2021 +0700
+
+    create new footer and add new ui footer
+
+[33mcommit 30b1fbe3bedcb87cb867b6d2b61ed73a9ddf5c19[m
+Author: tranvinhhung <tranvinhung2k@gmail.com>
+Date:   Sun Dec 26 17:16:07 2021 +0700
+
+    add animation and handle fix ui ..v.v.v.
+
+[33mcommit 07facfe7505e24235e73263b0cccc6fd2a1869bb[m
+Author: tranvinhhung <tranvinhung2k@gmail.com>
+Date:   Sun Dec 26 06:26:17 2021 +0700
+
+    create reduces for anime Gender List use thunk
+
+[33mcommit f1e1bf46b651c61e59e03860206debe625e2ae29[m
+Author: tranvinhhung <tranvinhung2k@gmail.com>
+Date:   Sat Dec 25 18:21:22 2021 +0700
+
+    add new router
+
+[33mcommit d4cd16ac4094af41232cd3b8bf78a65a53788c5e[m
+Author: tranvinhhung <tranvinhung2k@gmail.com>
+Date:   Sat Dec 25 18:08:12 2021 +0700
+
+    add some libary
+
+[33mcommit 69f168e0384d88e22d7017a8bfec8a857e21ee10[m
+Author: tranvinhhung <tranvinhung2k@gmail.com>
+Date:   Sat Dec 25 18:04:54 2021 +0700
+
+    purpose this file handle animation for component
+
+[33mcommit d344a4e89f610d10fe3aad0c1111e0525fac64cb[m
+Author: tranvinhhung <tranvinhung2k@gmail.com>
+Date:   Sat Dec 25 18:02:38 2021 +0700
+
+    change name componet logic and retive some logic ,add some css
+
+[33mcommit 3989de43da99b9633cf581386f98c0abb7b7d2bd[m
+Author: tranvinhhung <tranvinhung2k@gmail.com>
+Date:   Sat Dec 25 18:00:51 2021 +0700
+
+    retire component useful
+
+[33mcommit 4500bc79a956d0d0b8215366aea6411de724d65a[m
+Author: tranvinhhung <tranvinhung2k@gmail.com>
+Date:   Sat Dec 25 17:59:15 2021 +0700
+
+    handleData From axios cleaner
+
+[33mcommit f022e46a831db0e2e3de324632e08b746e78199f[m
+Author: tranvinhhung <tranvinhung2k@gmail.com>
+Date:   Sat Dec 25 17:57:31 2021 +0700
+
+    add css and Handle logic
+
+[33mcommit 4bd0f6049f0e39f996d4d6842bba3f30bd41cb0f[m
+Author: tranvinhhung <tranvinhung2k@gmail.com>
+Date:   Sat Dec 25 17:54:48 2021 +0700
+
+    retive comonent cleaner
+
+[33mcommit fb8d41785ff2f49e04489824a2b9f17aa9bbd57a[m
+Author: tranvinhhung <tranvinhung2k@gmail.com>
+Date:   Sat Dec 25 17:52:41 2021 +0700
+
+    add new Section Componet slit componet and add new css
+
+[33mcommit 74ee02840f2aa96e2baf3e27a28cef982b2c69bf[m
+Author: tranvinhhung <tranvinhung2k@gmail.com>
+Date:   Fri Dec 24 15:21:00 2021 +0700
+
+    add myproject with full func
+
+[33mcommit fc8825370ea90d6d403886f915768da81e169b67[m
+Author: tranvinhhung <tranvinhung2k@gmail.com>
+Date:   Fri Dec 17 09:39:24 2021 +0700
+
+    Initialize project using Create React App
