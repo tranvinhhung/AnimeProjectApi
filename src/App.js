@@ -7,6 +7,8 @@ function App() {
       <div>test chery pick</div>
       <div>test chery pick2</div>
       <div>test chery pick3</div>
+      <div>test chery pick2</div>
+      <div>test chery pick3</div>
     </div>
   );
 }
