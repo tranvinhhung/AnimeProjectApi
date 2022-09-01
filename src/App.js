@@ -4,6 +4,7 @@ function App() {
   return (
     <div className="App">
       <MyCompo />
+      <div>test chery pick</div>
     </div>
   );
 }
