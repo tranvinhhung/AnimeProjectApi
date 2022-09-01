@@ -5,6 +5,7 @@ function App() {
     <div className="App">
       <MyCompo />
       <div>test chery pick</div>
+      <div>test chery pick2</div>
     </div>
   );
 }
