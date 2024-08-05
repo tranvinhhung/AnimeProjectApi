@@ -24,6 +24,7 @@ export const ramdomValueArrayGender = async (myArr, soLantaoRamdom) => {
     vitualarr.push(myArr[num]);
   }
   let mainArr = [...new Set(vitualarr)];
+  // eslint-disable-next-line eqeqeq
   if (mainArr.length === soLantaoRamdom && mainArr != undefined) return mainArr;
   if (mainArr.length < soLantaoRamdom) {
     ramdomValueArrayGender(myArr, soLantaoRamdom);
@@ -94,7 +95,7 @@ export const handleGenerateYear = () => {
   let year = [];
   let day = new Date();
   let yearNow = day.getFullYear();
-  console.log(yearNow);
+
   for (let i = yearNow; i >= 1940; i--) {
     year.push(i);
   }
@@ -123,6 +124,6 @@ export const handleAnimeEpisodeWithQuantity = async ({ id, number }) => {
   let list = await axios.get(
     `https://api.aniapi.com/v1/episode?anime_id=${id}&number=${number}&is_dub=false&locale=it`
   );
-  let myData = await list?.data?.data;
+  let myData = list?.data?.data;
   return myData;
 };

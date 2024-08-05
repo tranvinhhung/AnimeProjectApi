@@ -1,21 +1,9 @@
 import React from "react";
-import { Route, Routes, Navigate } from "react-router-dom";
-import AnimeGender from "./AnimeComponents/AnimeGenderList/AnimeGender";
-import AnimePlay from "./AnimeComponents/AnimePlay/AnimePlay";
-import AppContext from "./Context/AppContext";
-import Footer from "./Footer/Footer";
-import Header from "./Header/Header";
-import About from "./Main/About/About";
+import { Route, Routes } from "react-router-dom";
+import AnimeLink from "./AnimeComponents/AnimeSoureLink/AnimeLink";
+import Container from "./Container/Container";
 import Home from "./Main/Home/Home";
 import NotFound from "./Main/NotFound/NotFound";
-import AnimeLink from "./AnimeComponents/AnimeSoureLink/AnimeLink";
-import AnimeToDayWatch from "./AnimeComponents/AnimeTodayWatch/AnimeToDayWatch";
-import Signup from "./../components/User/Signup/Signup";
-import Login from "./../components/User/Login/Login";
-import Container from "./Container/Container";
-import ListLoveAnimes from "./../components/AnimeComponents/AnimeListLove/AnimeListLove";
-import AnimeSearchContainer from "./AnimeComponents/AnimeSearchView/AnimeSearchContainer/AnimeSearchContainer";
-import AnimeTop100Contai from "./AnimeComponents/AnimeTop100/AnimeTop100Container/AnimeTop100Contai";
 function Index() {
   return (
     <React.Fragment>
@@ -23,7 +11,7 @@ function Index() {
       <Routes>
         <Route path="/" element={<Container />}>
           <Route path="home" index element={<Home />} />
-          <Route path="about" element={<About />} />
+          {/* <Route path="about" element={<About />} />
           <Route path="anime" element={<AnimePlay />}>
             <Route path=":id" element={<AnimePlay />} />
           </Route>
@@ -36,10 +24,10 @@ function Index() {
           <Route path="login" element={<Home />} />
           <Route path="my-list-love-animes" element={<ListLoveAnimes />} />
           <Route path="search" element={<AnimeSearchContainer />}></Route>
-          <Route path="top-100-anime" element={<AnimeTop100Contai />} />
+          <Route path="top-100-anime" element={<AnimeTop100Contai />} /> */}
         </Route>
-        <Route path="video" element={<AnimeLink />} />
-        <Route path="*" element={<NotFound />} />
+        {/* <Route path="video" element={<AnimeLink />} />
+        <Route path="*" element={<NotFound />} /> */}
         <Route path="/not-found" element={<NotFound />} />
       </Routes>
 

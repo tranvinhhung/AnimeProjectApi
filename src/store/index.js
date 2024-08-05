@@ -1,15 +1,4 @@
 import { configureStore, combineReducers } from "@reduxjs/toolkit";
-// import {
-//   persistStore,
-//   persistReducer,
-//   FLUSH,
-//   REHYDRATE,
-//   PAUSE,
-//   PERSIST,
-//   PURGE,
-//   REGISTER,
-// } from "redux-persist";
-// import storage from "redux-persist/lib/storage";
 import animeGenderSlice from "./../reduces/animeGenderList";
 import counterSlice from "./../reduces/index";
 import songSlice from "../reduces/songSlice";
@@ -23,11 +12,7 @@ import animeCommentSlice from "../reduces/animeComment";
 import animeSearchSlice from "../reduces/animeSearch";
 import animeTopSlice from "../reduces/animeTop";
 import animeVideoSlice from "../reduces/animeVideos";
-// const persistConfig = {
-//   key: "root",
-//   version: 1,
-//   storage,
-// };
+
 const rootReducer = combineReducers({
   mycounter: counterSlice.reducer,
   myAnime: animeGenderSlice.reducer,
@@ -43,17 +28,13 @@ const rootReducer = combineReducers({
   myAnimeTop: animeTopSlice.reducer,
   myVideo: animeVideoSlice.reducer,
 });
-// const persistedReducer = persistReducer(persistConfig, rootReducer);
+
 const store = configureStore({
-  // reducer: persistedReducer,
   reducer: rootReducer,
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
-      // serializableCheck: {
-      //   ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
-      // },
       serializableCheck: false,
     }),
 });
-// export let persistor = persistStore(store);
+
 export default store;

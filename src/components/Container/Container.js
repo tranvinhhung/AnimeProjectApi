@@ -6,7 +6,7 @@ import "./Conatainer.scss";
 const Container = () => {
   const location = useLocation();
   const navigate = useNavigate();
-  console.log(location);
+
   useEffect(() => {
     if (location.pathname === "/") {
       navigate("/home");
@@ -16,6 +16,7 @@ const Container = () => {
       document.querySelector(".overlayC").classList.remove("active");
     });
   }, []);
+
   return (
     <>
       <Header />

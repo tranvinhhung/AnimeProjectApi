@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@craco/craco": "^7.1.0",
     "@emotion/react": "^11.7.1",
     "@emotion/styled": "^11.6.0",
     "@hookform/resolvers": "^0.1.0",
@@ -16,6 +17,7 @@
     "@testing-library/user-event": "^13.5.0",
     "aos": "^2.3.4",
     "axios": "^0.24.0",
+    "craco": "^0.0.3",
     "dotenv": "^10.0.0",
     "gsap": "^3.9.1",
     "jwt-decode": "^3.1.2",
@@ -29,17 +31,18 @@
     "react-router-dom": "^6.1.1",
     "react-scripts": "5.0.0",
     "redux": "^4.1.2",
-    "sass": "^1.45.0",
+    "sass": "^1.77.6",
     "slugify": "^1.6.4",
     "swiper": "^7.3.3",
     "videojs-resolution-switcher": "^0.4.2",
     "web-vitals": "^2.1.2",
+    "webpack-bundle-analyzer": "^4.10.2",
     "yup": "^0.32.11"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
+    "start": "craco start",
+    "build": "craco build",
+    "test": "craco test",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -61,6 +64,10 @@
     ]
   },
   "devDependencies": {
+    "css-minimizer-webpack-plugin": "^7.0.0",
+    "image-webpack-loader": "^8.1.0",
+    "mini-css-extract-plugin": "^2.9.0",
+    "terser-webpack-plugin": "^5.3.10",
     "video.js": "^7.17.0"
   }
 }
