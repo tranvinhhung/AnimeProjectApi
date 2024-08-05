@@ -6,7 +6,15 @@ PROJECT_DIR="/e/project/AnimeProjectApi"
 
 # Thay đổi thư mục làm việc đến dự án của bạn
 cd "$PROJECT_DIR"
+# Sửa đổi nhiều file (thay đổi theo nhu cầu của bạn)
+# Ví dụ: Thêm một dòng vào một file
+echo "Thêm một dòng mới" >> file1.txt
 
+# Ví dụ: Thay thế nội dung trong một file
+sed -i 's/cũ/mới/g' file2.txt
+
+# Ví dụ: Tạo một file mới
+echo "Nội dung của file mới" > newfile.txt
 # Kiểm tra xem có thay đổi nào không
 if git diff-index --quiet HEAD --; then
   echo "No changes to commit."
